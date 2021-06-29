@@ -21,6 +21,10 @@ const Board = (fakeboard) => {
             <h3>{boardInfo.title}</h3>
             <h4>{boardInfo.username}</h4>
             <div className='cards'>
+                <ul>
+                    <li> Card </li>
+                    <li> Card </li>
+                </ul>
             </div>
             <div className='new-card-form'>
                 <NewCard />
