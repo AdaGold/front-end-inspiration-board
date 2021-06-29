@@ -1,5 +1,7 @@
 import './App.css';
 import NewBoardForm from './components/NewBoardForm';
+import NewCardForm from './components/NewCardForm';
+
 const axios = require('axios');
 
 
@@ -10,7 +12,7 @@ function App() {
   const addBoard = (title, owner) => {
     console.log("i'm in API")
 
-    axios.post('/user', {
+    axios.post('/boards', {
       title: title,
       owner: owner
     })
@@ -20,17 +22,31 @@ function App() {
       .catch(function (error) {
         console.log(error);
       });
-
-
   }
+
+  const addCard = (message) => {
+    console.log("i'm in API")
+
+    axios.post('/cards', {
+      message: message,
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
 
 
 
   return (
     <main>
-      <h1>Create New Board</h1>
+  
       <NewBoardForm addBoardCallback={addBoard}> </NewBoardForm>
+      <NewCardForm addCardCallback={addCard}></NewCardForm>
 
 
 
