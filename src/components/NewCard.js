@@ -8,7 +8,7 @@ const NewCard = () =>{
     const newCardMessage = (changeEvent) => {
         console.log('new message')
         console.log('message value:', changeEvent.target.value);
-        newCardMessage(changeEvent.target.value);
+        setCardMessage(changeEvent.target.value);
     }
     
     // no props passed in
