@@ -10,9 +10,11 @@ const fakeBoard = {
     'quote': ['none']
 }
 const defaultError = '';
-const Board = () => {
-    [ boardInfo, setBoardInfo ] = useState(fakeboard);
-    [ error, setError ] = useState(defaultError);
+const Board = (fakeboard) => {
+    // get board by ID based on API call
+    // reafactor using context?
+    const [ boardInfo, setBoardInfo ] = useState(fakeboard);
+    const [ error, setError ] = useState(defaultError);
 
     return(
         <div className='board'>
