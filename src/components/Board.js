@@ -16,21 +16,26 @@ const Board = (fakeboard) => {
     const [ boardInfo, setBoardInfo ] = useState(fakeboard);
     const [ error, setError ] = useState(defaultError);
 
-    return(
-        <div className='board'>
-            <h3>{boardInfo.title}</h3>
-            <h4>{boardInfo.username}</h4>
-            <div className='cards'>
-                <ul>
-                    <li> Card </li>
-                    <li> Card </li>
-                </ul>
+    if (boardInfo){
+        return (
+            <div className='board'>
+                <h3>{boardInfo.name}</h3>
+                <h4>{boardInfo.username}</h4>
+                <div className='cards'>
+                    <ul>
+                        <li> Card </li>
+                        <li> Card </li>
+                    </ul>
+                </div>
+                <div className='new-card-form'>
+                    <NewCard />
+                </div>
             </div>
-            <div className='new-card-form'>
-                <NewCard />
-            </div>
-        </div>
-    );
+        );
+    } else {
+        return (<p> No Board Chosen</p>)
+    }
+    
 }
 
 export default Board;

@@ -9,11 +9,15 @@ const BoardList = () => {
     // generate list of boards from API call, depends on structure of API
     // onclick event handler to select board to display
     // add new Board function
+    const selectBoard = () => {
+        // takes in ID and selects baord to render With Cards
+        console.log('clicked')
+    }
     return(
         <div className="board-list-container">
             <h2>Board List</h2>
             <ul>
-                <li>Board</li>
+                <li onClick={() => {selectBoard()}}>Board</li>
             </ul>
         </div>
         
