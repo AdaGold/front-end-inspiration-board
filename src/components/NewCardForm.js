@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+//for posting a card we'll have to include associated board id, I asuume this will be a state in the app.
 
 const NewCardForm = (props) => {
     const [formFields, setFormFields] = useState('');
