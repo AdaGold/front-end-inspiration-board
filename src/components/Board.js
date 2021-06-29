@@ -1,0 +1,1 @@
+//board will display name & owner of board... wondering if this is necessary or if card display could handle?
