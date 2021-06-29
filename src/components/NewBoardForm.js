@@ -31,8 +31,8 @@ const NewBoardForm = (props) => {
         });
 
         setFormFields({
-            name: '',
-            email: '',
+            title: '',
+            owner: '',
         });
     };
 

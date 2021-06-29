@@ -5,13 +5,23 @@ import NewCardForm from './components/NewCardForm';
 const axios = require('axios');
 
 
-
 function App() {
 
   // add new board, API call
-  const addBoard = (title, owner) => {
+  const addBoard = (boardData) => {
     console.log("i'm in API")
-
+    const newBoard = {
+      title: boardData.title,
+      owner: boardData.owner
+    }
+    axios.post('{process.env.REACT_APP_BACKEND_URL}/boards`', newBoard) {
+    })
+      .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     axios.post('/boards', {
       title: title,
       owner: owner
@@ -26,7 +36,7 @@ function App() {
 
   const addCard = (message) => {
     console.log("i'm in API")
-
+}
     axios.post('/cards', {
       message: message,
     })
@@ -38,9 +48,10 @@ function App() {
       });
   }
 
-
-
-
+return (
+  <main>
+    <h1>Create New Board</h1>
+    <NewBoardForm addBoardCallback={addBoard}> </NewBoardForm>
 
   return (
     <main>
@@ -53,8 +64,8 @@ function App() {
 
 
 
-    </main>
-  );
+  </main>
+);
 }
 
 export default App;
