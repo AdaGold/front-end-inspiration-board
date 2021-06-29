@@ -12,26 +12,26 @@ const NewCardForm = (props) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        props.addCardCallback({message: formFields});
+        props.addCardCallback({ message: formFields });
 
         setFormFields('');
     };
 
     return (
         <section>
-        <h1>post a note!</h1>
-        <form onSubmit={onFormSubmit}>
-            <div>
-                <label htmlFor="Message">message:</label>
+            <h1>post a note!</h1>
+            <form onSubmit={onFormSubmit}>
+                <div>
+                    <label htmlFor="Message">message:</label>
+                    <input
+                        name="message"
+                        value={formFields}
+                        onChange={onMessageChange} />
+                </div>
                 <input
-                    name="message"
-                    value={formFields}
-                    onChange={onMessageChange} />
-            </div>
-            <input
-                type="submit"
-                value="post note" />
-        </form>
+                    type="submit"
+                    value="post note" />
+            </form>
         </section>
     );
 };
