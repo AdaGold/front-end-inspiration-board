@@ -1,7 +1,6 @@
 import './App.css';
 import NewBoardForm from './components/NewBoardForm';
 import CardDisplay from './components/cardDisplay';
-import NewCardForm from './components/NewCardForm';
 import Board from './components/Board';
 import { useState, useEffect } from 'react';
 
@@ -76,6 +75,16 @@ function App() {
     });
 };
 
+const cardDelete = (cardId) => {
+  axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`,)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error)
+  });
+};
+
   return (
     <main>
       <h1>INSPO BOARD</h1>
@@ -83,11 +92,8 @@ function App() {
       <div>{boardList}</div>
       <NewBoardForm addBoardCallback={addBoard}> </NewBoardForm>
       <div>{boardErrorMessage}</div>
-      <NewCardForm addCardCallback={addCard}></NewCardForm>
       <div>{cardErrorMessage}</div>
-      <h1>{selectedBoard.title}</h1>
-      <CardDisplay board={selectedBoard} callBack={cardLike}></CardDisplay>
-
+      {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay>: ''}
     </main>
   );
 };
