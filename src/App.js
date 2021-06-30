@@ -62,15 +62,19 @@ function App() {
 
   const boardList = boardsData.map((board) => {
     return (<li>
-      <Board board={board} setBoard={selectBoard}> </Board>
+      <Board key={board.id} board={board} setBoard={selectBoard}> </Board>
     </li>)
   });
 
   const cardLike = (cardId) => {
-    make put call to change the backend.
-  }
-
-
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
+};
 
   return (
     <main>
@@ -82,7 +86,7 @@ function App() {
       <NewCardForm addCardCallback={addCard}></NewCardForm>
       <div>{cardErrorMessage}</div>
       <h1>{selectedBoard.title}</h1>
-      <CardDisplay board={selectedBoard}></CardDisplay>
+      <CardDisplay board={selectedBoard} callBack={cardLike}></CardDisplay>
 
     </main>
   );
