@@ -39,7 +39,7 @@ const NewBoardForm = (props) => {
     return (
         <section>
         <h1 className="formHeader">Create New Board</h1>
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit} className="form">
             <div>
                 <label htmlFor="Title">Title</label>
                 <input

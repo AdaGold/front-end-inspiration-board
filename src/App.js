@@ -18,8 +18,6 @@ function App() {
 
   // add new board, API call
   const addBoard = (boardData) => {
-    console.log("i'm in API")
-
     const newBoard = {
       title: boardData.title,
       owner: boardData.owner
@@ -34,7 +32,6 @@ function App() {
   }
 
   const addCard = (message) => {
-    console.log("i'm in API")
     const newCard = {
       message: message,
       board_id: selectedBoard.id
