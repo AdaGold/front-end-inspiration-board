@@ -15,18 +15,19 @@ const NewBoardForm = (props) => {
     };
     
     
-    return (<form onSubmit={submitNewBoard} className='new-board-form__form'>
+    return (<form  onSubmit={submitNewBoard} className='new-board-form__form'>
         <h2>Create a New Board</h2>
-        <label>Title</label>
         <input
             type="text"
             value={title}
+            placeholder="Title"
+            id="name"
             onChange={handleTitleChange}
             className={((title.length === 0) || (title.length > 40)) ? 'invalid-form-input' : ''}></input>
-        <label>Owner's Name</label>
         <input
             type="text"
             value={owner}
+            placeholder="Owner's Name"
             onChange={handleOwnerChange}
             className={((owner.length === 0) || (owner.length > 40)) ? 'invalid-form-input' : ''}></input>
         <p>Preview: {title} - {owner}</p>
