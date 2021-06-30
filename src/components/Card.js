@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Card = (props) => {
 
     return (
-        <div className="card">
+        <div className='card'>
             <div className='card__content'>
                 <p className='card__content-text'>{props.text} </p>
             </div>
@@ -18,11 +18,7 @@ const Card = (props) => {
         </div>
     );
 }
-    // state: passed back to board?
-    // number of upvotes
-    // delete
-    
-    // cards passed as props or Context? 
+
 Card.propTypes = {
         id: PropTypes.number,
         text: PropTypes.string,

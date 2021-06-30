@@ -7,12 +7,13 @@ import Card from "./components/Card.js"
 
 function App() {
   return (
-    <div>
-      <BoardList />
-      <Board />
-      <Card />
+    <section>
+      <header className='header'>
+        <h1>Inspo Board!</h1>
+      <Board url='https://hacky-saac-inspiration-board.herokuapp.com/boards/' />
+      </header>
       <DeleteAllButton />
-    </div>
+    </section>
   );
 }
 

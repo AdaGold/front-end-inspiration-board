@@ -31,7 +31,7 @@ const NewCard = (props) =>{
                     <input 
                     className='new-card-form__form-button'
                     value='add message'
-                    onClick={(changeEvent) => {props.addNewCard(changeEvent, cardMessage)}}
+                    onClick={(changeEvent) => {props.addNewCard(changeEvent, setCardMessage)}}
                     type='submit' />
                 </form>
             </div>
