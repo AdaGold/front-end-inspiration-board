@@ -3,7 +3,8 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 
 import NewBoard from './NewBoard.js';
-const BoardList = [
+
+const boardListArray = [
     {
         "board_id": 1,
         "owner": "summer",
@@ -19,15 +20,21 @@ const BoardList = () => {
     // state: from API call
     // generate list of boards from API call, depends on structure of API
     // add new Board function
-    const selectBoard = () => {
-        // takes in ID and selects baord to render With Cards
-        console.log('clicked')
-    }
+    const list = boardListArray.map((item) =>{
+        const selectBoard = () => {
+            // takes in ID and selects baord to render With Cards
+            console.log('clicked')
+        }
+        return(
+        <li id={item.id} onClickCallback={selectBoard} > {item.title}</li>
+      )})
+
+
     return(
         <div className="board-list-container">
             <h2>Board List</h2>
             <ul>
-                <li onClick={() => {selectBoard()}}>Board</li>
+                {list}
             </ul>
         </div>
         

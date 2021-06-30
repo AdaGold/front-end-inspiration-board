@@ -1,8 +1,10 @@
 import { React, useEffect, useState } from 'react';
-import Card from './Card.js';
-import NewCard from './NewCard.js';
 import propTypes from 'prop-types';
 import axios from 'axios';
+
+import Card from './Card.js';
+import NewCard from './NewCard.js';
+
 
 const fakeBoard = {
         "board_id": 1,
@@ -40,9 +42,9 @@ const Board = (fakeboard) => {
 }
 
 Board.propTypes = {
-    board_id: PropTypes.number,
-    owner: PropTypes.string,
-    title: PropTypes.func.isRequired
+    board_id: propTypes.number,
+    owner: propTypes.string,
+    title: propTypes.func.isRequired
 }
 
 export default Board;
