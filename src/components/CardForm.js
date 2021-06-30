@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const NewCardForm = (props) => {
+const CardForm = (props) => {
 const [message, setMessage] = useState('');
 const handleMessageChange = (e) => { setMessage(e.target.value) };
 
@@ -36,4 +36,4 @@ return (
 );
 };
 
-export default NewCardForm;
+export default CardForm;

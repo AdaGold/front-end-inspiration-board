@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="page__container">
       <div className="content__container">
-        <h1>Inspiration Board</h1>
+        <h1 id="title">Inspiration Board</h1>
         <section className="boards__container">
           <section>
             <h2>Boards</h2>
@@ -78,14 +78,14 @@ function App() {
             <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
           </section>
           <section className='new-board-form__container'>
-            <h2>Create a New Board</h2>
             {isBoardFormVisible ? <BoardForm createNewBoard={createNewBoard}></BoardForm> : ''}
             <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
         </section>
         {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
+      
       </div>
-      <footer><span>This is a demo! Please be gentle!</span> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
+      <footer>Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
   );
 }
