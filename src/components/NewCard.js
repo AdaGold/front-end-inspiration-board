@@ -24,19 +24,15 @@ const NewCard = (props) =>{
                     <input 
                     type='text' 
                     name='text'
-                    value={cardMessage} 
-                    placeholder="Write your message here!"
+                    value={cardMessage.text} 
+                    placeholder="add message here!"
                     onChange={newCardMessage} />
 
                     <input 
                     className='new-card-form__form-button'
-                    value={value}
+                    value='add message'
                     onClick={(changeEvent) => {props.addNewCard(changeEvent, cardMessage)}}
                     type='submit' />
-
-                        
-
-
                 </form>
             </div>
         </section>
@@ -47,10 +43,10 @@ const NewCard = (props) =>{
 
 NewCard.propTypes = {
 
-    nextId: PropTypes.number.isRequired,
-    addNew
+    nextId: propTypes.number.isRequired,
+    addNewCard: propTypes.func.isRequired,
 
-}
+};
 
 
 export default NewCard;

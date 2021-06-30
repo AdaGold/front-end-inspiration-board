@@ -23,7 +23,7 @@ const Card = (props) => {
     // delete
     
     // cards passed as props or Context? 
-Card.proptypes = {
+Card.propTypes = {
         id: PropTypes.number,
         text: PropTypes.string,
         deleteCard: PropTypes.func.isRequired,
