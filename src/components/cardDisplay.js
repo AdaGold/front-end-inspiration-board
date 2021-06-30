@@ -12,16 +12,6 @@ const axios = require('axios');
 const CardDisplay = (props) => {
 
     const [cards, setCards] = useState([])
-    // const getCardsbyBoardId = () => {
-    //     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.id}/cards`)
-    //         .then(function (response) {
-    //             const cards = response
-    //             // setCardsbyBoardId(cards)
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error)
-    //         })
-    // };
 
     useEffect(() => {
 
@@ -44,10 +34,5 @@ const CardDisplay = (props) => {
         {cardsList}
     </div>
 }
-//     return <div>
-//         blah
-//     </div>
-// }
-
 
 export default CardDisplay;

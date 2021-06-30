@@ -17,8 +17,6 @@ function App() {
 
   //-------------------card states----------------------
   const [cardErrorMessage, setCardErrorMessage] = useState("")
-  const [cardsByBoardId, setCardsbyBoardId] = useState([])
-
 
   // add new board, API call
   const addBoard = (boardData) => {
@@ -33,7 +31,7 @@ function App() {
         console.log(response);
       })
       .catch(function (error) {
-        setBoardErrorMessage("error!!!");
+        setBoardErrorMessage("error:", error.data);
       });
   }
 
@@ -60,11 +58,11 @@ function App() {
       console.log(response.data)
       setboardsData(response.data);
     })
-  }, [])
+  }, [boardsData])
+
 
   const selectBoard = (board) => {
     setSelectedBoard(board)
-
   }
 
   const boardList = boardsData.map((board) => {

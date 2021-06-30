@@ -7,5 +7,4 @@ export const Card = (props) => {
         <p>{props.message}</p>
         <p>{props.likes_count}</p>
     </section>
-
 };
