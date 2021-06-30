@@ -10,6 +10,13 @@ const exmapleToPost = {
     "message": "hello"
 }
 
+const exmapleToPost = {
+    "board_id": 2,
+    "card_id": 4,
+    "likes_count": 0,
+    "message": "hello"
+}
+
 const NewCard = (props) =>{
     const [cardMessage, setCardMessage] = useState({
         id: 1,
@@ -39,7 +46,7 @@ const NewCard = (props) =>{
                     <input 
                     className='new-card-form__form-button'
                     value='add message'
-                    onClick={(changeEvent) => {props.addNewCard(changeEvent, cardMessage)}}
+                    onClick={(changeEvent) => {props.addNewCard(changeEvent, setCardMessage)}}
                     type='submit' />
                 </form>
             </div>
