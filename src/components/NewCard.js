@@ -2,6 +2,13 @@ import { React, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 
+const exmapleToPost = {
+    "board_id": 2,
+    "card_id": 4,
+    "likes_count": 0,
+    "message": "hello"
+}
+
 const NewCard = (props) =>{
     const [cardMessage, setCardMessage] = useState({
         id: 1,
@@ -19,7 +26,7 @@ const NewCard = (props) =>{
     return (
         <section>
             <div className='new-card-form__form-text-area'>
-                <h2>New Card</h2>
+                <h4>New Card</h4>
                 <form>
                     <input 
                     type='text' 

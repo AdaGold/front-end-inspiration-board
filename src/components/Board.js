@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -15,8 +16,8 @@ const Board = (props) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [currentBoard, updateBoard] = useState(props.boardName);
 
-    const BASE_URL = 'www.google.com';
-    
+    const BASE_URL = 'https://hacky-saac-inspiration-board.herokuapp.com/';
+ 
 
     // function to obtain promises to update states
     const BoardState = useCallback(() => {
@@ -143,3 +144,4 @@ const Board = (props) => {
     };
 
     export default Board;
+
