@@ -2,7 +2,7 @@
 // card needs to be deleted, and update like
 import React from 'react';
 
-// change to initiate brownout
+// change to initiate brownout, test 2
 
 export const Card = (props) => {
 
