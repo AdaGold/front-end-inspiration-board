@@ -7,15 +7,19 @@ export const Card = (props) => {
 
     const [cardLikes, setCardLikes] = useState(props.likescount)
 
-    const handleClick = () => {
-        props.callBack(props.id)
+    const likeClick = () => {
+        props.likeCallBack(props.id)
         setCardLikes(cardLikes + 1)
+    }
+
+    const deleteClick = () => {
+        props.deleteCallBack(props.id)
     }
 
     return <section className="card">
         <p>{props.message}</p>
         <p>likes: {cardLikes}</p>
-        <p onClick={handleClick} className="likeButton">💕</p>
-        <p className="deleteButton">🗑</p>
+        <p onClick={likeClick} className="likeButton">💕</p>
+        <p onClick={deleteClick} className="deleteButton">🗑</p>
     </section>
 };

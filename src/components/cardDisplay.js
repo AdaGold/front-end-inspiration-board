@@ -1,13 +1,8 @@
+import NewCardForm from "./NewCardForm";
 import { useEffect, useState } from "react";
 import { Card } from "./Card"
 const axios = require('axios');
 
-
-
-//we'll have to have a get request to get all the cards associated w board id. that will be inputed from the state on app from the selected board
-
-// props we should expect [{message: , likes_count: , board_id: }]
-//or we could send selected board in as prop and make the get call for all cards in this component
 
 const CardDisplay = (props) => {
 
@@ -22,16 +17,18 @@ const CardDisplay = (props) => {
 
             })
     }, [props.board.id])
-
+    //want to watch "cards" so they can update in real-time but it seems like when we do it's making continious calls
 
     const cardsList = cards.map((card) => {
         return <div>
-            <Card key={card.id} id={card.id} message={card.message} likescount={card.likes_count} callBack={props.callBack}></Card>
+            <Card key={card.id} id={card.id} message={card.message} likescount={card.likes_count} likeCallBack={props.likeCallBack} deleteCallBack={props.deleteCallBack}></Card>
         </div>
     });
 
     return <div>
+        <h1>Cards for {props.board.title}</h1>
         {cardsList}
+        <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
     </div>
 }
 
