@@ -1,5 +1,6 @@
 import './App.css';
 import NewBoardForm from './components/NewBoardForm';
+import CardDisplay from './components/cardDisplay';
 import NewCardForm from './components/NewCardForm';
 import Board from './components/Board';
 import { useState, useEffect } from 'react';
@@ -38,12 +39,11 @@ function App() {
 
   const addCard = (message) => {
     console.log("i'm in API")
-    //in order to post a card we need a board if which will have to come from selected board, a state we will have to create
-    // const newCard = {
-    //   message: message,
-    //   board_id = selectedBoard.id
-    // }
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/cards`, message)
+    const newCard = {
+      message: message,
+      board_id: selectedBoard.id
+    }
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards`, newCard)
       .then(function (response) {
         console.log(response);
       })
@@ -62,9 +62,14 @@ function App() {
     })
   }, [])
 
+  const selectBoard = (board) => {
+    setSelectedBoard(board)
+
+  }
+
   const boardList = boardsData.map((board) => {
     return (<li>
-      <Board board={board}> </Board>
+      <Board board={board} setBoard={selectBoard}> </Board>
     </li>)
   });
 
@@ -79,7 +84,8 @@ function App() {
       <div>{boardErrorMessage}</div>
       <NewCardForm addCardCallback={addCard}></NewCardForm>
       <div>{cardErrorMessage}</div>
-      {/* <CardDisplay board={selectedboard}}></CardDisplay> */}
+      <h1>Card Display</h1>
+      <CardDisplay board={selectedBoard}></CardDisplay>
 
 
     </main>
