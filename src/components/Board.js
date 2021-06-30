@@ -1,11 +1,11 @@
 
+
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
-
-import Card from './Card';
-import NewCard from './NewCard';
+import "./board.css"
+import Card from './Card.js';
+import NewCard from './NewCard.js';
 import BoardList from './BoardList';
 
 
@@ -68,6 +68,8 @@ const Board = (props) => {
         setErrorMessage(['Failed to add card.']);
         console.log(error.message);
         });
+
+
 
 
     }
@@ -144,4 +146,5 @@ const Board = (props) => {
     };
 
     export default Board;
+
 
