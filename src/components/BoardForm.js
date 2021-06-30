@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Forms.css'
 
 const NewBoardForm = (props) => {
 
@@ -16,7 +17,7 @@ const NewBoardForm = (props) => {
     
     
     return (<form  onSubmit={submitNewBoard} className='new-board-form__form'>
-        <h2>Create a New Board</h2>
+        <h2>➕ Create a New Board</h2>
         <input
             type="text"
             value={title}

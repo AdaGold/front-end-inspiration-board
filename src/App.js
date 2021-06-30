@@ -46,7 +46,7 @@ function App() {
   const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
 
   const deleteAll = () => {
-    if (window.confirm('Are you really sure? Please be gentle with this demo.')) {
+    if (window.confirm('Are you really sure?')) {
       axios.delete(`${process.env.REACT_APP_BACKEND_URL}/destroy_all`).then((response) => {
         console.log('response', response.data);
         setBoardsData([response.data.default_board]);
@@ -67,13 +67,13 @@ function App() {
       <div className="content__container">
         <h1 id="title">Inspiration Board</h1>
         <section className="boards__container">
-          <section>
+          <section className="boards">
             <h2>Boards</h2>
             <ol className="boards__list">
               {boardsElements}
             </ol>
           </section>
-          <section>
+          <section className="selected__boards">
             <h2>Selected Board</h2>
             <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
           </section>
@@ -82,8 +82,9 @@ function App() {
             <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
         </section>
-        {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
-      
+        <section className="cards__list">
+          {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
+        </section>
       </div>
       <footer>Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
