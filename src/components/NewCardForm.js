@@ -20,8 +20,8 @@ const NewCardForm = (props) => {
 
     return (
         <section>
-            <h1>post a note!</h1>
-            <form onSubmit={onFormSubmit}>
+            <h1 className="formHeader">post a note!</h1>
+            <form onSubmit={onFormSubmit} className="form">
                 <div>
                     <label htmlFor="Message">message:</label>
                     <input
@@ -29,7 +29,7 @@ const NewCardForm = (props) => {
                         value={formFields}
                         onChange={onMessageChange} />
                 </div>
-                <input
+                <input className="formButton"
                     type="submit"
                     value="post note" />
             </form>

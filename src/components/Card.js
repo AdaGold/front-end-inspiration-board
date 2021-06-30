@@ -3,8 +3,10 @@
 import React from 'react';
 
 export const Card = (props) => {
-    return <section>
+    return <section className="card">
         <p>{props.message}</p>
-        <p>{props.likes_count}</p>
+        <p>likes: {props.likes_count}</p>
+        <p className="likeButton">💕</p>
+        <p className="deleteButton">🗑</p>
     </section>
 };

@@ -7,8 +7,6 @@ import { useState, useEffect } from 'react';
 
 const axios = require('axios');
 
-
-
 function App() {
   //-----------------board states---------------------
   const [boardErrorMessage, setBoardErrorMessage] = useState("")
@@ -51,14 +49,14 @@ function App() {
 
   };
 
-  //Get request that gets all boards and loops through them to display by title then saves as vriable to display in board display div. ea div will have a click function that vcalls get cards by board id. boards will be a list of objects
+  //loads board list
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
     }).then((response) => {
       console.log(response.data)
       setboardsData(response.data);
     })
-  }, [boardsData])
+  }, [])
 
 
   const selectBoard = (board) => {
@@ -82,7 +80,7 @@ function App() {
       <div>{boardErrorMessage}</div>
       <NewCardForm addCardCallback={addCard}></NewCardForm>
       <div>{cardErrorMessage}</div>
-      <h1>Card Display</h1>
+      <h1>{selectedBoard.title}</h1>
       <CardDisplay board={selectedBoard}></CardDisplay>
 
 
