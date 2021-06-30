@@ -1,6 +1,18 @@
 import PropTypes from 'prop-types'
 import Card from './components/Card'
 
+const exampleCards =  {
+    "cards": [
+        {
+            "board_id": 2,
+            "card_id": 3,
+            "likes_count": 1,
+            "message": "hello"
+        }
+    ],
+    "owner": "summer",
+    "title": "summer's board"
+}
 
 const cardList = (props) => {
     const cardComponents = props.Card.map((Card, index) => {

@@ -2,6 +2,13 @@ import { React, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 
+const exmapleToPost = {
+    "board_id": 2,
+    "card_id": 4,
+    "likes_count": 0,
+    "message": "hello"
+}
+
 const NewCard = (props) =>{
     const [cardMessage, setCardMessage] = useState({
         id: 1,
