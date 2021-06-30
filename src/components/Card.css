@@ -1,0 +1,37 @@
+ul li:nth-child(even) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background: #006120;
+    color: white;
+}
+
+ul li:nth-child(3n) {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background: #b79ced;
+    color: black;
+}
+
+ul li:nth-child(5n) {
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+    background: #ff6b6b;
+    color: white;
+}
+ul li:nth-child(7n) {
+    transform:rotate(4deg);
+    position:relative;
+    top:10px;
+    background: #59d2fe;
+    color: black;
+}
+
+ul li:hover,ul li:focus{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index:5;
+}
