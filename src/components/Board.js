@@ -33,6 +33,7 @@ const Board = (fakeboard) => {
                     </ul>
                 </div>
                 <div className='new-card-form'>
+                    
                     <NewCard />
                 </div>
             </div>
