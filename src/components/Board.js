@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
-
+import "./board.css"
 import Card from './Card.js';
 import NewCard from './NewCard.js';
 
@@ -33,7 +33,7 @@ const Board = (fakeboard) => {
                     </ul>
                 </div>
                 <div className='new-card-form'>
-                    
+
                     <NewCard />
                 </div>
             </div>

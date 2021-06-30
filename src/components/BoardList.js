@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
-
+import "./boardList.css"
 import NewBoard from './NewBoard.js';
 
 const boardListArray = [
