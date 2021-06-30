@@ -26,7 +26,7 @@ const CardDisplay = (props) => {
 
     const cardsList = cards.map((card) => {
         return <div>
-            <Card key={card.id} message={card.message} likescount={card.likes_count}></Card>
+            <Card key={card.id} id={card.id} message={card.message} likescount={card.likes_count} callBack={props.callBack}></Card>
         </div>
     });
 

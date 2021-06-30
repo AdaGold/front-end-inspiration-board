@@ -1,19 +1,21 @@
 //this will just be how the card displays it will take props which will be the "message" from the database.
 // card needs to be deleted, and update like
-import React from 'react';
+import React, {useState} from 'react';
+const axios = require('axios');
 
 export const Card = (props) => {
 
-    // state of like that will come from databse
+    const [cardLikes, setCardLikes] = useState(props.likescount)
 
-    // callbackfunction
-    // call addlike
-    // and add 1 to state
+    const handleClick = () => {
+        props.callBack(props.id)
+        setCardLikes(cardLikes + 1)
+    }
 
     return <section className="card">
         <p>{props.message}</p>
-        <p>likes: state</p>
-        <p className="likeButton">💕</p>
+        <p>likes: {cardLikes}</p>
+        <p onClick={handleClick} className="likeButton">💕</p>
         <p className="deleteButton">🗑</p>
     </section>
 };
