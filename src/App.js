@@ -11,6 +11,7 @@ function App() {
   const [boardErrorMessage, setBoardErrorMessage] = useState("")
   const [selectedBoard, setSelectedBoard] = useState({ title: '', owner: '', board_id: null })
   const [boardsData, setboardsData] = useState([])
+  const [boardFormDisplay, setBoardFormDisplay] = useState(true)
 
   //-------------------card states----------------------
   const [cardErrorMessage, setCardErrorMessage] = useState("")
@@ -29,6 +30,8 @@ function App() {
         setBoardErrorMessage("error:", error.data);
       });
   }
+
+  const toggleBoardForm = () => { setBoardFormDisplay(!boardFormDisplay) }
 
   const addCard = (message) => {
     const newCard = {
@@ -67,33 +70,37 @@ function App() {
 
   const cardLike = (cardId) => {
     axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error)
-    });
-};
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  };
 
-const cardDelete = (cardId) => {
-  axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`,)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error)
-  });
-};
+  const cardDelete = (cardId) => {
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`,)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  };
 
   return (
     <main>
       <h1>INSPO BOARD</h1>
       <div>THIS WILL DISPLAY ALL boards</div>
       <div>{boardList}</div>
-      <NewBoardForm addBoardCallback={addBoard}> </NewBoardForm>
-      <div>{boardErrorMessage}</div>
+      <section className="boardForm">
+        <h1 className="formHeader">Create New Board</h1>
+        {boardFormDisplay ? <NewBoardForm addBoardCallback={addBoard}>  </NewBoardForm> : ""}
+        <div>{boardErrorMessage}</div>
+        <span onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </span>
+      </section>
       <div>{cardErrorMessage}</div>
-      {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay>: ''}
+      {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay> : ''}
     </main>
   );
 };
