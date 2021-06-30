@@ -13,7 +13,7 @@ const NewCardForm = (props) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
 
-        props.addCardCallback({ message: formFields });
+        props.addCardCallback(formFields);
 
         setFormFields('');
     };
