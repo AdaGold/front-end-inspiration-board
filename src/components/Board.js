@@ -6,24 +6,26 @@ import Card from './Card.js';
 import NewCard from './NewCard.js';
 
 
-const fakeBoard = {
-        "board_id": 1,
-        "owner": "summer",
-        "title": "summer's board"
-    }
 
 const defaultError = '';
 const Board = (fakeboard) => {
     // get board by ID based on API call
-    // reafactor using context?
-    const [ boardInfo, setBoardInfo ] = useState(fakeboard);
+
+    const [ boardInfo, setBoardInfo ] = useState({
+        "board_id": 1,
+        "owner": "summer",
+        "title": "summer's board"
+    });
     const [ error, setError ] = useState(defaultError);
 
-    if (boardInfo){
+    // the conditional will change, but this is basic logic to show
+    // a 'no board chosen' for when the user hasn't selected a board,
+    // and to show the board once there's information about it in state. 
+    if (boardInfo.board_id == 1){
         return (
             <div className='board'>
-                <h3>{boardInfo.name}</h3>
-                <h4>{boardInfo.username}</h4>
+                <h3>{boardInfo.title}</h3>
+                <h4>{boardInfo.owner}</h4>
                 <div className='cards'>
                     <ul>
                         <li> Card </li>

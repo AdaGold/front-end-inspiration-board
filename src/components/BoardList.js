@@ -19,7 +19,9 @@ const boardListArray = [
 const BoardList = () => {
     // state: from API call
     // generate list of boards from API call, depends on structure of API
-    // add new Board function
+
+    // a list of board names (not boards!) to be used to select a board to display.
+    // We'll pass the board id into the board display.
     const list = boardListArray.map((item) =>{
         const selectBoard = () => {
             // takes in ID and selects baord to render With Cards

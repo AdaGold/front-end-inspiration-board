@@ -26,7 +26,7 @@ const NewCard = (props) =>{
     return (
         <section>
             <div className='new-card-form__form-text-area'>
-                <h2>New Card</h2>
+                <h4>New Card</h4>
                 <form>
                     <input 
                     type='text' 
