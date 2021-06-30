@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter|');
+
 #title {
   box-shadow: 0px 15px 10px -15px #111;  
 }
@@ -20,9 +22,6 @@ h1 {
   text-align:center;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0%;
-}
-
-h2 {
 }
 
 .boards__container {
@@ -71,7 +70,7 @@ h2 {
 
 .new-board-form__form-submit-btn,
 .new-board-form__toggle-btn,
-.new-card-form__form-submit-btn :hover { 
+.new-card-form__form-submit-btn:hover { 
   transform: translateY(-3px);
   box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
 }
@@ -88,8 +87,7 @@ h2 {
 }
 
 .card-item {
-  font-family: "Homemade Apple", cursive;
-  font-family: 'Concert One', cursive;
+  font-family: 'Architects Daughter', cursive;
   color: black;
   background-color: #fbff12;
   box-shadow: -10px 7px 7px rgb(14, 13, 13);
@@ -101,39 +99,45 @@ h2 {
   flex-direction: column;
 }
 
-/* ul li:nth-child(even) {
-  transform:rotate(4deg);
-  position:relative;
-  top:5px;
-  background: ;
+/* 
+ul li:nth-child(even) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background: #006120;
+    color: white;
 }
 
 ul li:nth-child(3n) {
-  transform:rotate(-3deg);
-  position:relative;
-  top:-5px;
-  background: ;
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background: #b79ced;
+    color: black;
 }
 
 ul li:nth-child(5n) {
-  transform:rotate(5deg);
-  position:relative;
-  top:-10px;
-  background: ;
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+    background: #ff6b6b;
+    color: white;
 }
 ul li:nth-child(7n) {
-  transform:rotate(4deg);
-  position:relative;
-  top:10px;
-  background: ;
+    transform:rotate(4deg);
+    position:relative;
+    top:10px;
+    background: #59d2fe;
+    color: black;
 }
 
 ul li:hover,ul li:focus{
-  box-shadow:10px 10px 7px rgba(0,0,0,.7);
-  transform: scale(1.25);
-  position:relative;
-  z-index:5;
-} */
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index:5;
+}
+*/
 
 .card-item__controls {
   font-family: "Open Sans", sans-serif;
