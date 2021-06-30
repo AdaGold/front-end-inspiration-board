@@ -5,10 +5,11 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 
 const fakeBoard = {
-    'name':'board',
-    'username': 'me',
-    'quote': ['none']
-}
+        "board_id": 1,
+        "owner": "summer",
+        "title": "summer's board"
+    }
+
 const defaultError = '';
 const Board = (fakeboard) => {
     // get board by ID based on API call
@@ -36,6 +37,12 @@ const Board = (fakeboard) => {
         return (<p> No Board Chosen</p>)
     }
     
+}
+
+Board.propTypes = {
+    board_id: PropTypes.number,
+    owner: PropTypes.string,
+    title: PropTypes.func.isRequired
 }
 
 export default Board;

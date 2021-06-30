@@ -3,11 +3,21 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 
 import NewBoard from './NewBoard.js';
-
+const BoardList = [
+    {
+        "board_id": 1,
+        "owner": "summer",
+        "title": "summer's board"
+    },
+    {
+        "board_id": 2,
+        "owner": "summer",
+        "title": "summer's board"
+    }
+]
 const BoardList = () => {
     // state: from API call
     // generate list of boards from API call, depends on structure of API
-    // onclick event handler to select board to display
     // add new Board function
     const selectBoard = () => {
         // takes in ID and selects baord to render With Cards
@@ -23,4 +33,5 @@ const BoardList = () => {
         
     )
 }
+
 export default BoardList;
