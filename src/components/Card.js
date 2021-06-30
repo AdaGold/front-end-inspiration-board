@@ -2,6 +2,8 @@
 // card needs to be deleted, and update like
 import React from 'react';
 
+// change to initiate brownout
+
 export const Card = (props) => {
 
     // state of like that will come from databse
