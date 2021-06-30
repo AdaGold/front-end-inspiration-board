@@ -66,6 +66,10 @@ function App() {
     </li>)
   });
 
+  const cardLike = (cardId) => {
+    make put call to change the backend.
+  }
+
 
 
   return (
@@ -79,7 +83,6 @@ function App() {
       <div>{cardErrorMessage}</div>
       <h1>{selectedBoard.title}</h1>
       <CardDisplay board={selectedBoard}></CardDisplay>
-
 
     </main>
   );
