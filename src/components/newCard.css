@@ -1,12 +1,19 @@
 
-/* .new-card-form__form-text-area { 
-    background-image: url('./images/lightbulb.png');
-    background-attachment: fixed;
-    background-position: 100% 100%;
-    background-repeat: no-repeat;
-    height: 150px;
+.new-card-form__form-text-area { 
+    background:rgb(91, 133, 170, .5);
+    border-radius: 50px 50px 50px 5px;
+    display: flex;
+    align-content: center;
+    text-align: center;
+    color:whitesmoke;
+    width: 25%;
+}
 
-  }  */
   img {
       width:5px;
+  }
+
+  .cardInput {
+      /* background-color: #9b5453; */
+      color: white;
   }

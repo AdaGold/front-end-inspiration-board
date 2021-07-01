@@ -19,8 +19,9 @@ const NewCard = (props) =>{
         <section>
             <div className='new-card-form__form-text-area'>
                 <h4>Create a New Card</h4>
-                <form onSubmit={(e) => {submitNewCard(e)}}>
+                <form  onSubmit={(e) => {submitNewCard(e)}}>
                     <input 
+                    class="cardInput"
                     type='text' 
                     name='text'
                     value={cardMessage} 
