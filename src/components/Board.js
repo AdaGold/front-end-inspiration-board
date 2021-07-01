@@ -6,8 +6,6 @@ import axios from 'axios';
 import "./board.css"
 import Card from './Card.js';
 import NewCard from './NewCard.js';
-import BoardList from './BoardList';
-
 
 const Board = (props) => {
 
@@ -104,7 +102,7 @@ const Board = (props) => {
         let cardsList = [];
 
         for(const item of cards) {
-        cardsList.push(<Card id = {item.card.id} text={item.card.text} emojiText={item.card.emoji} deleteCard = {deleteCard}/>);
+            cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
         }
         return cardsList;
     }
@@ -125,6 +123,21 @@ const Board = (props) => {
         return errors;
     }
 
+    const createNewCard = (message) => {
+        axios.post(
+            // TODO: Change URI to ENV variable
+            `http://localhost:5000/boards/${props.board.board_id}/cards`,
+            {message}
+        ).then((response) => {
+          const cards = [...cardsList];
+          cards.push(response.data);
+          setCardsList(cards);
+        }).catch((error) => {
+          console.log('Error:', error);
+          alert('Couldn\'t create a new card.');
+        });
+      };
+
     return (
         <div>
         <article className = 'validation-errors-display'>
@@ -132,8 +145,7 @@ const Board = (props) => {
                 {errorMessage ? allErrors(errorMessage) : ''}
             </ul>
         </article> 
-        <BoardList currentBoard ={currentBoard} boards = {allBoards} changeCurrentBoard = {changeCurrentBoard}/>
-        <NewCard url = {BASE_URL} boardName = {currentBoard} addCard = {addCard} boards = {allBoards}/>
+        <NewCard createNewCard={createNewCard} />
         <section className = 'board'>
             {allCards(cardsList, deleteCard)}
         </section>

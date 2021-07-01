@@ -1,45 +1,33 @@
 import { React, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import axios from 'axios';
-import "./newCard.css"
-
-const exmapleToPost = {
-    "board_id": 2,
-    "card_id": 4,
-    "likes_count": 0,
-    "message": "hello"
-}
+import "./newCard.css";
 
 const NewCard = (props) =>{
-    const [cardMessage, setCardMessage] = useState({
-        id: 1,
-        text: "",
-    });
+    const [cardMessage, setCardMessage] = useState("");
 
-    const newCardMessage = (changeEvent) => {
-        const newMessage = {...cardMessage, id: props.nextId, [changeEvent.target.name]: changeEvent.target.value};
+    const handleMessageChange = (e) => { setCardMessage(e.target.value) };
 
-        console.log(newMessage);
-    
+    const submitNewCard = (changeEvent) => {
+        changeEvent.preventDefault();
+        props.createNewCard(cardMessage);
+        setCardMessage("");
     }
-
 
     return (
         <section>
             <div className='new-card-form__form-text-area'>
-                <h4>New Card</h4>
-                <form>
+                <h4>Create a New Card</h4>
+                <form onSubmit={submitNewCard}>
                     <input 
                     type='text' 
                     name='text'
-                    value={cardMessage.text} 
+                    value={cardMessage} 
                     placeholder="add message here!"
-                    onChange={newCardMessage} />
+                    onChange={handleMessageChange} />
 
                     <input 
                     className='new-card-form__form-button'
                     value='add message'
-                    onClick={(changeEvent) => {props.addNewCard(changeEvent, setCardMessage)}}
                     type='submit' />
                 </form>
             </div>
