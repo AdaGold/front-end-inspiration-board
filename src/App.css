@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+
+}
+
+ol {
+  list-style-type: none;
 }
 
 .App-logo {
@@ -35,4 +40,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.boardsHeader {
+  text-align: center;
+}
+
+
+.boards {
+  background: white;
+  opacity: 25%;
+  width: 25%;
+  border-radius: 25px;
+  text-align: center;
+  color: black;
+  display: grid;
+  grid-template: 2 / 4;
+  text-decoration: none;
+  list-style-type: none;
+
+}
+
+.boards-element {
+  grid-column: 2;
+  border: 5px;
+  opacity: 100%;
+  display: inline;
+  list-style-type: none;
 }
