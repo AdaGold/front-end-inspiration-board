@@ -65,12 +65,11 @@ function App() {
   }
 
   const boardList = boardsData.map((board) => {
-    return (<li>
+    return (<li className="boardListItem">
       <Board key={board.id} board={board} setBoard={selectBoard}> </Board>
     </li>)
   });
 
-<<<<<<< HEAD
   const cardLike = (cardId) => {
     axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,)
       .then(function (response) {
@@ -90,27 +89,24 @@ function App() {
         console.log(error)
       });
   };
-=======
-
->>>>>>> 39bb4c2d4215c574189e671fcfd4813054914d26
 
   return (
-    <main>
+    <main className="main">
       <h1>INSPO BOARD</h1>
-      <div>THIS WILL DISPLAY ALL boards</div>
-      <div>{boardList}</div>
+      <section className="inspoBoardList">
+        <h3 className="ListHeader">Inspiration Boards</h3>
+        <div className="BoardList">{boardList}</div>
+      </section>
       <section className="boardForm">
         <h1 className="formHeader">Create New Board</h1>
         {boardFormDisplay ? <NewBoardForm addBoardCallback={addBoard}>  </NewBoardForm> : ""}
-        <div>{boardErrorMessage}</div>
+        <div className="boardError">{boardErrorMessage}</div>
         <span onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </span>
       </section>
-      <div>{cardErrorMessage}</div>
-<<<<<<< HEAD
-      {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay> : ''}
-=======
-      {selectedBoard.id ? <CardDisplay board={selectedBoard} addCardCallback={addCard}></CardDisplay>: ''}
->>>>>>> 39bb4c2d4215c574189e671fcfd4813054914d26
+      <div className="cardError">{cardErrorMessage}</div>
+      <section className="cardDisplay">
+        {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay> : ''}
+      </section>
     </main>
   );
 };
