@@ -23,11 +23,20 @@ function App() {
 
   const selectBoard = (board) => { setSelectedBoard(board) };
 
+  // BOARDS LIST
+  // const boardsElements = boardsData.map((board) => {
+  //   return (<li>
+  //     <Board board={board} onBoardSelect={selectBoard}></Board>
+  //   </li>)
+  // });
+
+  //BOARDS DROPDOWN MENU
   const boardsElements = boardsData.map((board) => {
-    return (<li>
-      <Board board={board} onBoardSelect={selectBoard}></Board>
-    </li>)
-  });
+    return (
+      <Board board={board}></Board>
+    )
+    });
+
 
   const createNewBoard = (newBoard) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard).then((response) => {
@@ -65,17 +74,32 @@ function App() {
   return (
     <div className="page__container">
       <div className="content__container">
-        <h1 id="title">Inspiration Board</h1>
+        <header>
+          <h1 id="title">Inspiration Board💡</h1>
+          <div className="top__nav">
+              <select value={selectBoard} className="select__dropdown">
+                  <option value="">Please select a board</option>
+                  <option value={boardsElements}> </option>
+              </select>
+              <section>Selected Board:</section>
+              <section>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</section>
+          </div>
+        </header>
         <section className="boards__container">
           <section className="boards">
-            <h2>Boards</h2>
-            <ol className="boards__list">
-              {boardsElements}
-            </ol>
+            {/* <h2>Boards</h2> */}
+            {/* <ol className="boards__list"> */}
+            {/* <section className="boards__list">
+              <select value={selectBoard}>
+                  <option value="">Please select a board</option>
+                  {boardsElements}
+              </select>
+            </section> */}
+            {/* </ol> */}
           </section>
           <section className="selected__boards">
-            <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
+            {/* <h2>Selected Board</h2>
+            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p> */}
           </section>
           <section className='new-board-form__container'>
             {isBoardFormVisible ? <BoardForm createNewBoard={createNewBoard}></BoardForm> : ''}
