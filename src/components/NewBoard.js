@@ -58,6 +58,8 @@ const NewBoard = () => {
                     className='form-submit-button'
                     value='submit'
                     type='submit' />
+
+                    <p>Preview: {title} {owner}</p>
                 </form>
             </div>
 
