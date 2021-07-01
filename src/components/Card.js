@@ -8,13 +8,13 @@ const Card = (props) => {
     // number of upvotes
     // delete
     
-
+    console.log(props)
     return (
         <div className='card' id={props.card_id}>
             <div className='card__content'>
                 <p className='card__content-text'>{props.text}</p>
                 <p> Likes: {props.likes}</p>
-                <button>Add Like</button>
+                <button onClick={()=>{props.likeCard(props.id)}}>Add Like</button>
             </div>
             <div className='card__delete'>
                 <button className='card__delete-button'
@@ -30,6 +30,7 @@ Card.propTypes = {
         id: PropTypes.number,
         text: PropTypes.string,
         deleteCard: PropTypes.func.isRequired,
+        likeCard: PropTypes.func.isRequired
 }
 
 
