@@ -14,6 +14,10 @@ const NewBoard = () => {
     const [ title, setTitle ] = useState('');
     const [ owner, setOwner ] = useState('');
     
+    const toggleHidden = () => {
+        setHidden(hidden ? false : true);
+    }
+
     const onFormSubmit = (event) => {
         event.preventDefault();
 
@@ -34,7 +38,8 @@ const NewBoard = () => {
         <section className="new-board-form">
             <div>
                 <h4>New Board</h4>
-                <form onSubmit={onFormSubmit}>
+                <form onSubmit={onFormSubmit}
+                    className={hidden === true ? "invisible" : "visible"}>
                     <p>Title</p>
                     <input 
                     type='text' 
@@ -43,7 +48,7 @@ const NewBoard = () => {
                     onChange={(e) => setTitle(e.target.value)} />
 
                     <p>Owner's Name</p>
-                    <input 
+                    <input
                     type='text' 
                     name='owner'
                     value={owner} 
@@ -55,6 +60,8 @@ const NewBoard = () => {
                     type='submit' />
                 </form>
             </div>
+
+            <button onClick={toggleHidden}>Hide</button>
         </section>
 
     );
