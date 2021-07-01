@@ -62,7 +62,7 @@ function App() {
 
       <hr />
 
-      <h2>Create a New Board</h2>
+      <h2 class='create-new-board'>Create a New Board</h2>
       <NewBoard onFormSubmit={onFormSubmit} />
 
       <hr />

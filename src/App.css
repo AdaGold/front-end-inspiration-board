@@ -61,22 +61,22 @@ li {
 }
 
 .boardsElement {
-  /* border: 10px solid transparent;
-  border-color: black;
-  border-image: url("./components/images/lightbulb15.png") 100 stretch; */
-  /* width: 10%; */
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 25px;
   margin: 25px; 
+  align-content: center;
   text-align: center;
-  width: 25px;
-  height: 25px;
-  background-image: url("./components/images/lightbulb.png");
-  background-size: cover;
+  border-radius: 50px 50px 50px 5px;
+  background:rgb(255, 255, 255, .5);
 }
 
-.bulb {
-
+.create-new-board {
+  border-radius: 50px 50px 50px 5px;
+  background:rgb(255, 255, 255, .5);
+  color: black;
+  text-align: center;
+  align-content: center;
 }

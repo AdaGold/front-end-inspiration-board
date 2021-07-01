@@ -5,3 +5,9 @@
 .visible {
     display: inline; 
 }
+
+.new-board-form{
+    background:rgb(255, 255, 255, .5);
+    display: flex;
+    align-content: center;
+}
