@@ -124,7 +124,7 @@ const Board = (props) => {
             `http://localhost:5000/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
-        console.log(cardsList.cards)
+        console.log(response, cardsList.cards)
           const cards = [...cardsList.cards];
           cards.push(response.data);
           setCardsList(cards);

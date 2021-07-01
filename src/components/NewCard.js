@@ -7,9 +7,8 @@ const NewCard = (props) =>{
 
     const handleMessageChange = (e) => { setCardMessage(e.target.value) };
 
-    const submitNewCard = (changeEvent) => {
-        changeEvent.preventDefault();
-        props.onFormSubmit({cardMessage})
+    const submitNewCard = (e) => {
+        e.preventDefault();
         props.createNewCard(cardMessage);
         setCardMessage('');
         
@@ -20,7 +19,7 @@ const NewCard = (props) =>{
         <section>
             <div className='new-card-form__form-text-area'>
                 <h4>Create a New Card</h4>
-                <form onSubmit={props.createNewCard}>
+                <form onSubmit={(e) => {submitNewCard(e)}}>
                     <input 
                     type='text' 
                     name='text'
