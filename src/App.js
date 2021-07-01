@@ -33,11 +33,9 @@ function App() {
   //BOARDS DROPDOWN MENU
   const boardsElements = boardsData.map((board) => {
     return (
-    <select value={selectBoard}>
-      <option value="">Please select a board</option>
-      <option value={<Board board={board}></Board>}></option>
-    </select>)
-  });
+      <Board board={board}></Board>
+    )
+    });
 
 
   const createNewBoard = (newBoard) => {
@@ -77,11 +75,11 @@ function App() {
     <div className="page__container">
       <div className="content__container">
         <header>
-          <h1 id="title">Inspiration Board</h1>
+          <h1 id="title">Inspiration Board💡</h1>
           <div className="top__nav">
-              <select value={selectBoard}>
+              <select value={selectBoard} className="select__dropdown">
                   <option value="">Please select a board</option>
-                  {boardsElements}
+                  <option value={boardsElements}> </option>
               </select>
               <section>Selected Board:</section>
               <section>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</section>
