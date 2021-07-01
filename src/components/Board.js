@@ -19,12 +19,11 @@ const Board = (props) => {
     // function to obtain promises to update states
     const BoardState = useCallback(() => {
         return(axios.get(`${BASE_URL}boards`));
-    },[BASE_URL])
+    },[])
 
     const CardState = useCallback(() => {
-        console.log(`${BASE_URL}boards/${currentBoard}/cards`)
         return(axios.get(`${BASE_URL}boards/${currentBoard}/cards`));
-    },[currentBoard, BASE_URL])
+    },[currentBoard])
 
 
     // does not update state until both functions return 
@@ -97,8 +96,10 @@ const Board = (props) => {
         
         let cardsList = [];
         console.log('cards', cards)
-        for(const item of cards) {
-            cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
+        if (cardsList.length > 0){
+            for(const item of cards) {
+                cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
+            }
         }
         return cardsList;
     }
