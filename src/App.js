@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 const axios = require('axios');
 
 console.log(`${process.env.REACT_APP_BACKEND_URL}`)
+console.log("a change")
 
 function App() {
   //-----------------board states---------------------
