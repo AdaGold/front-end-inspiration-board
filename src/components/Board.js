@@ -22,6 +22,7 @@ const Board = (props) => {
     },[])
 
     const CardState = useCallback(() => {
+        console.log('cardState fucntion')
         return(axios.get(`${BASE_URL}boards/${currentBoard}/cards`));
     },[currentBoard, cardList])
 

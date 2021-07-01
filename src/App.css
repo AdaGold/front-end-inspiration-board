@@ -62,7 +62,7 @@ li {
 }
 
 .boardsElement {
-  border-image: url(/Users/alisonmcginley/developer/projects/front-end-inspiration-board/src/components/images/lightbulb.png) 50 round;
+  border-image: url('./components/images/lightbulb.png') 50 round;
   border-style:solid;
   border-color: black;
   border-image-slice: fill;
