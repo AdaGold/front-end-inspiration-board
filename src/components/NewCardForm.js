@@ -18,12 +18,12 @@ const NewCardForm = (props) => {
     };
 
     return (
-        <section>
+        <section className="newCardFormContainer">
             <h1 className="formHeader">post a note!</h1>
-            <form onSubmit={onFormSubmit} className="form">
+            <form className="newCardForm" onSubmit={onFormSubmit} className="form">
                 <div>
                     <label htmlFor="Message">message:</label>
-                    <input
+                    <input className="cardMessageInput"
                         name="message"
                         value={formFields}
                         onChange={onMessageChange} />

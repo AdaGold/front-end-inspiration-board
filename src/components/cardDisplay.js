@@ -25,9 +25,11 @@ const CardDisplay = (props) => {
         </div>
     });
 
-    return <div>
-        <h1>Cards for {props.board.title}</h1>
+    return <div className="cardDisplayContainer">
+        <h1 className="cardHeader">Cards for {props.board.title}</h1>
+        <div className="cardDisplay">
         {cardsList}
+        </div>
         <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
     </div>
 }

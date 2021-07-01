@@ -39,8 +39,8 @@ export const Card = (props) => {
     }
 
     return <section className="card">
-        <p>{props.message}</p>
-        <p>likes: {cardLikes}</p>
+        <p className="cardMessage">{props.message}</p>
+        <p className="cardLikes">likes: {cardLikes}</p>
         <p onClick={likeClick} className="likeButton">💕</p>
         <p onClick={deleteClick} className="deleteButton">🗑</p>
     </section>
