@@ -10,7 +10,7 @@ import NewCard from './NewCard.js';
 const Board = (props) => {
 
     const [allBoards, updateBoards] = useState([]);
-    const [cardsList, setCardsList] = useState([]);
+    const [cardList, setCardList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [currentBoard, updateBoard] = useState(props.board.board_id);
 
@@ -32,7 +32,7 @@ const Board = (props) => {
         .then(([promiseBoards, promiseCards])=>{
         // get list of boards
         updateBoards(promiseBoards.data);
-        setCardsList(promiseCards.data);
+        setCardList(promiseCards.data);
         setErrorMessage(null);
         })
         .catch((error)=>{
@@ -41,7 +41,7 @@ const Board = (props) => {
     }, [BoardState, CardState])
 
     const addCard = (card) => {
-        const newCardList  = [...cardsList.cards];
+        const newCardList  = [...cardList.cards];
         const post = {text: card.text, emoji: card.emoji}
         axios.post(`${BASE_URL}${card.board_id}/cards`, post)
         .then( (response) => {
@@ -57,7 +57,7 @@ const Board = (props) => {
             }  
             })
         }
-        setCardsList(newCardList);
+        setCardList(newCardList);
         setErrorMessage(null);
         })
         .catch( (error) => {
@@ -66,11 +66,11 @@ const Board = (props) => {
 
     }
 
-    // delete a card from cardsList
+    // delete a card from cardList
     const deleteCard = (id) => {
-        let newCardsList = [];
-        for (const item of cardsList) {
-        // cardsList is pulled from the API, meaning anything in cardsList should ideally have a matching id
+        let newCardList = [];
+        for (const item of cardList) {
+        // cardList is pulled from the API, meaning anything in cardList should ideally have a matching id
         if(id === item.card.id) {
             axios.delete(`${BASE_URL}/${id}`)
             // if successful, deleted, send confirmation to console
@@ -83,24 +83,24 @@ const Board = (props) => {
                 setErrorMessage([`Could not delete card ${id}.`]);
             });
         } else {
-            newCardsList.push(item);
+            newCardList.push(item);
         }
         }
 
-        setCardsList(newCardsList);
+        setCardList(newCardList);
     }
 
-    // for API data ONLY 
+    // trying to get the state that currently exists pass to function
     const allCards = (cards, deleteCard) => {
         
-        let cardsList = [];
-        if (cardsList.length > 0){
-            for(const item of cards) {
-                cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
-            }
-            return <cardsList />
+        if (!cards.cards){
+            console.log('empty')
+            return `empty list`
+            // for(const item of cards) {
+            //     cardList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard} />);
+            // }
         }
-        return cardsList;
+        return <CardList cardData={cards}/>;
     }
 
     // if currentBoard changed
@@ -125,9 +125,9 @@ const Board = (props) => {
             `http://localhost:5000/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
-          const cards = [...cardsList.cards];
+          const cards = [...cardList.cards];
           cards.push(response.data);
-          setCardsList(cards);
+          setCardList(cards);
         }).catch((error) => {
           console.log('Error:', error);
           alert('Couldn\'t create a new card.');
@@ -143,7 +143,7 @@ const Board = (props) => {
         </article> 
         <NewCard createNewCard={createNewCard} />
         <section className = 'board'>
-            {allCards(cardsList, deleteCard)}
+            {allCards(cardList, deleteCard)}
         </section>
         </div>
     )

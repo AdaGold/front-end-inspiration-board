@@ -3,13 +3,14 @@ import Card from './Card.js'
 
 
 const CardList = (props) => {
-    console.log('Hi It\'s me')
-    const cardComponents = props.Card.map((Card, index) => {
+    console.log(props.cardData)
+    const cardComponents = props.cardData.cards.map((data, index) => {
         return (
             <li key={index}>
-                <Card
-                    id='string'>
-                </Card>
+                    <Card
+                        text={data.message}
+                        likes={data.likes_count}
+                        id={data.card_id} />
             </li>
         );
 
