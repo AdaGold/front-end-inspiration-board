@@ -12,18 +12,18 @@ const Board = (props) => {
     const [allBoards, updateBoards] = useState([]);
     const [cardsList, setCardsList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [currentBoard, updateBoard] = useState(props.boardName);
+    const [currentBoard, updateBoard] = useState(props.board.board_id);
 
-    const BASE_URL = 'https://hacky-saac-inspiration-board.herokuapp.com/';
+    const BASE_URL = 'http://localhost:5000/';
  
-
     // function to obtain promises to update states
     const BoardState = useCallback(() => {
-        return(axios.get(BASE_URL));
+        return(axios.get(`${BASE_URL}boards`));
     },[BASE_URL])
 
     const CardState = useCallback(() => {
-        return(axios.get(`${BASE_URL}${currentBoard}/cards`));
+        console.log(`${BASE_URL}boards/${currentBoard}/cards`)
+        return(axios.get(`${BASE_URL}boards/${currentBoard}/cards`));
     },[currentBoard, BASE_URL])
 
 
@@ -32,13 +32,13 @@ const Board = (props) => {
         Promise.all([BoardState(), CardState()])
         .then(([promiseBoards, promiseCards])=>{
         // get list of boards
+        console.log(promiseCards)
         updateBoards(promiseBoards.data);
         setCardsList(promiseCards.data);
         setErrorMessage(null);
         })
         .catch((error)=>{
         setErrorMessage(['Failed to retrieve cards or boards.']);
-        console.log(error.message);
         });
     }, [BoardState, CardState])
 
@@ -64,11 +64,7 @@ const Board = (props) => {
         })
         .catch( (error) => {
         setErrorMessage(['Failed to add card.']);
-        console.log(error.message);
         });
-
-
-
 
     }
 
@@ -100,7 +96,7 @@ const Board = (props) => {
     const allCards = (cards, deleteCard) => {
         
         let cardsList = [];
-
+        console.log('cards', cards)
         for(const item of cards) {
             cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
         }
