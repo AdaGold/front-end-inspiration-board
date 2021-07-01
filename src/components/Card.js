@@ -13,6 +13,8 @@ const Card = (props) => {
         <div className='card' id={props.card_id}>
             <div className='card__content'>
                 <p className='card__content-text'>{props.text}</p>
+                <p> Likes: {props.likes}</p>
+                <button>Add Like</button>
             </div>
             <div className='card__delete'>
                 <button className='card__delete-button'

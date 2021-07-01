@@ -3,11 +3,11 @@ import Card from './Card.js'
 
 
 const CardList = (props) => {
-    console.log(props.cardData)
     const cardComponents = props.cardData.cards.map((data, index) => {
         return (
             <li key={index}>
                     <Card
+                        deleteCard={props.deleteCard}
                         text={data.message}
                         likes={data.likes_count}
                         id={data.card_id} />

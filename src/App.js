@@ -15,13 +15,14 @@ function App() {
   });
 
   const onClickBoard = (selected) => {
+    console.log('clied from Oncb')
     setSelectedBoard(selected);
   }
 
   const boardsElements = boards.map((board) => {
     console.log("Invoked to render boards");
     return (<li class='boardsElement'>
-      <BoardDisplay onClickBoard={onClickBoard} board={board}></BoardDisplay>
+      <BoardDisplay onClickBoard={onClickBoard} board={board} />
     </li>)
   });
 
@@ -31,6 +32,7 @@ function App() {
       setBoards(response.data);
     })
   }, []);
+
 
   const onFormSubmit = (newBoard) => {
     axios.post("http://localhost:5000/boards", newBoard).then((response) => {

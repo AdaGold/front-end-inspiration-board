@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import "./board.css"
-import Card from './Card.js';
+
 import CardList from './CardList.js';
 import NewCard from './NewCard.js';
 
@@ -23,7 +23,7 @@ const Board = (props) => {
 
     const CardState = useCallback(() => {
         return(axios.get(`${BASE_URL}boards/${currentBoard}/cards`));
-    },[currentBoard])
+    },[currentBoard, cardList])
 
 
     // does not update state until both functions return 
@@ -69,10 +69,10 @@ const Board = (props) => {
     // delete a card from cardList
     const deleteCard = (id) => {
         let newCardList = [];
-        for (const item of cardList) {
+        for (const item of cardList.cards) {
         // cardList is pulled from the API, meaning anything in cardList should ideally have a matching id
-        if(id === item.card.id) {
-            axios.delete(`${BASE_URL}/${id}`)
+        if(id === item.card_id) {
+            axios.delete(`${BASE_URL}cards/${id}`)
             // if successful, deleted, send confirmation to console
             .then((response) => {
                 console.log(`Card ${id} successfully deleted`);
@@ -90,23 +90,11 @@ const Board = (props) => {
         setCardList(newCardList);
     }
 
-    // trying to get the state that currently exists pass to function
-    const allCards = (cards, deleteCard) => {
-        
-        if (!cards.cards){
-            console.log('empty')
-            return `empty list`
-            // for(const item of cards) {
-            //     cardList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard} />);
-            // }
-        }
-        return <CardList cardData={cards}/>;
-    }
 
     // if currentBoard changed
 
-    const changeCurrentBoard = (boardName) => {  
-        updateBoard(boardName);
+    const changeCurrentBoard = (board_id) => {  
+        updateBoard(board_id);
     }
 
     // for error message
@@ -138,12 +126,13 @@ const Board = (props) => {
         <div>
         <article className = 'validation-errors-display'>
             <ul className = 'validation-errors-display__list'>
+                {console.log('board')}
                 {errorMessage ? allErrors(errorMessage) : ''}
             </ul>
         </article> 
         <NewCard createNewCard={createNewCard} />
         <section className = 'board-content'>
-            {allCards(cardList, deleteCard)}
+            {cardList.cards ? <CardList cardData={cardList} deleteCard={deleteCard}/> : ''}
         </section>
         </div>
     )
