@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import "./board.css"
 
-import CardList from './CardList.js';
+import CardList from './cardList.js';
 import NewCard from './NewCard.js';
 
 const Board = (props) => {

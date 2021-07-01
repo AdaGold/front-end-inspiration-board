@@ -21,10 +21,11 @@ function App() {
 
   const boardsElements = boards.map((board) => {
     console.log("Invoked to render boards");
-    return (<li class='boardsElement'>
+    return (
+      <li class='boardsElement'>
       <BoardDisplay onClickBoard={onClickBoard} board={board} />
-    </li>)
-  });
+    </li>
+  )});
 
   useEffect(() => {
     axios.get("http://localhost:5000/boards", {
