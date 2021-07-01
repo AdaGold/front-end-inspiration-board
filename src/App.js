@@ -24,18 +24,18 @@ function App() {
   const selectBoard = (board) => { setSelectedBoard(board) };
 
   // BOARDS LIST
-  // const boardsElements = boardsData.map((board) => {
-  //   return (<li>
-  //     <Board board={board} onBoardSelect={selectBoard}></Board>
-  //   </li>)
-  // });
+  const boardsElements = boardsData.map((board) => {
+    return (<li>
+      <Board board={board} onBoardSelect={selectBoard}></Board>
+    </li>)
+  });
 
   //BOARDS DROPDOWN MENU
-  const boardsElements = boardsData.map((board) => {
-    return (
-      <Board board={board}></Board>
-    )
-    });
+  // const boardsElements = boardsData.map((board) => {
+  //   return (
+  //     <Board board={board}></Board>
+  //   )
+  //   });
 
 
   const createNewBoard = (newBoard) => {
@@ -74,43 +74,27 @@ function App() {
   return (
     <div className="page__container">
       <div className="content__container">
-        <header>
-          <h1 id="title">Inspiration Board💡</h1>
-          <div className="top__nav">
-              <select value={selectBoard} className="select__dropdown">
-                  <option value="">Please select a board</option>
-                  <option value={boardsElements}> </option>
-              </select>
-              <section>Selected Board:</section>
-              <section>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</section>
-          </div>
-        </header>
+        <h1>Inspiration Board</h1>
         <section className="boards__container">
-          <section className="boards">
-            {/* <h2>Boards</h2> */}
-            {/* <ol className="boards__list"> */}
-            {/* <section className="boards__list">
-              <select value={selectBoard}>
-                  <option value="">Please select a board</option>
-                  {boardsElements}
-              </select>
-            </section> */}
-            {/* </ol> */}
+          <section>
+            <h2>Boards</h2>
+            <ol className="boards__list">
+              {boardsElements}
+            </ol>
           </section>
-          <section className="selected__boards">
-            {/* <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p> */}
+          <section>
+            <h2>Selected Board</h2>
+            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
           </section>
           <section className='new-board-form__container'>
+            <h2>Create a New Board</h2>
             {isBoardFormVisible ? <BoardForm createNewBoard={createNewBoard}></BoardForm> : ''}
             <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
         </section>
-        <section className="cards__list">
-          {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
-        </section>
+        {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
       </div>
-      <footer>Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
+      <footer><span>This is a demo! Please be gentle!</span> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
   );
 }
