@@ -10,13 +10,6 @@ const exmapleToPost = {
     "message": "hello"
 }
 
-const exmapleToPost = {
-    "board_id": 2,
-    "card_id": 4,
-    "likes_count": 0,
-    "message": "hello"
-}
-
 const NewCard = (props) =>{
     const [cardMessage, setCardMessage] = useState({
         id: 1,

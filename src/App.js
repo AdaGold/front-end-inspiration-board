@@ -13,8 +13,10 @@ function App() {
     <section>
       <header className='header'>
         <h1>Inspo Board!</h1>
-      <Board url='https://hacky-saac-inspiration-board.herokuapp.com/boards/' />
+        <Board />
       </header>
+
+      <NewBoard />
       <DeleteAllButton />
     </section>
   );
