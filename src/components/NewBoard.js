@@ -9,7 +9,7 @@ const headers = {
     "Access-Control-Allow-Methods": "POST, GET, OPTION, PUT, PATCH"
 };
 
-const NewBoard = () => {
+const NewBoard = (props) => {
     const [ hidden, setHidden ] = useState(false);
     const [ title, setTitle ] = useState('');
     const [ owner, setOwner ] = useState('');
@@ -18,27 +18,20 @@ const NewBoard = () => {
         setHidden(hidden ? false : true);
     }
 
-    const onFormSubmit = (event) => {
+    const submitNewBoard = (event) => {
         event.preventDefault();
 
-        // TODO: Cors still errors out for some reason in browser?
-        axios.post("http://localhost:5000/boards", {
-            title: title,
-            owner: owner
-        }, {headers}).then(() => {
-            setTitle('');
-            setOwner('');
-        }).catch((error) => {
-            // TODO: Change this to actual error handling
-            console.log(error);
-        });
+        props.onFormSubmit({title, owner});
+
+        setTitle('');
+        setOwner('');
     }
 
     return (
         <section className="new-board-form">
             <div>
                 <h4>New Board</h4>
-                <form onSubmit={onFormSubmit}
+                <form onSubmit={submitNewBoard}
                     className={hidden === true ? "invisible" : "visible"}>
                     <p>Title</p>
                     <input 

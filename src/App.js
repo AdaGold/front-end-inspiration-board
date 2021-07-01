@@ -10,6 +10,7 @@ function App() {
   const [boards, setBoards] = useState([]);
 
   const boardsElements = boards.map((board) => {
+    console.log("Invoked to render boards");
     return (<li>
       <BoardDisplay board={board}></BoardDisplay>
     </li>)
@@ -22,6 +23,16 @@ function App() {
     })
   }, []);
 
+  const onFormSubmit = (newBoard) => {
+    axios.post("http://localhost:5000/boards", newBoard).then((response) => {
+      const currentBoards= [...boards];
+      currentBoards.push(response.data);
+      setBoards(currentBoards);
+    }).catch((error) => {
+      console.log('Error:', error);
+      alert('Couldn\'t create a new board.');
+    });
+  }
 
   return (
 
@@ -35,7 +46,9 @@ function App() {
         {boardsElements}
       </ol>
 
-      <NewBoard />
+      <h2>Create a New Board</h2>
+
+      <NewBoard onFormSubmit={onFormSubmit} />
       <DeleteAllButton />
     </section>
   );
