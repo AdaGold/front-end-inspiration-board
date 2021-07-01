@@ -3,16 +3,24 @@ import './App.css';
 import { React, useEffect, useState } from 'react';
 import NewBoard from './components/NewBoard.js';
 import BoardDisplay from './components/BoardDisplay.js';
-import DeleteAllButton from './components/DeleteAllButton';
 import axios from 'axios';
 
 function App() {
   const [boards, setBoards] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState({
+    'board_id': null,
+    'title': '',
+    'owner': ''
+  });
+
+  const onClickBoard = (selected) => {
+    setSelectedBoard(selected);
+  }
 
   const boardsElements = boards.map((board) => {
     console.log("Invoked to render boards");
     return (<li>
-      <BoardDisplay board={board}></BoardDisplay>
+      <BoardDisplay onClickBoard={onClickBoard} board={board}></BoardDisplay>
     </li>)
   });
 
@@ -47,9 +55,11 @@ function App() {
       </ol>
 
       <h2>Create a New Board</h2>
-
       <NewBoard onFormSubmit={onFormSubmit} />
-      <DeleteAllButton />
+
+      <h2>Selected Board</h2>
+      <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</p>
+      
     </section>
   );
 }

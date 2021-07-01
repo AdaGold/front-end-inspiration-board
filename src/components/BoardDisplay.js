@@ -1,5 +1,5 @@
 const BoardDisplay = (props) => {
-    return (<div>{props.board.title}</div>); // onClick={() => props.onBoardSelect(props.board)}
+    return (<div onClick={() => props.onClickBoard(props.board)}>{props.board.title}</div>);
 };
 
 export default BoardDisplay;
