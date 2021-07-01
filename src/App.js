@@ -20,7 +20,7 @@ function App() {
 
   const boardsElements = boards.map((board) => {
     console.log("Invoked to render boards");
-    return (<li>
+    return (<li class='boardsElement'>
       <BoardDisplay onClickBoard={onClickBoard} board={board}></BoardDisplay>
     </li>)
   });
@@ -50,10 +50,12 @@ function App() {
         <h1>Inspiration Board!</h1>
       </header>
 
-      <h2>Boards</h2>
-      <ol>
-        {boardsElements}
-      </ol>
+      <h2 class='boardsHeader'>Boards</h2>
+      <div class='boards'>
+        <ol>
+          {boardsElements}
+        </ol>
+      </div>
 
       <hr />
 

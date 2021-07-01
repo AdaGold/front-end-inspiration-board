@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import "./board.css"
 import Card from './Card.js';
-import CardList from './CardList.js';
+import CardList from './cardList.js';
 import NewCard from './NewCard.js';
 
 const Board = (props) => {
@@ -142,7 +142,7 @@ const Board = (props) => {
             </ul>
         </article> 
         <NewCard createNewCard={createNewCard} />
-        <section className = 'board'>
+        <section className = 'board-content'>
             {allCards(cardsList, deleteCard)}
         </section>
         </div>
