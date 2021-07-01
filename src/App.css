@@ -45,7 +45,7 @@
 
 
 .boards {
-  color: black;
+  color: #372248;
   list-style-type: none;
   /* opacity: 25%; */
 }
@@ -70,13 +70,13 @@ li {
   align-content: center;
   text-align: center;
   border-radius: 50px 50px 50px 5px;
-  background:rgb(255, 255, 255, .5);
+  background:rgb(91, 133, 170, .5);
 }
 
 .create-new-board {
   border-radius: 50px 50px 50px 5px;
-  background:rgb(255, 255, 255, .5);
-  color: black;
+  background:rgb(91, 133, 170, .5);
+  color: #372248;
   text-align: center;
   align-content: center;
 }

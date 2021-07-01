@@ -62,13 +62,13 @@ function App() {
 
       <hr />
 
-      <h2 class='create-new-board'>Create a New Board</h2>
+      {/* <h2 class='create-new-board'>Create a New Board</h2> */}
       <NewBoard onFormSubmit={onFormSubmit} />
 
       <hr />
 
       <h2>Selected Board</h2>
-      <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</p>
+      <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Choose a board to see more!"}</p>
       
       <hr />
 
