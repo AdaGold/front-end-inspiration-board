@@ -65,25 +65,7 @@ function App() {
     </li>)
   });
 
-  const cardLike = (cardId) => {
-    axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error)
-    });
-};
 
-const cardDelete = (cardId) => {
-  axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`,)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error)
-  });
-};
 
   return (
     <main>
@@ -93,7 +75,7 @@ const cardDelete = (cardId) => {
       <NewBoardForm addBoardCallback={addBoard}> </NewBoardForm>
       <div>{boardErrorMessage}</div>
       <div>{cardErrorMessage}</div>
-      {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay>: ''}
+      {selectedBoard.id ? <CardDisplay board={selectedBoard} addCardCallback={addCard}></CardDisplay>: ''}
     </main>
   );
 };
