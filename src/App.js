@@ -1,20 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
 
-import BoardList from './components/BoardList.js';
-import Board from './components/Board.js';
+import { React, useEffect, useState } from 'react';
 import NewBoard from './components/NewBoard.js';
+import BoardDisplay from './components/BoardDisplay.js';
 import DeleteAllButton from './components/DeleteAllButton';
-import Card from "./components/Card.js"
+import axios from 'axios';
 
 function App() {
+  const [boards, setBoards] = useState([]);
+
+  const boardsElements = boards.map((board) => {
+    return (<li>
+      <BoardDisplay board={board}></BoardDisplay>
+    </li>)
+  });
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/boards", {
+    }).then((response) => {
+      setBoards(response.data);
+    })
+  }, []);
+
+
   return (
 
     <section>
       <header className='header'>
-        <h1>Inspo Board!</h1>
-        <Board />
+        <h1>Inspiration Board!</h1>
       </header>
+
+      <h2>Boards</h2>
+      <ol>
+        {boardsElements}
+      </ol>
 
       <NewBoard />
       <DeleteAllButton />

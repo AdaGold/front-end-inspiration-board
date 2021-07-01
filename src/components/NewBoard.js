@@ -59,7 +59,7 @@ const NewBoard = () => {
                     value='submit'
                     type='submit' />
 
-                    <p>Preview: {title} {owner}</p>
+                    <p>Preview: {title} - {owner}</p>
                 </form>
             </div>
 
