@@ -3,6 +3,7 @@ import './App.css';
 import { React, useEffect, useState } from 'react';
 import NewBoard from './components/NewBoard.js';
 import BoardDisplay from './components/BoardDisplay.js';
+import Board from './components/Board.js';
 import axios from 'axios';
 
 function App() {
@@ -54,12 +55,19 @@ function App() {
         {boardsElements}
       </ol>
 
+      <hr />
+
       <h2>Create a New Board</h2>
       <NewBoard onFormSubmit={onFormSubmit} />
+
+      <hr />
 
       <h2>Selected Board</h2>
       <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</p>
       
+      <hr />
+
+      {selectedBoard.board_id ? <Board board={selectedBoard}></Board> : ''}
     </section>
   );
 }
