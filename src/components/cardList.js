@@ -1,22 +1,9 @@
 import PropTypes from 'prop-types'
-import Card from './components/Card'
-import "./cardList.css"
+import Card from './Card.js'
 
 
-const exampleCards =  {
-    "cards": [
-        {
-            "board_id": 2,
-            "card_id": 3,
-            "likes_count": 1,
-            "message": "hello"
-        }
-    ],
-    "owner": "summer",
-    "title": "summer's board"
-}
-
-const cardList = (props) => {
+const CardList = (props) => {
+    console.log('Hi It\'s me')
     const cardComponents = props.Card.map((Card, index) => {
         return (
             <li key={index}>
@@ -38,7 +25,7 @@ const cardList = (props) => {
     );
 };
 
-cardList.propTypes = {
+CardList.propTypes = {
     cards: PropTypes.arrayOf(PropTypes.shape({
         //whatever goes in here
     })),
@@ -47,4 +34,4 @@ cardList.propTypes = {
 
 
 
-export default cardList;
+export default CardList;

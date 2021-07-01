@@ -1,10 +1,10 @@
 
-
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import "./board.css"
 import Card from './Card.js';
+import CardList from './CardList.js';
 import NewCard from './NewCard.js';
 
 const Board = (props) => {
@@ -98,6 +98,7 @@ const Board = (props) => {
             for(const item of cards) {
                 cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
             }
+            return <cardsList />
         }
         return cardsList;
     }
@@ -124,7 +125,6 @@ const Board = (props) => {
             `http://localhost:5000/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
-        console.log(response, cardsList.cards)
           const cards = [...cardsList.cards];
           cards.push(response.data);
           setCardsList(cards);
