@@ -9,15 +9,18 @@ const NewCard = (props) =>{
 
     const submitNewCard = (changeEvent) => {
         changeEvent.preventDefault();
+        props.onFormSubmit({cardMessage})
         props.createNewCard(cardMessage);
-        setCardMessage("");
+        setCardMessage('');
+        
+
     }
 
     return (
         <section>
             <div className='new-card-form__form-text-area'>
                 <h4>Create a New Card</h4>
-                <form onSubmit={submitNewCard}>
+                <form onSubmit={props.createNewCard}>
                     <input 
                     type='text' 
                     name='text'
@@ -27,7 +30,7 @@ const NewCard = (props) =>{
 
                     <input 
                     className='new-card-form__form-button'
-                    value='add message'
+                    value={setCardMessage}
                     type='submit' />
                 </form>
             </div>
@@ -39,8 +42,8 @@ const NewCard = (props) =>{
 
 NewCard.propTypes = {
 
-    nextId: propTypes.number.isRequired,
-    addNewCard: propTypes.func.isRequired,
+    uniqueId: propTypes.number.isRequired,
+    createNewCard: propTypes.func.isRequired,
 
 };
 

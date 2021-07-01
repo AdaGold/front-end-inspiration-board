@@ -31,7 +31,6 @@ const Board = (props) => {
         Promise.all([BoardState(), CardState()])
         .then(([promiseBoards, promiseCards])=>{
         // get list of boards
-        console.log(promiseCards)
         updateBoards(promiseBoards.data);
         setCardsList(promiseCards.data);
         setErrorMessage(null);
@@ -42,9 +41,9 @@ const Board = (props) => {
     }, [BoardState, CardState])
 
     const addCard = (card) => {
-        const newCardList  = [...cardsList];
+        const newCardList  = [...cardsList.cards];
         const post = {text: card.text, emoji: card.emoji}
-        axios.post(`${BASE_URL}${card.boardName}/cards`, post)
+        axios.post(`${BASE_URL}${card.board_id}/cards`, post)
         .then( (response) => {
         // only add card to board if the post is for this particular board
         if(card.boardName === currentBoard) {
@@ -95,7 +94,6 @@ const Board = (props) => {
     const allCards = (cards, deleteCard) => {
         
         let cardsList = [];
-        console.log('cards', cards)
         if (cardsList.length > 0){
             for(const item of cards) {
                 cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
@@ -126,7 +124,8 @@ const Board = (props) => {
             `http://localhost:5000/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
-          const cards = [...cardsList];
+        console.log(cardsList.cards)
+          const cards = [...cardsList.cards];
           cards.push(response.data);
           setCardsList(cards);
         }).catch((error) => {
@@ -150,8 +149,7 @@ const Board = (props) => {
     )
     };
     Board.propTypes = {
-    url: PropTypes.string.isRequired,
-    boardName: PropTypes.string.isRequired
+    board_id: PropTypes.string.isRequired
     };
 
     export default Board;
