@@ -54,9 +54,9 @@ function App() {
 
       <h2 class='boardsHeader'>Boards</h2>
       <div class='boards'>
-        <ol>
+        <ul>
           {boardsElements}
-        </ol>
+        </ul>
       </div>
 
       <hr />

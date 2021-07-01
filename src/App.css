@@ -3,9 +3,6 @@
 
 }
 
-ol {
-  list-style-type: none;
-}
 
 .App-logo {
   height: 40vmin;
@@ -48,23 +45,37 @@ ol {
 
 
 .boards {
-  background: white;
-  opacity: 25%;
-  width: 25%;
-  border-radius: 25px;
-  text-align: center;
   color: black;
-  display: grid;
-  grid-template: 2 / 4;
-  text-decoration: none;
   list-style-type: none;
-
+  /* opacity: 25%; */
 }
 
-.boards-element {
-  grid-column: 2;
-  border: 5px;
-  opacity: 100%;
-  display: inline;
+
+ul {
   list-style-type: none;
+  display:flex;
+  /* grid-template: 150px / auto auto auto auto;
+  height: 200px; */
+}
+li {
+  list-style-type: none;
+}
+
+.boardsElement {
+  border-image: url(/Users/alisonmcginley/developer/projects/front-end-inspiration-board/src/components/images/lightbulb.png) 50 round;
+  border-style:solid;
+  border-color: black;
+  border-image-slice: fill;
+  border-image-width: 100;
+  border-width: 50px;
+  width: 10%;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  /* border: 5px; */
+  /* opacity: 100%; */
+  padding: 25px;
+  margin: 25px; 
+  /* border-radius: 25px; */
+  text-align: center;
 }
