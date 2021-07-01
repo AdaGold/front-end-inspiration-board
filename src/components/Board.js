@@ -9,7 +9,7 @@ import NewCard from './NewCard.js';
 
 const Board = (props) => {
 
-    const [allBoards, updateBoards] = useState([]);
+    // const [allBoards, updateBoards] = useState([]);
     const [cardList, setCardList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [currentBoard, updateBoard] = useState(props.board.board_id);
@@ -17,29 +17,21 @@ const Board = (props) => {
     const BASE_URL = 'http://localhost:5000/';
  
     // function to obtain promises to update states
-    const BoardState = useCallback(() => {
-        return(axios.get(`${BASE_URL}boards`));
-    },[])
+    // const BoardState = useCallback(() => {
+    //     return(axios.get(`${BASE_URL}boards`));
+    // },[allBoards])
 
-    const CardState = useCallback(() => {
-        console.log('cardState fucntion')
-        return(axios.get(`${BASE_URL}boards/${currentBoard}/cards`));
-    },[currentBoard, cardList])
+    // const CardState = useCallback(() => {
+    //     return(axios.get(`${BASE_URL}boards/${currentBoard}/cards`));
+    // },[currentBoard, cardList])
 
 
     // does not update state until both functions return 
     useEffect(() => {
-        Promise.all([BoardState(), CardState()])
-        .then(([promiseBoards, promiseCards])=>{
-        // get list of boards
-        updateBoards(promiseBoards.data);
-        setCardList(promiseCards.data);
-        setErrorMessage(null);
+        axios.get(`${BASE_URL}/boards/${currentBoard}/cards`, {}).then((response) => {
+            setCardList(response.data);
         })
-        .catch((error)=>{
-        setErrorMessage(['Failed to retrieve cards or boards.']);
-        });
-    }, [BoardState, CardState])
+    }, [cardList]);
 
     const addCard = (card) => {
         const newCardList  = [...cardList.cards];
@@ -90,7 +82,31 @@ const Board = (props) => {
 
         setCardList(newCardList);
     }
+    const likeCard = (id) => {
+        let newCardList = [];
+        for (const item of cardList.cards) {
+        // cardList is pulled from the API, meaning anything in cardList should ideally have a matching id
+        if(id === item.card_id) {
+            console.log(item)
+            item.likes += 1
+            let cardLikes = {likes_count: item.likes}
+            axios.put(`${BASE_URL}cards/${id}/like`, cardLikes)
+            // if successful, deleted, send confirmation to console
+            .then((response) => {
+                console.log(`Card ${id} successfully liked`);
+                setErrorMessage(null);
+            })
+            .catch((error) => {
+                // don't add the card back in -- likely this card was deleted from the api after components mounted
+                setErrorMessage([`Could not like card ${id}.`]);
+            });
+        } else {
+            newCardList.push(item);
+        }
+        }
 
+        setCardList(newCardList);
+    }
 
     // if currentBoard changed
 
@@ -127,19 +143,18 @@ const Board = (props) => {
         <div>
         <article className = 'validation-errors-display'>
             <ul className = 'validation-errors-display__list'>
-                {console.log('board')}
                 {errorMessage ? allErrors(errorMessage) : ''}
             </ul>
         </article> 
         <NewCard createNewCard={createNewCard} />
         <section className = 'board-content'>
-            {cardList.cards ? <CardList cardData={cardList} deleteCard={deleteCard}/> : ''}
+            {cardList.cards ? <CardList cardData={cardList} deleteCard={deleteCard} likeCard={likeCard}/> : ''}
         </section>
         </div>
     )
     };
     Board.propTypes = {
-    board_id: PropTypes.string.isRequired
+        board_id: PropTypes.string.isRequired
     };
 
     export default Board;
