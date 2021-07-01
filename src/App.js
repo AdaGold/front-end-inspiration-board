@@ -70,6 +70,7 @@ function App() {
     </li>)
   });
 
+<<<<<<< HEAD
   const cardLike = (cardId) => {
     axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,)
       .then(function (response) {
@@ -89,6 +90,9 @@ function App() {
         console.log(error)
       });
   };
+=======
+
+>>>>>>> 39bb4c2d4215c574189e671fcfd4813054914d26
 
   return (
     <main>
@@ -102,7 +106,11 @@ function App() {
         <span onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </span>
       </section>
       <div>{cardErrorMessage}</div>
+<<<<<<< HEAD
       {selectedBoard.id ? <CardDisplay board={selectedBoard} likeCallBack={cardLike} deleteCallBack={cardDelete} addCardCallback={addCard}></CardDisplay> : ''}
+=======
+      {selectedBoard.id ? <CardDisplay board={selectedBoard} addCardCallback={addCard}></CardDisplay>: ''}
+>>>>>>> 39bb4c2d4215c574189e671fcfd4813054914d26
     </main>
   );
 };

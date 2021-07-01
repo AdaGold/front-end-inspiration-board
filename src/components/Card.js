@@ -9,13 +9,33 @@ export const Card = (props) => {
 
     const [cardLikes, setCardLikes] = useState(props.likescount)
 
+    const cardLike = (cardId) => {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,)
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error)
+        });
+    };
+    
+    const cardDelete = (cardId) => {
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`,)
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error)
+        });
+        };
+
     const likeClick = () => {
-        props.likeCallBack(props.id)
+        cardLike(props.id)
         setCardLikes(cardLikes + 1)
     }
 
     const deleteClick = () => {
-        props.deleteCallBack(props.id)
+        cardDelete(props.id)
     }
 
     return <section className="card">
