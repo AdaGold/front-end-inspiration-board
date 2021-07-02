@@ -5,6 +5,7 @@
 // export default Board;
 
 const Board = (props) => {
+    console.log(props)
     return (<div onClick={() => props.onBoardSelect(props.board)}>{props.title}</div>);
 };
 

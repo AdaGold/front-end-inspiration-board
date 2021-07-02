@@ -17,22 +17,19 @@ function App() {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
     }).then((response) => {
-      setBoardsData([response.data]);
+      setBoardsData(response.data.title);
     })
   }, []);
 
   const selectBoard = (board) => { setSelectedBoard(board) };
 
   // BOARDS LIST
-  const boardsElements = boardsData.map((board,title) => {
-    return (<li>
-      <Board board={board} onBoardSelect={selectBoard}></Board>
-<<<<<<< HEAD
-      <Board title={title}></Board>
-=======
->>>>>>> e55718076bfc36cd209cb3625725f498feea84b6
-    </li>)
-  });
+  // const boardsElements = boardsData.map((board,title) => {
+  //   return (<li>
+  //     <Board board={board} onBoardSelect={selectBoard}></Board>
+  //     <Board title={board}></Board>
+  //   </li>)
+  // });
 
   //BOARDS DROPDOWN MENU
   // const boardsElements = boardsData.map((board) => {
@@ -83,7 +80,7 @@ function App() {
           <section>
             <h2>Boards</h2>
             <ol className="boards__list">
-              {boardsElements}
+              <li>{boardsData}</li>
             </ol>
           </section>
           <section>
