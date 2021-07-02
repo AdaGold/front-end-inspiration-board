@@ -8,6 +8,19 @@ const CardDisplay = (props) => {
 
     const [cards, setCards] = useState([])
 
+    const cardDelete = (cardId) => {
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`,)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+        const newCards = [...cards]
+        newCards.slice(cardId)
+        setCards(newCards)
+    };
+
     useEffect(() => {
 
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.id}/cards`)
@@ -21,14 +34,14 @@ const CardDisplay = (props) => {
 
     const cardsList = cards.map((card) => {
         return <div>
-            <Card key={card.id} id={card.id} message={card.message} likescount={card.likes_count} likeCallBack={props.likeCallBack} deleteCallBack={props.deleteCallBack}></Card>
+            <Card key={card.id} id={card.id} message={card.message} likescount={card.likes_count} deleteCallBack={cardDelete}></Card>
         </div>
     });
 
     return <div className="cardDisplayContainer">
         <h1 className="cardHeader">Cards for {props.board.title}</h1>
         <div className="cardDisplay">
-        {cardsList}
+            {cardsList}
         </div>
         <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
     </div>
