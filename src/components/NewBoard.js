@@ -60,7 +60,7 @@ const NewBoard = (props) => {
                 </form>
             </div>
 
-            <button onClick={toggleHidden}>{hiddenDisplay}</button>
+            <button class="newBoardButton" onClick={toggleHidden}>{hiddenDisplay}</button>
         </section>
 
     );
