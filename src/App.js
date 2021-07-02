@@ -27,7 +27,7 @@ function App() {
   const boardsElements = boardsData.map((board,title) => {
     return (<li>
       <Board board={board} onBoardSelect={selectBoard}></Board>
-      <Board title={board}></Board>
+      <Board title={title}></Board>
     </li>)
   });
 
