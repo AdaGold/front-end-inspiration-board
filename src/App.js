@@ -24,9 +24,10 @@ function App() {
   const selectBoard = (board) => { setSelectedBoard(board) };
 
   // BOARDS LIST
-  const boardsElements = boardsData.map((board) => {
+  const boardsElements = boardsData.map((board,title) => {
     return (<li>
-      <Board board={board.title} onBoardSelect={selectBoard}></Board>
+      <Board board={board} onBoardSelect={selectBoard}></Board>
+      <Board title={title}></Board>
     </li>)
   });
 
