@@ -15,3 +15,12 @@
     color:whitesmoke;
     width: 25%;
 }
+
+.newBoardButton {
+    background:rgb(91, 133, 170, .5);
+    border-radius: 25px;
+}
+
+.form-submit-button {
+    background:rgb(91, 133, 170, .5);
+}
