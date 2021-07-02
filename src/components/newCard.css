@@ -1,0 +1,20 @@
+
+.new-card-form__form-text-area { 
+    background:rgb(91, 133, 170, .5);
+    border-radius: 50px 50px 50px 5px;
+    display: flex;
+    align-content: center;
+    text-align: center;
+    color:whitesmoke;
+    width: 25%;
+}
+
+  img {
+      width:5px;
+  }
+
+  .cardInput {
+      /* background-color: #9b5453; */
+      color: white;
+  }
+  

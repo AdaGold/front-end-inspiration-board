@@ -1,0 +1,26 @@
+.invisible {
+    display : none;
+}
+
+.visible {
+    display: inline; 
+}
+
+.new-board-form{
+    background:rgb(91, 133, 170, .5);
+    border-radius: 50px 50px 50px 5px;
+    display: flex;
+    align-content: center;
+    text-align: center;
+    color:whitesmoke;
+    width: 25%;
+}
+
+.newBoardButton {
+    background:rgb(91, 133, 170, .5);
+    border-radius: 25px;
+}
+
+.form-submit-button {
+    background:rgb(91, 133, 170, .5);
+}
