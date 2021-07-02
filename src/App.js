@@ -60,7 +60,8 @@ function App() {
       console.log(response.data)
       setboardsData(response.data);
     })
-  }, [boardsData])
+  }, [])
+  //watch boardsData
 
 
   const selectBoard = (board) => {
@@ -76,19 +77,19 @@ function App() {
   return (
     <Container>
       <main className="main">
-        <h1>Inspiration Board List</h1>
+        <h1 className="mainHeader">Inspiration Boards</h1>
 
         <Row>
           <Col>
             <section className="inspoBoardList">
-              <h3 className="ListHeader">Inspiration Boards</h3>
-              <div className="BoardList">{boardList}</div>
+              <h3 className="listHeader">Choose a Board:</h3>
+              <div className="boardList">{boardList}</div>
             </section>
           </Col>
 
           <Col>
             <section className="boardForm">
-              <h1 className="formHeader">Create New Board</h1>
+              <h3 className="formHeader">Create New Board</h3>
               {boardFormDisplay ? <NewBoardForm addBoardCallback={addBoard}>  </NewBoardForm> : ""}
               <div className="boardError">{boardErrorMessage}</div>
               <Button onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </Button>

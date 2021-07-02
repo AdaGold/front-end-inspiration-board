@@ -1,3 +1,4 @@
+import './form.css';
 import { Container, Row, Col } from 'reactstrap';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -19,18 +20,19 @@ const NewCardForm = (props) => {
     };
 
     return (
-        <section className="newCardFormContainer">
+        <section className="formContainer">
 
-            <h1 className="formHeader">post a note!</h1>
-            <form className="newCardForm" onSubmit={onFormSubmit} className="form">
+            <h3 className="formHeader">post a note!</h3>
+            <form className="form" onSubmit={onFormSubmit}>
                 <div>
-                    <label htmlFor="Message">message:</label>
+                    {/* <label htmlFor="Message">message:</label> */}
                     <input className="cardMessageInput"
+                    placeholder="write yr message"
                         name="message"
                         value={formFields}
                         onChange={onMessageChange} />
                 </div>
-                <input className="formButton"
+                <input className="formButton post"
                     type="submit"
                     value="post note" />
             </form>

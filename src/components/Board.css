@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.boardButton {
+
+    cursor: pointer;
+    padding: 5px;
+    list-style: none;
+    font-family: Righteous;
+
+}

@@ -1,12 +1,7 @@
-//this will just be how the card displays it will take props which will be the "message" from the database.
-// card needs to be deleted, and update like
-import { Container, Row, Col } from 'reactstrap';
+import './Card.css';
 import React, { useState } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 const axios = require('axios');
-
-
-
-// change to initiate brownout, test 2
 
 export const Card = (props) => {
 
@@ -34,9 +29,18 @@ export const Card = (props) => {
     }
 
     return <section className="card">
+        
+        <div className="msgContainer">
         <p className="cardMessage">{props.message}</p>
+        </div>
+
+        <div className="bottom">
+        <div className="cardDeets">
         <p className="cardLikes">likes: {cardLikes}</p>
         <p onClick={likeClick} className="likeButton">💕</p>
-        <p onClick={deleteClick} className="deleteButton">🗑</p>
+        <p onClick={deleteClick} className="deleteButton">🗑</p> 
+        </div>
+        </div>
+
     </section>
 };

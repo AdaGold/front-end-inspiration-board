@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'reactstrap';
-
+import './cardDisplay.css'
 import NewCardForm from "./NewCardForm";
 import { useEffect, useState } from "react";
 import { Card } from "./Card"

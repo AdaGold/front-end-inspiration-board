@@ -1,4 +1,4 @@
-
+import './Board.css'
 
 const Board = (props) => {
 
@@ -6,7 +6,7 @@ const Board = (props) => {
         props.setBoard(props.board)
     }
 
-    return <div className="boardButton" onClick={handleClick}> {props.board.title} </div>
+    return <li className="boardButton" onClick={handleClick}> > {props.board.title} </li>
 
 }
 

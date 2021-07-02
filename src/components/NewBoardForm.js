@@ -1,3 +1,4 @@
+import './form.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -37,20 +38,20 @@ const NewBoardForm = (props) => {
     };
 
     return (
-        <section className="newBoardFormContainer">
+        <section className="formContainer">
 
-            <form onSubmit={onFormSubmit} className="newBoardForm">
+            <form onSubmit={onFormSubmit} className="form">
                 <div>
-                    <label htmlFor="Title">Title</label>
                     <input
-                        className="titleInput"
+                        className="input"
+                        placeholder="board title"
                         name="Title"
                         value={formFields.title}
                         onChange={onTitleChange} />
                 </div>
                 <div>
-                    <label htmlFor="owner">Owner</label>
-                    <input className="ownerInput" 
+                    <input className="input" 
+                        placeholder="board owner"
                         name="owner"
                         value={formFields.owner}
                         onChange={onOwnerChange} />
