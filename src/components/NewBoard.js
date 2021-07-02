@@ -10,12 +10,17 @@ const headers = {
 };
 
 const NewBoard = (props) => {
-    const [ hidden, setHidden ] = useState(false);
+    const [ hidden, setHidden ] = useState(true);
     const [ title, setTitle ] = useState('');
     const [ owner, setOwner ] = useState('');
+    const [hiddenDisplay, setDisplay] =useState('Let\'s go!')
     
     const toggleHidden = () => {
         setHidden(hidden ? false : true);
+        setHiddenDisplay()
+    }
+    const setHiddenDisplay = () => {
+        setDisplay(hidden ? 'Nevermind': 'Let\'s go!')
     }
 
     const submitNewBoard = (event) => {
@@ -26,7 +31,6 @@ const NewBoard = (props) => {
         setTitle('');
         setOwner('');
     }
-
     return (
         <section className="new-board-form">
             <div>
@@ -56,7 +60,7 @@ const NewBoard = (props) => {
                 </form>
             </div>
 
-            <button onClick={toggleHidden}>Hide</button>
+            <button onClick={toggleHidden}>{hiddenDisplay}</button>
         </section>
 
     );
