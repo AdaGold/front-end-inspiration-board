@@ -9,9 +9,7 @@ function App() {
 
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    board_id: null
+    id: ''
   });
 
   useEffect(() => {
@@ -84,7 +82,7 @@ function App() {
           </section>
           <section>
             <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.id}` : 'Select a Board from the Board List!'}</p>
+            <p>{selectedBoard.id ? `${selectedBoard.id}` : 'Select a Board from the Board List!'}</p>
           </section>
           <section className='new-board-form__container'>
             <h2>Create a New Board</h2>
