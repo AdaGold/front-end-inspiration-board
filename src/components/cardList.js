@@ -8,6 +8,7 @@ const CardList = (props) => {
             <li key={index}>
                     <Card
                         deleteCard={props.deleteCard}
+                        likeCard={props.likeCard}
                         text={data.message}
                         likes={data.likes_count}
                         id={data.card_id} />
