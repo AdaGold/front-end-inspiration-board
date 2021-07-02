@@ -28,13 +28,13 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* .boards__list {
+.boards__list {
   max-height: 9rem;
   min-height: 9rem;
   overflow: scroll;
   margin-right: 2rem;
   border: black solid 1px;
-} */
+} 
 .boards__list {
   align-items: center;
   display: inline-block;
