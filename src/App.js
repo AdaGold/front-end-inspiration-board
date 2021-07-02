@@ -66,28 +66,35 @@ function App() {
   }
 
   const boardList = boardsData.map((board) => {
-    return (<li className="boardListItem">
+    return (
       <Board key={board.id} board={board} setBoard={selectBoard}> </Board>
-    </li>)
+    )
   });
 
   return (
     <main className="main">
+      <div className="mainHeader">
       <h1>INSPO BOARD</h1>
+      </div>
+
       <section className="inspoBoardList">
-        <h3 className="ListHeader">Inspiration Boards</h3>
-        <div className="BoardList">{boardList}</div>
+        <h3 className="listHeader">Inspiration Boards</h3>
+        <div className="boardList">{boardList}</div>
       </section>
+
       <section className="boardForm">
         <h1 className="formHeader">Create New Board</h1>
         {boardFormDisplay ? <NewBoardForm addBoardCallback={addBoard}>  </NewBoardForm> : ""}
         <div className="boardError">{boardErrorMessage}</div>
         <span onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </span>
       </section>
+
       <div className="cardError">{cardErrorMessage}</div>
+
       <section className="cardDisplay">
         {selectedBoard.id ? <CardDisplay board={selectedBoard} addCardCallback={addCard}></CardDisplay> : ''}
       </section>
+
     </main>
   );
 };

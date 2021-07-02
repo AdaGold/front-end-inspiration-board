@@ -7,3 +7,23 @@ main {
 h1 {
   font-family:Anton
 }
+
+.inspoBoardList {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+
+.boardList {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.mainHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
