@@ -24,10 +24,9 @@ function App() {
   const selectBoard = (board) => { setSelectedBoard(board) };
 
   // BOARDS LIST
-  const boardsElements = boardsData.map((board,title) => {
+  const boardsElements = boardsData.map((board) => {
     return (<li>
-      <Board board={board} onBoardSelect={selectBoard}></Board>
-      <Board title={title}></Board>
+      <Board board={board} title={board.id} onBoardSelect={selectBoard}></Board>
     </li>)
   });
 
@@ -41,9 +40,9 @@ function App() {
 
   const createNewBoard = (newBoard) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard).then((response) => {
-      console.log("Response:", response.data.board);
+      console.log("Response:", response.data);
       const boards = [...boardsData];
-      boards.push(response.data.board);
+      boards.push(response.data);
       setBoardsData(boards);
     }).catch((error) => {
       console.log('Error:', error);
@@ -85,7 +84,7 @@ function App() {
           </section>
           <section>
             <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : 'Select a Board from the Board List!'}</p>
+            <p>{selectedBoard.board_id ? `${selectedBoard.id}` : 'Select a Board from the Board List!'}</p>
           </section>
           <section className='new-board-form__container'>
             <h2>Create a New Board</h2>
