@@ -30,7 +30,7 @@ const NewBoard = (props) => {
     return (
         <section className="new-board-form">
             <div>
-                <h4>New Board</h4>
+                <h4 class="new-board">New Board</h4>
                 <form onSubmit={submitNewBoard}
                     className={hidden === true ? "invisible" : "visible"}>
                     <p>Title</p>

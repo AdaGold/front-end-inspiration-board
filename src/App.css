@@ -45,7 +45,7 @@
 
 
 .boards {
-  color: black;
+  color: #372248;
   list-style-type: none;
   /* opacity: 25%; */
 }
@@ -54,28 +54,29 @@
 ul {
   list-style-type: none;
   display:flex;
-  /* grid-template: 150px / auto auto auto auto;
-  height: 200px; */
 }
+
 li {
   list-style-type: none;
 }
 
 .boardsElement {
-  border-image: url('./components/images/lightbulb.png') 50 round;
-  border-style:solid;
-  border-color: black;
-  border-image-slice: fill;
-  border-image-width: 100;
-  border-width: 50px;
-  width: 10%;
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  /* border: 5px; */
-  /* opacity: 100%; */
   padding: 25px;
   margin: 25px; 
-  /* border-radius: 25px; */
+  align-content: center;
   text-align: center;
+  border-radius: 50px 50px 50px 5px;
+  background:rgb(91, 133, 170, .5);
+}
+
+.create-new-board {
+  border-radius: 50px 50px 50px 5px;
+  background:rgb(91, 133, 170, .5);
+  color: #372248;
+  text-align: center;
+  align-content: center;
 }
