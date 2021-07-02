@@ -60,7 +60,7 @@ function App() {
       console.log(response.data)
       setboardsData(response.data);
     })
-  }, [])
+  }, [boardsData])
   //watch boardsData
 
 

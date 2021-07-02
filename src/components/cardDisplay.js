@@ -31,7 +31,7 @@ const CardDisplay = (props) => {
                 setCards(response.data.cards)
 
             })
-    }, [props.board.id])
+    }, [props.board.id, cards])
     //want to watch "cards" so they can update in real-time but it seems like when we do it's making continious calls
 
     const cardsList = cards.map((card) => {
