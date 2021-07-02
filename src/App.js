@@ -17,19 +17,19 @@ function App() {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
     }).then((response) => {
-      setBoardsData(response.data.title);
+      setBoardsData([response.data]);
     })
   }, []);
 
   const selectBoard = (board) => { setSelectedBoard(board) };
 
   // BOARDS LIST
-  // const boardsElements = boardsData.map((board,title) => {
-  //   return (<li>
-  //     <Board board={board} onBoardSelect={selectBoard}></Board>
-  //     <Board title={board}></Board>
-  //   </li>)
-  // });
+  const boardsElements = boardsData.map((board,title) => {
+    return (<li>
+      <Board board={board} onBoardSelect={selectBoard}></Board>
+      <Board title={board}></Board>
+    </li>)
+  });
 
   //BOARDS DROPDOWN MENU
   // const boardsElements = boardsData.map((board) => {
@@ -80,7 +80,7 @@ function App() {
           <section>
             <h2>Boards</h2>
             <ol className="boards__list">
-              <li>{boardsData}</li>
+              {boardsElements}
             </ol>
           </section>
           <section>
@@ -95,7 +95,7 @@ function App() {
         </section>
         {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
       </div>
-      <footer> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all everything!</footer>
+      <footer><span>Please be gentle!</span> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
   );
 }
