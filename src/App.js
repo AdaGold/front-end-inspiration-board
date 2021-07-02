@@ -27,7 +27,7 @@ function App() {
   const boardsElements = boardsData.map((board,title) => {
     return (<li>
       <Board board={board} onBoardSelect={selectBoard}></Board>
-      <Board title={Board.title}></Board>
+      <Board title={title}> onBoardSelect={selectBoard}</Board>
     </li>)
   });
 
@@ -95,7 +95,7 @@ function App() {
         </section>
         {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
       </div>
-      <footer><span>This is a demo! Please be gentle!</span> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
+      <footer> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all everything!</footer>
     </div>
   );
 }
