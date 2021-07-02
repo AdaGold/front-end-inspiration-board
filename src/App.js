@@ -90,7 +90,7 @@ function App() {
             <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
         </section>
-        {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
+        {selectedBoard.id ? <CardsList board={selectedBoard}></CardsList> : ''}
       </div>
       <footer><span>Please be gentle!</span> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
