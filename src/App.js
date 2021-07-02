@@ -3,11 +3,13 @@ import NewBoardForm from './components/NewBoardForm';
 import CardDisplay from './components/cardDisplay';
 import Board from './components/Board';
 import { useState, useEffect } from 'react';
+import { Button } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+
 
 const axios = require('axios');
 
-console.log(`${process.env.REACT_APP_BACKEND_URL}`)
-console.log("a change")
+
 
 function App() {
   //-----------------board states---------------------
@@ -58,7 +60,7 @@ function App() {
       console.log(response.data)
       setboardsData(response.data);
     })
-  }, [])
+  }, [boardsData])
 
 
   const selectBoard = (board) => {
@@ -66,29 +68,42 @@ function App() {
   }
 
   const boardList = boardsData.map((board) => {
-    return (<li className="boardListItem">
+    return (
       <Board key={board.id} board={board} setBoard={selectBoard}> </Board>
-    </li>)
+    )
   });
 
   return (
-    <main className="main">
-      <h1>INSPO BOARD</h1>
-      <section className="inspoBoardList">
-        <h3 className="ListHeader">Inspiration Boards</h3>
-        <div className="BoardList">{boardList}</div>
-      </section>
-      <section className="boardForm">
-        <h1 className="formHeader">Create New Board</h1>
-        {boardFormDisplay ? <NewBoardForm addBoardCallback={addBoard}>  </NewBoardForm> : ""}
-        <div className="boardError">{boardErrorMessage}</div>
-        <span onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </span>
-      </section>
-      <div className="cardError">{cardErrorMessage}</div>
-      <section className="cardDisplay">
-        {selectedBoard.id ? <CardDisplay board={selectedBoard} addCardCallback={addCard}></CardDisplay> : ''}
-      </section>
-    </main>
+    <Container>
+      <main className="main">
+        <h1>Inspiration Board List</h1>
+
+        <Row>
+          <Col>
+            <section className="inspoBoardList">
+              <h3 className="ListHeader">Inspiration Boards</h3>
+              <div className="BoardList">{boardList}</div>
+            </section>
+          </Col>
+
+          <Col>
+            <section className="boardForm">
+              <h1 className="formHeader">Create New Board</h1>
+              {boardFormDisplay ? <NewBoardForm addBoardCallback={addBoard}>  </NewBoardForm> : ""}
+              <div className="boardError">{boardErrorMessage}</div>
+              <Button onClick={toggleBoardForm}> {boardFormDisplay ? "Hide Form" : "Show Form"} </Button>
+            </section>
+          </Col>
+
+          <Col>
+            <div className="cardError">{cardErrorMessage}</div>
+            <section className="cardDisplay">
+              {selectedBoard.id ? <CardDisplay board={selectedBoard} addCardCallback={addCard}></CardDisplay> : ''}
+            </section>
+          </Col>
+        </Row>
+      </main>
+    </Container >
   );
 };
 

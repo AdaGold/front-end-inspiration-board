@@ -1,3 +1,5 @@
+import { Container, Row, Col } from 'reactstrap';
+
 import NewCardForm from "./NewCardForm";
 import { useEffect, useState } from "react";
 import { Card } from "./Card"
@@ -43,7 +45,9 @@ const CardDisplay = (props) => {
         <div className="cardDisplay">
             {cardsList}
         </div>
-        <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
+        <Col>
+            <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
+        </Col>
     </div>
 }
 

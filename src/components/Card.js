@@ -1,7 +1,10 @@
 //this will just be how the card displays it will take props which will be the "message" from the database.
 // card needs to be deleted, and update like
+import { Container, Row, Col } from 'reactstrap';
 import React, { useState } from 'react';
 const axios = require('axios');
+
+
 
 // change to initiate brownout, test 2
 

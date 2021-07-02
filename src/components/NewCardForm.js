@@ -1,3 +1,4 @@
+import { Container, Row, Col } from 'reactstrap';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -19,6 +20,7 @@ const NewCardForm = (props) => {
 
     return (
         <section className="newCardFormContainer">
+
             <h1 className="formHeader">post a note!</h1>
             <form className="newCardForm" onSubmit={onFormSubmit} className="form">
                 <div>
@@ -32,6 +34,7 @@ const NewCardForm = (props) => {
                     type="submit"
                     value="post note" />
             </form>
+
         </section>
     );
 };
