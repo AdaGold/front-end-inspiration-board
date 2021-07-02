@@ -9,9 +9,7 @@ function App() {
 
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    board_id: null
+    id: ''
   });
 
   useEffect(() => {
@@ -84,7 +82,7 @@ function App() {
           </section>
           <section>
             <h2>Selected Board</h2>
-            <p>{selectedBoard.board_id ? `${selectedBoard.id}` : 'Select a Board from the Board List!'}</p>
+            <p>{selectedBoard.id ? `${selectedBoard.id}` : 'Select a Board from the Board List!'}</p>
           </section>
           <section className='new-board-form__container'>
             <h2>Create a New Board</h2>
@@ -92,7 +90,7 @@ function App() {
             <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
           </section>
         </section>
-        {selectedBoard.board_id ? <CardsList board={selectedBoard}></CardsList> : ''}
+        {selectedBoard.id ? <CardsList board={selectedBoard}></CardsList> : ''}
       </div>
       <footer><span>Please be gentle!</span> Click <span onClick={deleteAll} className="footer__delete-btn">here</span> to delete all boards and cards!</footer>
     </div>
