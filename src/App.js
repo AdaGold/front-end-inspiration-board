@@ -27,10 +27,7 @@ function App() {
   const boardsElements = boardsData.map((board,title) => {
     return (<li>
       <Board board={board} onBoardSelect={selectBoard}></Board>
-<<<<<<< HEAD
       <Board title={title}></Board>
-=======
->>>>>>> e55718076bfc36cd209cb3625725f498feea84b6
     </li>)
   });
 
