@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+.mainHeader {
+  padding-bottom: 100px;
+  padding-top: 30px;
+}
+
+h1, h3 {
+  font-family: Permanent Marker;
+}
+
+.inspoBoardList {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+
+.boardList {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.mainHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.listHeader{
+  padding-bottom: 20px;
+}
+
+.boardList{
+  background-color: antiquewhite;
+  max-width: 200px;
+}

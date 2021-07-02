@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    width: 150px;
+    height: 150px;
+    margin: 20px;
+    font-family: Indie Flower;
+}
+.cardMessage{
+    padding: 10px;
+}
+.msgContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
+.cardDeets{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.likeButton:hover{
+    cursor: pointer;
+}
+
+.deleteButton{
+    cursor: pointer;
+}
+
+.bottom{
+    align-content: flex-end;
+}
