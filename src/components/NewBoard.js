@@ -17,9 +17,7 @@ const NewBoard = ({ createBoard }) => {
 
     const textInput = (event) => {
         const field = event.target.id;
-        console.log("fie", field);
         const value = event.target.value;
-        console.log(event.target);
         setFormData((current) => ({ ...current, [field]: value }));
     };
 
