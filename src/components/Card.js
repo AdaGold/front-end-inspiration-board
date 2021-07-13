@@ -5,14 +5,17 @@ const Card = ({ card, deleteCard, likeCard }) => {
         deleteCard(card.card_id)
     }
 
-    const onLikeCard =()=>{
+    const onLikeCard = () => {
         likeCard(card.card_id)
     }
     return (
-        <div>
+        <div className="card">
             <p>{card.message}</p>
-            <p onClick={onDeleteCard}>DELETE ME!</p>
-            <p onClick={onLikeCard}> Like me: {card.likes_count} </p>
+            <div className="card-footer">
+                <span>{card.likes_count}💕</span>
+                <span onClick={onLikeCard} className="card_emoji">+1</span>
+                <span className="card_emoji" onClick={onDeleteCard}>🗑️</span>
+            </div>
         </div>
     )
 }
