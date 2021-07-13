@@ -50,7 +50,6 @@ function App() {
     card.card_id=state.cards.length+1
     newState.cards.push(card)
     setState(newState)
-
   }
   return (
     <div className="App">
