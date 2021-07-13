@@ -20,15 +20,20 @@ function App() {
     }
     ],
     cards: [{
+      'board_id':1,
       "card_id": 1,
       "message": "Seafood pasta is my favorite",
-      "likes_Counts": 2
+      "likes_count": 2
     },
     {
+      'board_id':1,
       "card_id": 2,
       "message": "Hello - Adele",
-      "likes_Counts": 2
-    }]
+      "likes_count": 2
+    }
+   ],
+   currentBoard:1
+
   })
 
   const createBoard = (board) => {
@@ -37,13 +42,23 @@ function App() {
     newState.boards.push(board)
     setState(newState)
   }
+
+  const createCard = (card) => {
+    card.board_id=state.currentBoard
+    card.likes_count=0
+    const newState = { ...state }
+    card.card_id=state.cards.length+1
+    newState.cards.push(card)
+    setState(newState)
+
+  }
   return (
     <div className="App">
       <h1>Inspiration Board</h1>
       <BoardList boards={state.boards} />
-      <CardList cards={state.cards} />
+      <CardList cards={state.cards}/>
       <NewBoard createBoard={createBoard} />
-      <NewCard />
+      <NewCard createCard={createCard}/>
     </div>
   );
 }
