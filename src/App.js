@@ -20,19 +20,19 @@ function App() {
     }
     ],
     cards: [{
-      'board_id':1,
+      'board_id': 1,
       "card_id": 1,
       "message": "Seafood pasta is my favorite",
       "likes_count": 2
     },
     {
-      'board_id':1,
+      'board_id': 1,
       "card_id": 2,
       "message": "Hello - Adele",
       "likes_count": 2
     }
-   ],
-   currentBoard:1
+    ],
+    currentBoard: 1
 
   })
 
@@ -44,20 +44,27 @@ function App() {
   }
 
   const createCard = (card) => {
-    card.board_id=state.currentBoard
-    card.likes_count=0
+    card.board_id = state.currentBoard
+    card.likes_count = 0
     const newState = { ...state }
-    card.card_id=state.cards.length+1
+    card.card_id = state.cards.length + 1
     newState.cards.push(card)
     setState(newState)
   }
+
+  const deleteCard = (id) => {
+    const newState = { ...state }
+    newState.cards = newState.cards.filter(card => card.card_id !== id)
+    setState(newState)
+  }
+
   return (
     <div className="App">
       <h1>Inspiration Board</h1>
       <BoardList boards={state.boards} />
-      <CardList cards={state.cards}/>
+      <CardList cards={state.cards} deleteCard={deleteCard} />
       <NewBoard createBoard={createBoard} />
-      <NewCard createCard={createCard}/>
+      <NewCard createCard={createCard} />
     </div>
   );
 }
