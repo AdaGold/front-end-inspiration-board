@@ -32,9 +32,32 @@ function App() {
       "likes_count": 2
     }
     ],
-    currentBoard: 1
+    currentBoard: {
+      "board_id": 1,
+      "title": "Food",
+      "owner": 'Albert'
+    }
 
   })
+
+  const onBoardClick = (board) => {
+    setCurrentBoard(board)
+    getCards(board.board_id)
+  }
+
+  const setCurrentBoard = (board) => {
+    const newState = { ...state }
+    newState.currentBoard = board
+    setState(newState)
+  }
+
+  const getCards = (board_id) => {
+    const newState = { ...state }
+    // make a call to the API for cards currentBoard.board_id
+    // then set state.cards to those
+    // newState.cards = res of API CALL
+    // setState(newState)
+  }
 
   const createBoard = (board) => {
     board.board_id = board.title.length
@@ -58,26 +81,34 @@ function App() {
     setState(newState)
   }
 
-  const likeCard =(id) =>{
-    const newState ={...state}
+  const likeCard = (id) => {
+    const newState = { ...state }
     // let updateCard = newState.cards.filter(card => card.card_id == id)
-    for (let i=0; i<newState.cards.length; i++){
-      let card =newState.cards[i]
-      if(card.card_id == id){
+    for (let i = 0; i < newState.cards.length; i++) {
+      let card = newState.cards[i]
+      if (card.card_id == id) {
         card.likes_count++
       }
     }
-    setState(newState) 
+    setState(newState)
   }
- 
+
 
   return (
     <div className="App">
-      <h1>Inspiration Board</h1>
-      <BoardList boards={state.boards} />
-      <CardList cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
-      <NewBoard createBoard={createBoard} />
-      <NewCard createCard={createCard} />
+      <header><h1>Inspiration Board</h1></header>
+      <main>
+        <div className="boards">
+          <BoardList boards={state.boards} onBoardClick={onBoardClick} />
+          <h2>{state.currentBoard.title}</h2>
+          <NewBoard createBoard={createBoard} />
+        </div>
+        <div className="cards">
+          <NewCard createCard={createCard} />
+          <CardList cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
+        </div>
+
+      </main>
     </div>
   );
 }
