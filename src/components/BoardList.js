@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 
 const BoardList = ({ boards, onBoardClick }) => {
-    console.log({ boards })
+    // console.log({ boards })
 
     const onClick = (e, board) => {
         e.preventDefault();
@@ -13,10 +13,10 @@ const BoardList = ({ boards, onBoardClick }) => {
             <h1>List of Boards</h1>
             <div className='board'>
                 {boards && boards.length > 0 && boards.map(board => {
-                return (
-                    <p className='board-title'key={board.board_id} onClick={e => onClick(e, board)}>{board.title}</p>
-                )
-            })}
+                    return (
+                        <p className='board-title' key={board.id} onClick={e => onClick(e, board)}>{board.title}</p>
+                    )
+                })}
             </div>
         </div>
     )
