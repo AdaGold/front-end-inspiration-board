@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 
 const BoardList = ({ boards, onBoardClick }) => {
-    console.log({ boards })
+    // console.log({ boards })
 
     const onClick = (e, board) => {
         e.preventDefault();

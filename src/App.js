@@ -60,7 +60,8 @@ function App() {
   }
 
   const createBoard = (board) => {
-    board.board_id = board.title.length
+    // board.board_id = board.title.length
+    board.board_id = state.boards.length + 1
     const newState = { ...state }
     newState.boards.push(board)
     setState(newState)
@@ -99,10 +100,14 @@ function App() {
       <main>
         <div className="boards">
           <BoardList boards={state.boards} onBoardClick={onBoardClick} />
-          <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda"/>
+          <div>
+            <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda"/>
+            <h2>{state.currentBoard.title}</h2>
+          </div>
+         
           <NewBoard createBoard={createBoard} />
         </div>
-        <h2>{state.currentBoard.title}</h2>
+        
         <CardList createCard={createCard} cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
       </main>
     </div>
