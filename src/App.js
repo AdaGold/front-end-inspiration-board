@@ -19,7 +19,6 @@ function App() {
   useEffect(async() => {
     const newState = { ...state }
     let boards = await getBoards()
-    console.log({boards})
     let cards = await getCards(boards[0].id)
 
     newState.cards = cards
@@ -27,23 +26,12 @@ function App() {
     newState.currentBoard = boards[0]
     setState(newState)
 
-    // useEffect(() => {
-    //   // Using an IIFE
-    //   (async function anyNameFunction() {
-    //     await loadContent();
-    //   })();
-    // }, []);
-
   }, [reload])
 
   const getBoards = async() => {
-    const newState = { ...state }
     return axios.get(`${apiUrl}/boards`)
       .then((res) => {
         return res.data[0]
-        // console.log("state.boards[0]", state.boards)
-        // newState.currentBoard = res.data[0][0]
-        // setState(newState)
       })
       .catch((e) => {
         console.log('error!', e);
