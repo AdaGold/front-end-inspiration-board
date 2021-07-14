@@ -17,12 +17,11 @@ function App() {
   const [reload, setReload] = useState(false)
 
   useEffect(() => {
-    console.log("USE EFFECT!")
     getBoards()
+
   }, [reload])
 
   const getBoards = () => {
-    console.log("GET BOARDS")
     const newState = { ...state }
     axios.get(`${apiUrl}/boards`)
       .then((res) => {
@@ -121,11 +120,13 @@ function App() {
       <header><h1>Inspiration Board</h1></header>
       <main>
         <div className="boards">
-          <BoardList boards={state.boards} onBoardClick={onBoardClick} />
-          <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda" />
+          <BoardList boards={state.boards} onBoardClick={onBoardClick} currentBoard={state.currentBoard} />
+          <div>
+            <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda" />
+            <h2>{state.currentBoard.title}</h2>
+          </div>
           <NewBoard createBoard={createBoard} />
         </div>
-        <h2>{state.currentBoard.title}</h2>
         <CardList createCard={createCard} cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
       </main>
     </div>
