@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import InspirationApi from './api/inspirationApi';
+
+import Board from './components/Board';
 
 function App() {
+  const [boards, setBoards] = useState()
+
+  useEffect( async () => {
+    const b = await new InspirationApi().getBoard();
+    setBoards(b)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      { boards?.map(board => {
+        return(
+          <div>
+            <p>{board.title}</p>
+            <p>{board.owner}</p>
+          </div>
+        )
+      })}
     </div>
   );
 }
