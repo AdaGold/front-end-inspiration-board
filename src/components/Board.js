@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Board.css';
 import InspirationApi from '../api/inspirationApi';
 
-// import Card from './Card';
+import Card from './Card';
 // import PropTypes from 'prop-types';
 
 const Board = () => { 
@@ -17,11 +17,7 @@ const Board = () => {
     <div className="cardsFlexBox">
       {cards?.map(card => {
         return (
-          <div>
-            <h2>{card.title}</h2>
-            <h3>{card.owner}</h3>
-            <p>{card.message}</p>
-          </div>
+      <Card card={card} /> 
         )
       })}
     </div>
