@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Board.css';
-import Card from './Card';
-import PropTypes from 'prop-types';
+import InspirationApi from '../api/inspirationApi';
 
-const generateCardComponents = (cards, onClickCallback) => {
-    const cardArray = cards.flat();
-    const cardComponents = cardArray.map(card => <Card id={card.id} value={card.value} onClickCallback={onClickCallback} />)
-  
-    return cardComponents;
-  }
+// import Card from './Card';
+// import PropTypes from 'prop-types';
 
-const Board = ({ cards, onClickCallback}) => { 
-  const cardList = generateCardComponents(cards, onClickCallback);
-  return <div className="cardsFlexBox">
-    {cardList}
-  </div>
+const Board = () => { 
+  const [cards, setCards] = useState();
+
+  useEffect( async () => {
+    const c = await new InspirationApi().getCards();
+    setCards(c);
+  }, [])
+
+  return (
+    <div className="cardsFlexBox">
+      {cards?.map(card => {
+        return (
+          <div>
+            <h2>{card.title}</h2>
+            <h3>{card.owner}</h3>
+            <p>{card.message}</p>
+          </div>
+        )
+      })}
+    </div>
+  )
 };
 
-Board.propTypes = {
+// Board.propTypes = {
 
-};
+// };
 
 export default Board;
