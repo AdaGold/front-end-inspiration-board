@@ -99,9 +99,10 @@ function App() {
       <main>
         <div className="boards">
           <BoardList boards={state.boards} onBoardClick={onBoardClick} />
-          <h2>{state.currentBoard.title}</h2>
+          <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda"/>
           <NewBoard createBoard={createBoard} />
         </div>
+        <h2>{state.currentBoard.title}</h2>
         <CardList createCard={createCard} cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
       </main>
     </div>
