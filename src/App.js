@@ -93,7 +93,6 @@ function App() {
     setState(newState)
   }
 
-
   return (
     <div className="App">
       <header><h1>Inspiration Board</h1></header>
@@ -103,11 +102,7 @@ function App() {
           <h2>{state.currentBoard.title}</h2>
           <NewBoard createBoard={createBoard} />
         </div>
-        <div className="cards">
-          <NewCard createCard={createCard} />
-          <CardList cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
-        </div>
-
+        <CardList createCard={createCard} cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
       </main>
     </div>
   );

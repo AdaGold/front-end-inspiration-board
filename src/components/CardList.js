@@ -1,9 +1,10 @@
 import React from 'react';
 import Card from './Card'
-
-const CardList = ({ cards, deleteCard, likeCard }) => {
+import NewCard from './NewCard'
+const CardList = ({ cards, deleteCard, likeCard, createCard }) => {
     return (
         <section className="cards-list">
+            <NewCard createCard={createCard} />
             {cards && cards.length > 0 &&
                 cards.map(card => {
                     return (

@@ -1,40 +1,15 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Yomogi&display=swap');
+
+body{
+  color:#7C008F;
+  background-color: #ffebf7;
+  font-family: 'Yomogi', cursive;
+}
+
+h1{
+  font-family: 'Festive', cursive;
+  font-size: 2.5em;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 main{
@@ -47,39 +22,74 @@ main{
   flex-direction:row;
 }
 
-.cards{
-  display: flex;
-  flex-direction:row;
-}
 .cards-list{
   display: flex;
   flex-direction:row;
-  justify-content:space-between;
+  flex-wrap: wrap;
 }
 
 .card{
-  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fef5ff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(96, 96, 96, 0.35) 0px -2px 6px 0px inset;
   padding:1em;
-  margin-left:1.5em;
+  margin:1.8em;
   width:15em;
-  height:15em;
+  min-width:15em;
+  height:15.5em;
   /* overflow-y: scroll; */
   overflow-x: hidden;
   word-wrap: break-word;
   position:relative;
-}
-
-.card_emoji:hover{
-  cursor: pointer;
+  border-radius: 0.5em;
+  border: 2px solid hsla(323, 98%, 60%, .8);
 }
 
 .card-footer{
   position: absolute;
-  bottom:1em;
+  bottom:.5em;
   text-align: center;
   margin:auto;
+  font-size:1.2em;
+  font-weight:bold;
+}
+
+.card-script{
+  font-family: 'Festive', cursive;
+  font-size:1.5em;
 }
 
 .card-footer span{
-  margin:0 1.8em;
+  margin:0 1.2em;
+}
+
+textarea{
+  resize: none;
+  height: 11em;
+  width: 15em;
+  margin: 1em 0.5em;
+  padding:0.8em;
+}
+
+.card button{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.add-card{
+  font-size:7em;
+  text-align:center;
+  margin:0.3em 0;
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
+
+.right{
+  margin-left:6.25em !important;
 }
