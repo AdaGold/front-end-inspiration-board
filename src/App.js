@@ -16,17 +16,34 @@ function App() {
 
   const [reload, setReload] = useState(false)
 
-  useEffect(() => {
-    getBoards()
+  useEffect(async() => {
+    const newState = { ...state }
+    let boards = await getBoards()
+    console.log({boards})
+    let cards = await getCards(boards[0].id)
+
+    newState.cards = cards
+    newState.boards = boards
+    newState.currentBoard = boards[0]
+    setState(newState)
+
+    // useEffect(() => {
+    //   // Using an IIFE
+    //   (async function anyNameFunction() {
+    //     await loadContent();
+    //   })();
+    // }, []);
 
   }, [reload])
 
-  const getBoards = () => {
+  const getBoards = async() => {
     const newState = { ...state }
-    axios.get(`${apiUrl}/boards`)
+    return axios.get(`${apiUrl}/boards`)
       .then((res) => {
-        newState.boards = res.data[0]
-        setState(newState)
+        return res.data[0]
+        // console.log("state.boards[0]", state.boards)
+        // newState.currentBoard = res.data[0][0]
+        // setState(newState)
       })
       .catch((e) => {
         console.log('error!', e);
@@ -123,7 +140,7 @@ function App() {
           <BoardList boards={state.boards} onBoardClick={onBoardClick} currentBoard={state.currentBoard} />
           <div>
             <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda" />
-            <h2>{state.currentBoard.title}</h2>
+            {state.currentBoard && state.currentBoard.title ? <h2>{state.currentBoard.title}</h2> : ''}
           </div>
           <NewBoard createBoard={createBoard} />
         </div>
