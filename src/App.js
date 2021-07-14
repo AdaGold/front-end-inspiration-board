@@ -1,96 +1,118 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
 import NewBoard from './components/NewBoard';
-import NewCard from './components/NewCard';
+import axios from 'axios';
+
 
 function App() {
+  const apiUrl = "https://space-panda-inspiration-board.herokuapp.com"
   const [state, setState] = useState({
-    boards: [{
-      "board_id": 1,
-      "title": "Food",
-      "owner": 'Albert'
-    },
-    {
-      "board_id": 2,
-      "title": "Music",
-      "owner": 'Maggie'
-    }
-    ],
-    cards: [{
-      'board_id': 1,
-      "card_id": 1,
-      "message": "Seafood pasta is my favorite",
-      "likes_count": 2
-    },
-    {
-      'board_id': 1,
-      "card_id": 2,
-      "message": "Hello - Adele",
-      "likes_count": 2
-    }
-    ],
-    currentBoard: {
-      "board_id": 1,
-      "title": "Food",
-      "owner": 'Albert'
-    }
-
+    boards: [],
+    cards: [],
+    currentBoard: {}
   })
 
-  const onBoardClick = (board) => {
-    setCurrentBoard(board)
-    getCards(board.board_id)
+  const [reload, setReload] = useState(false)
+
+  useEffect(() => {
+    getBoards()
+
+  }, [reload])
+
+  const getBoards = () => {
+    const newState = { ...state }
+    axios.get(`${apiUrl}/boards`)
+      .then((res) => {
+        newState.boards = res.data[0]
+        setState(newState)
+      })
+      .catch((e) => {
+        console.log('error!', e);
+      });
   }
 
-  const setCurrentBoard = (board) => {
+  const onBoardClick = async (board) => {
     const newState = { ...state }
+    let cards = await getCards(board.id)
     newState.currentBoard = board
+    newState.cards = cards
     setState(newState)
   }
 
-  const getCards = (board_id) => {
-    const newState = { ...state }
-    // make a call to the API for cards currentBoard.board_id
-    // then set state.cards to those
-    // newState.cards = res of API CALL
-    // setState(newState)
+  const getCards = (id) => {
+    return axios.get(`${apiUrl}/boards/${id}/cards`)
+      .then((res) => {
+        return res.data.tasks
+      })
+      .catch((e) => {
+        console.log('error!', e);
+      });
   }
 
   const createBoard = (board) => {
-    board.board_id = board.title.length
-    const newState = { ...state }
-    newState.boards.push(board)
-    setState(newState)
+    axios.post(`${apiUrl}/boards`, {
+      owner: board.owner,
+      title: board.title
+    })
+      .then(() => {
+        setReload(true)
+        setReload(false)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  const createCard = (card) => {
-    card.board_id = state.currentBoard
+  const createCard = async (card) => {
+    card.board_id = state.currentBoard.id
     card.likes_count = 0
-    const newState = { ...state }
-    card.card_id = state.cards.length + 1
-    newState.cards.push(card)
-    setState(newState)
+    axios.post(`${apiUrl}/cards`, card)
+      .then(() => {
+        return getCards(state.currentBoard.id)
+      })
+      .then((cards) => {
+        const newState = { ...state }
+        newState.cards = cards
+        setState(newState)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   const deleteCard = (id) => {
-    const newState = { ...state }
-    newState.cards = newState.cards.filter(card => card.card_id !== id)
-    setState(newState)
+    axios.delete(`${apiUrl}/cards/${id}`)
+      .then(() => {
+        return getCards(state.currentBoard.id)
+      })
+      .then((cards) => {
+        const newState = { ...state }
+        newState.cards = cards
+        setState(newState)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  const likeCard = (id) => {
-    const newState = { ...state }
-    // let updateCard = newState.cards.filter(card => card.card_id == id)
-    for (let i = 0; i < newState.cards.length; i++) {
-      let card = newState.cards[i]
-      if (card.card_id == id) {
-        card.likes_count++
-      }
-    }
-    setState(newState)
+  const likeCard = (card) => {
+    card.likes_count++
+    axios.put(`${apiUrl}/cards/${card.id}`, card)
+      .then(() => {
+        const newState = { ...state }
+        for (let i = 0; i < newState.cards.length; i++) {
+          let c = newState.cards[i]
+          if (c.card_id === card.id) {
+            c.likes_count++
+          }
+        }
+        setState(newState)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
@@ -98,11 +120,13 @@ function App() {
       <header><h1>Inspiration Board</h1></header>
       <main>
         <div className="boards">
-          <BoardList boards={state.boards} onBoardClick={onBoardClick} />
-          <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda"/>
+          <BoardList boards={state.boards} onBoardClick={onBoardClick} currentBoard={state.currentBoard} />
+          <div>
+            <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda" />
+            <h2>{state.currentBoard.title}</h2>
+          </div>
           <NewBoard createBoard={createBoard} />
         </div>
-        <h2>{state.currentBoard.title}</h2>
         <CardList createCard={createCard} cards={state.cards} deleteCard={deleteCard} likeCard={likeCard} />
       </main>
     </div>
