@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'
 
 const BoardList = ({ boards, onBoardClick }) => {
     console.log({ boards })
@@ -10,11 +11,13 @@ const BoardList = ({ boards, onBoardClick }) => {
     return (
         <div>
             <h1>List of Boards</h1>
-            {boards && boards.length > 0 && boards.map(board => {
+            <div className='board'>
+                {boards && boards.length > 0 && boards.map(board => {
                 return (
-                    <p key={board.board_id} onClick={e => onClick(e, board)}>{board.title}</p>
+                    <p className='board-title'key={board.board_id} onClick={e => onClick(e, board)}>{board.title}</p>
                 )
             })}
+            </div>
         </div>
     )
 }

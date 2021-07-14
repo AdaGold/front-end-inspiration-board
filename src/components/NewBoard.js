@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import '../App.css'
 
 const NewBoard = ({ createBoard }) => {
     const [formData, setFormData] = useState({
@@ -24,19 +25,20 @@ const NewBoard = ({ createBoard }) => {
     return (
         <div>
             <h1>Create A New Board</h1>
-            <form onSubmit={onFormSubmited}>
-                <label>
-                    Title:
-                    <input type='text' id='title' value={formData.title} onChange={textInput} />
-                </label>
-                <label>
-                    Owner:
-                    <input type='text' id='owner' value={formData.owner} onChange={textInput} />
-                </label>
-                Preview: {formData.title} - {formData.owner}
-                <input type='submit' />
-            </form>
-
+            <div className='board-form'>
+                <form onSubmit={onFormSubmited}>
+                    <label>
+                        Title:
+                        <input type='text' id='title' value={formData.title} onChange={textInput} />
+                    </label>
+                    <label>
+                        Owner:
+                        <input type='text' id='owner' value={formData.owner} onChange={textInput} />
+                    </label>
+                    <p className='preview'>Preview:<br/>{formData.title} - {formData.owner}</p><br/>
+                    <input className='submit-btn' type='submit'/>
+                </form>`
+            </div>
         </div>
     )
 }
