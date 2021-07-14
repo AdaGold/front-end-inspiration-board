@@ -2,11 +2,11 @@ import React from 'react'
 
 const Card = ({ card, deleteCard, likeCard }) => {
     const onDeleteCard = () => {
-        deleteCard(card.card_id)
+        deleteCard(card.id)
     }
 
     const onLikeCard = () => {
-        likeCard(card.card_id)
+        likeCard(card)
     }
     return (
         <div className="card">

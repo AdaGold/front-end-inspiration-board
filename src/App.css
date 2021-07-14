@@ -26,10 +26,19 @@ main{
   flex-wrap: wrap;
 }
 
+.boards img{
+  height: 70%;
+  margin-right: 4em;
+}
+
+.boards h2{
+  margin: 0.5em auto;
+}
+
 .board{
   border: 2px solid hsla(323, 98%, 60%, .8);
   width:15em;
-  height:12em;
+  height:17em;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #fef5ff;
@@ -39,9 +48,22 @@ main{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(96, 96, 96, 0.35) 0px -2px 6px 0px inset;
 }
 
+.board-title{
+padding: .2em .4em;
+}
+
 .board-title:hover{
   cursor: pointer;
   background-color:white;
+}
+
+.active.board-title:hover{
+  cursor: pointer;
+  background-color:#ffe0f3;
+}
+
+.active{
+  background-color:#ffe0f3;
 }
 
 .board-form{
@@ -78,6 +100,7 @@ main{
   display: flex;
   flex-direction:row;
   flex-wrap: wrap;
+  margin-top: 1.5em;
 }
 
 .card{
