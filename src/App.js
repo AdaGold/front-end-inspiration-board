@@ -16,17 +16,22 @@ function App() {
 
   const [reload, setReload] = useState(false)
 
-  useEffect(() => {
-    getBoards()
+  useEffect(async() => {
+    const newState = { ...state }
+    let boards = await getBoards()
+    let cards = await getCards(boards[0].id)
+
+    newState.cards = cards
+    newState.boards = boards
+    newState.currentBoard = boards[0]
+    setState(newState)
 
   }, [reload])
 
-  const getBoards = () => {
-    const newState = { ...state }
-    axios.get(`${apiUrl}/boards`)
+  const getBoards = async() => {
+    return axios.get(`${apiUrl}/boards`)
       .then((res) => {
-        newState.boards = res.data[0]
-        setState(newState)
+        return res.data[0]
       })
       .catch((e) => {
         console.log('error!', e);
@@ -123,7 +128,7 @@ function App() {
           <BoardList boards={state.boards} onBoardClick={onBoardClick} currentBoard={state.currentBoard} />
           <div>
             <img src='https://i0.wp.com/thumbs.gfycat.com/GreedyRightCrustacean-max-1mb.gif' alt="panda" />
-            <h2>{state.currentBoard.title}</h2>
+            {state.currentBoard && state.currentBoard.title ? <h2>{state.currentBoard.title}</h2> : ''}
           </div>
           <NewBoard createBoard={createBoard} />
         </div>
