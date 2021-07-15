@@ -11,11 +11,13 @@ const BoardList = ({ boards, onBoardClick, currentBoard }) => {
         <div>
             <h1>List of Boards</h1>
             <div className='board'>
+            <div className="hearts">
                 {boards && boards.length > 0 && boards.map(board => {
                     return (
-                        <p className={board.id === currentBoard.id ? "active board-title" : "board-title"} key={board.id} onClick={e => onClick(e, board)}>{board.title}</p>
+                        <p className={board.id === currentBoard.id ? "active board-title" : "board-title"} key={board.id} onClick={e => onClick(e, board)}>{board.title} <div className="heart">♡</div> <div className="heart">♡</div> <div className="heart">♡</div> <div className="heart">♡</div></p>
                     )
                 })}
+                </div>
             </div>
         </div>
     )

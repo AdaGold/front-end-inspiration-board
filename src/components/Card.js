@@ -10,7 +10,13 @@ const Card = ({ card, deleteCard, likeCard }) => {
     }
     return (
         <div className="card">
+               <div className="hearts">
             <p>{card.message}</p>
+            <div className="heart">♡</div>
+                            <div className="heart">♡</div>
+                            <div className="heart">♡</div>
+                            <div className="heart">♡</div>
+            </div>
             <div className="card-footer">
                 <span>{card.likes_count} 💕</span>
                 <span onClick={onLikeCard} className="pointer card-script">+1</span>
