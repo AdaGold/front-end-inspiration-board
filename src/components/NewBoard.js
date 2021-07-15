@@ -25,11 +25,10 @@ const NewBoard = ({ createBoard }) => {
     return (
         <div>
             <h1>Create A New Board</h1>
-            {/* <div> */}
-          
+         
                 <form onSubmit={onFormSubmited} className='board'>
                     <div className="hearts">
-                        <div style={{margin:'1em'}}>
+                        <div style={{margin:'2em auto', padding:'2em'}}>
                             <label className="label">
                                 Title:
                                 <input type='text' id='title' value={formData.title} onChange={textInput} />
@@ -39,7 +38,9 @@ const NewBoard = ({ createBoard }) => {
                                 <input type='text' id='owner' value={formData.owner} onChange={textInput} />
                             </label>
                             <p className='preview'>Preview:<br/>{formData.title} - {formData.owner}</p>
-                            <input className='submit-btn' type='submit'/>
+                            <div className="card-script">
+                                 <button className="submit-btn" type='submit'>Submit</button>
+                            </div>
                         
                             </div>
                                         
@@ -49,12 +50,6 @@ const NewBoard = ({ createBoard }) => {
                             <div className="heart">♡</div>
                     </div>
                 </form>      
-
-               
-             
-                
-            {/* </div> */}
-
         </div>
     )
 }

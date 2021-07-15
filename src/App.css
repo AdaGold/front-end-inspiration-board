@@ -36,8 +36,8 @@ main{
 
 .board{
   border: 2px solid hsla(323, 98%, 60%, .8);
-  width:17em;
-  height:20em;
+  width:18em;
+  height:22.2em;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #fef5ff;
@@ -66,9 +66,16 @@ padding: .2em .4em;
 }
 
 .board label, .board input{
-  padding:0.8em; 
-
+  padding:0.8em;
 }
+
+
+.board input{
+  margin: 0.5em 0;
+}
+/* label{
+  display: flex;
+} */
 
 .hearts {
   width: 100%; 
@@ -145,14 +152,8 @@ padding: .2em .4em;
 .preview{
  text-align:center;
  margin:1em 0 0 0;
-}
-
-.submit-btn{
- background-color: white;
- color:#7C008F;
-}
-
-
+  }
+  
 .cards-list{
   display: flex;
   flex-direction:row;
@@ -202,7 +203,7 @@ textarea{
   padding:0.8em;
 }
 
-.card button{
+.card button, .submit-btn{
 	background: none;
 	color: inherit;
 	border: none;
@@ -210,6 +211,7 @@ textarea{
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  font-weight: bold;
 }
 
 .add-card{

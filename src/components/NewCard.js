@@ -13,7 +13,6 @@ const NewCard = ({ createCard }) => {
         setFormData((current) => ({ ...current, [field]: value }));
     };
 
-
     const onFormSubmited = (e) => {
         e.preventDefault()
         createCard(formData)
@@ -24,6 +23,7 @@ const NewCard = ({ createCard }) => {
 
     const toggleShowForm = () => {
         setShowForm(!showForm)
+        setFormData({ 'message': '' })
     }
 
     return (
@@ -36,7 +36,7 @@ const NewCard = ({ createCard }) => {
                     <textarea id='message' value={formData.message} onChange={textInput} />
                     <div className="card-footer card-script">
                         <button type='submit'>Submit</button>
-                        <span onClick={toggleShowForm} className="pointer right">➖</span>
+                        <span onClick={toggleShowForm} className="pointer right">✖️</span>
                     </div>
                 </form>
             }
