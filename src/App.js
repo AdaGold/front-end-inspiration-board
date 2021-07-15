@@ -4,12 +4,12 @@ import BoardsList from './components/BoardsList';
 import Board from './components/Board';
 
 function App() {
-  const [selectedBoard, setSelectedBoard] = useState();
+  const [selectedBoard, setSelectedBoard] = useState(1);
 
   return (
     <div className="App">
       <BoardsList selectedBoard={selectedBoard} setSelectedBoard={setSelectedBoard} />
-      <Board />
+      <Board selectedBoard={selectedBoard} />
     </div>
   );
 }

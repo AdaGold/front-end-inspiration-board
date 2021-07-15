@@ -5,24 +5,28 @@ import PropTypes from 'prop-types';
 function BoardsList({ selectedBoard, setSelectedBoard }) {
   const [boards, setBoards] = useState()
 
-  useEffect( async () => {
-    const b = await new InspirationApi().getBoard();
-    setBoards(b)
-  }, [])
+  const fetchBoard = async () => {
+    const board = await new InspirationApi().getBoard();
+    setBoards(board);
+    return;
+  }
+
+  useEffect(() => {
+    if (!selectedBoard) return;
+    fetchBoard();
+  }, [selectedBoard])
 
   return (
-    <>
+    <div className="boards-list-container">
       { boards?.map(board => {
-        // TODO: update selected board on click 
+        const isSelected = selectedBoard === board.id;
         return(
-          <div>
-            <p>{selectedBoard === board.id && 'SELECTED' }</p>
-            <p>{board.title}</p>
-            <p>{board.owner}</p>
+          <div className="boards-list-item">
+            <h2 onClick={() => setSelectedBoard(board.id)} className={isSelected ? 'board-selected' : ''}>{board.title} - {board.owner}</h2>
           </div>
         )
       })}
-    </>
+    </div>
   );
 }
 
