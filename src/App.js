@@ -16,19 +16,22 @@ function App() {
 
   const [reload, setReload] = useState(false)
 
-  useEffect(async() => {
-    const newState = { ...state }
-    let boards = await getBoards()
-    let cards = await getCards(boards[0].id)
+  useEffect(() => {
+    async function fetchData() {
+      const boards = await getBoards()
+      const cards = await getCards(boards[0].id)
 
-    newState.cards = cards
-    newState.boards = boards
-    newState.currentBoard = boards[0]
-    setState(newState)
-
+      const newState = { ...state }
+      newState.cards = cards
+      newState.boards = boards
+      newState.currentBoard = boards[0]
+      setState(newState)
+    }
+    fetchData();
+    // eslint-disable-next-line
   }, [reload])
 
-  const getBoards = async() => {
+  const getBoards = async () => {
     return axios.get(`${apiUrl}/boards`)
       .then((res) => {
         return res.data[0]
