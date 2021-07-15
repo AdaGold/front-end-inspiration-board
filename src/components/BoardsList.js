@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import InspirationApi from '../api/inspirationApi';
 import PropTypes from 'prop-types';
+import Card from './Card';
 
 function BoardsList({ selectedBoard, setSelectedBoard }) {
   const [boards, setBoards] = useState()
 
-  const fetchBoard = async () => {
-    const board = await new InspirationApi().getBoard();
-    setBoards(board);
+  const fetchBoards = async () => {
+    const b = await new InspirationApi().getBoards();
+    setBoards(b);
     return;
   }
 
   useEffect(() => {
-    fetchBoard();
+    fetchBoards();
   }, [selectedBoard])
 
   return (
