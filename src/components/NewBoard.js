@@ -26,22 +26,33 @@ const NewBoard = ({ createBoard }) => {
         <div>
             <h1>Create A New Board</h1>
             {/* <div> */}
+          
                 <form onSubmit={onFormSubmited} className='board'>
-                    <div style={{padding:'2em'}}>
-                        <label className="label">
-                            Title:
-                            <input type='text' id='title' value={formData.title} onChange={textInput} />
-                        </label><br/>
-                        <label >
-                            Owner:
-                            <input type='text' id='owner' value={formData.owner} onChange={textInput} />
-                        </label>
-                        <p className='preview'>Preview:<br/>{formData.title} - {formData.owner}</p>
-                        <input className='submit-btn' type='submit'/>
+                    <div className="hearts">
+                        <div style={{margin:'1em'}}>
+                            <label className="label">
+                                Title:
+                                <input type='text' id='title' value={formData.title} onChange={textInput} />
+                            </label><br/>
+                            <label >
+                                Owner:
+                                <input type='text' id='owner' value={formData.owner} onChange={textInput} />
+                            </label>
+                            <p className='preview'>Preview:<br/>{formData.title} - {formData.owner}</p>
+                            <input className='submit-btn' type='submit'/>
+                        
+                            </div>
+                                        
+                            <div className="heart">♡</div>
+                            <div className="heart">♡</div>
+                            <div className="heart">♡</div>
+                            <div className="heart">♡</div>
                     </div>
-                </form>
+                </form>      
 
-                {/* <span className='heart'>♡</span> */}
+               
+             
+                
             {/* </div> */}
 
         </div>
