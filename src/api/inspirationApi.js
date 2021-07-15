@@ -1,12 +1,20 @@
 class InspirationApi {
 
-    async mockCards() {
+    async mockCards(boardId) {
         const cards = [
-            { boardId: 1, title: 'first card', message: 'gotta do it' },
-            { boardId: 1, title: 'second card', message: 'gotta do it 2' },
-            { boardId: 1, title: 'third card', message: 'gotta do it 3' }
-          ];
-        return cards;
+            { boardId: 1, title: 'first card', message: 'board 1 -- card 1' },
+            { boardId: 1, title: 'second card', message: 'board 1 -- card 2' },
+            { boardId: 1, title: 'third card', message: 'board 1 -- card 3' },
+            { boardId: 2, title: 'first card', message: 'board 2 -- card 1' },
+            { boardId: 2, title: 'second card', message: 'board 2 -- card 2' },
+            { boardId: 2, title: 'third card', message: 'board 2 -- card 3' },
+            { boardId: 3, title: 'first card', message: 'board 3 -- card 1' },
+            { boardId: 3, title: 'second card', message: 'board 3 -- card 2' },
+            { boardId: 3, title: 'third card', message: 'board 3 -- card 3' }
+        ];
+
+        // return cards
+        return cards.filter(board => board.boardId === boardId);
     }
     
     async mockBoard() {
@@ -22,9 +30,9 @@ class InspirationApi {
         // TODO: replace below with get.axios
         return this.mockBoard();
     }
-    async getCards() {
+    async getCards(boardId) {
         // TODO: replace below with get.axios
-        return this.mockCards();
+        return this.mockCards(boardId);
     }
 };
 
