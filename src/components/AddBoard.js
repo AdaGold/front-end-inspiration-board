@@ -16,7 +16,6 @@ const AddBoard = ({ onAdd }) => {
 
         setTitle('')
         setOwner('')
-
     }
 
     return (

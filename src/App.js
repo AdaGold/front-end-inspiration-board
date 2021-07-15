@@ -15,11 +15,12 @@ function App() {
   const [showAddBoard, setShowAddBoard] = useState(false)
   const [boards, setBoards] = useState([])
 
+  const getBoards = async () => {
+    const boardsFromServer = await fetchBoards()
+    setBoards(boardsFromServer)
+  }
+
   useEffect(() => {
-    const getBoards = async () => {
-      const boardsFromServer = await fetchBoards()
-      setBoards(boardsFromServer)
-    }
 
     getBoards()
   }, [])
