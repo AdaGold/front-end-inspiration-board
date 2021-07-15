@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Yomogi&display=swap');
+
+body{
+  color:#7C008F;
+  background-color: #ffebf7;
+  font-family: 'Yomogi', cursive;
+}
+
+h1,h2{
+  font-family: 'Festive', cursive;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+h2{
+  margin-bottom:0
+}
+main{
+  margin:2em;
+}
+
+.boards{
+  display: flex;
+  justify-content:space-between;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+
+.boards img{
+  width:100%;
+}
+
+.boards h2{
+  margin: 0.5em auto;
+}
+
+.board{
+  border: 2px solid hsla(323, 98%, 60%, .8);
+  width:18em;
+  height:22.2em;
+  overflow: hidden;
+  background-color: #fef5ff;
+  margin: 1.8em;
+  border-radius: 0.5em;
+  padding:0 1em 0 1em;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(96, 96, 96, 0.35) 0px -2px 6px 0px inset;
+}
+
+.board-title{
+padding: .2em .4em;
+}
+
+.board-title:hover{
+  cursor: pointer;
+  background-color:white;
+}
+
+.active.board-title:hover{
+  cursor: pointer;
+  background-color:#ffe0f3;
+}
+
+.active{
+  background-color:#ffe0f3;
+}
+
+.board label, .board input{
+  font-size:18px;
+  padding:0.3em;
+}
+
+
+.board input{
+  margin: 0.5em 0;
+}
+/* label{
+  display: flex;
+} */
+
+.hearts {
+  width: 100%; 
+   min-height: 300px;
+   position: relative;
+
+ }
+ 
+ .heart{
+  font-size: 2em;
+  opacity: 0;
+  animation-delay: 0s;
+   position: absolute;
+   animation: floating-heart 6.2s infinite cubic-bezier(0.5, 0.5, 0.5, 0.5);
+
+ }
+ 
+ .heart:nth-child(1) {  
+   animation-delay: 1s;
+ }
+ 
+ .heart:nth-child(2) {
+   animation-delay: 2s;
+ }
+ 
+ .heart:nth-child(3) {
+   animation-delay: 3s;
+ }
+ 
+ .heart:nth-child(4) {
+   animation-delay: 4s;
+ }
+ 
+ @keyframes floating-heart {
+   0% {
+     bottom: 0%;
+     left: 0%;
+   }
+   10% {
+     bottom: 20%;
+     left: 70%;
+   }
+   20% {
+    color:rgb(45, 97, 20);
+    opacity: 1;
+     bottom: 40%;
+     left: 10%;
+   }
+   30% {
+     bottom: 60%;
+     left: 50%;
+   }
+   40% {
+    color:rgb(85, 5, 101);
+
+    opacity: 1;
+     bottom: 80%;
+     left: 5%;
+   }
+   48% {
+     opacity: 0;
+     bottom: 100%;
+     left: 60%;
+   }
+   80% {
+     opacity: 0;
+     bottom: 100%;
+     left: 0%;
+   }
+ }
+ 
+ 
+
+.preview{
+ text-align:center;
+ margin:1em 0 0 0;
+  }
+  
+.cards-list{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin-top: 1.5em;
+}
+
+.card{
+  background-color: #fef5ff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(96, 96, 96, 0.35) 0px -2px 6px 0px inset;
+  padding:1em;
+  margin:1.8em;
+  width:15em;
+  min-width:15em;
+  height:15.5em;
+  overflow: hidden;
+  word-wrap: break-word;
+  position:relative;
+  border-radius: 0.5em;
+  border: 2px solid hsla(323, 98%, 60%, .8);
+}
+
+.card-footer{
+  position: absolute;
+  bottom:.5em;
+  text-align: center;
+  margin:auto;
+  font-size:1.2em;
+  font-weight:bold;
+}
+
+.card-script{
+  font-family: 'Festive', cursive;
+  font-size:1.5em;
+}
+
+.card-footer span{
+  margin:0 1.2em;
+}
+
+textarea{
+  resize: none;
+  height: 11em;
+  width: 15em;
+  margin: 1em 0.5em;
+  padding:0.8em;
+}
+
+.card button, .submit-btn{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-weight: bold;
+  font-size:24px;
+}
+
+.add-card{
+  font-size:7em;
+  text-align:center;
+  margin:0.3em 0;
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
+
+.right{
+  margin-left:6.25em !important;
+}
+
+p{
+  font-size:18px;
+}
