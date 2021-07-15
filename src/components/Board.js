@@ -4,19 +4,19 @@ import InspirationApi from '../api/inspirationApi';
 import Card from './Card';
 // import PropTypes from 'prop-types';
 
-const Board = ({ selectedBoard }) => { 
+const Board = ({ selectedBoardId }) => { 
   const [cards, setCards] = useState();
 
   const fetchCards = async () => {
-    const cards = await new InspirationApi().getCards(selectedBoard);
+    const cards = await new InspirationApi().getCards(selectedBoardId);
     setCards(cards);
     return;
   } 
 
   useEffect(() => {
-    if (!selectedBoard) return;
+    if (!selectedBoardId) return;
     fetchCards();
-  }, [selectedBoard])
+  }, [selectedBoardId])
 
   return (
     <div className="cardsFlexBox">

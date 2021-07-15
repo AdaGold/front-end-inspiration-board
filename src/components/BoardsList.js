@@ -12,17 +12,16 @@ function BoardsList({ selectedBoard, setSelectedBoard }) {
   }
 
   useEffect(() => {
-    if (!selectedBoard) return;
     fetchBoard();
   }, [selectedBoard])
 
   return (
     <div className="boards-list-container">
       { boards?.map(board => {
-        const isSelected = selectedBoard === board.id;
+        const isSelected = selectedBoard?.id === board.id;
         return(
           <div className="boards-list-item">
-            <h2 onClick={() => setSelectedBoard(board.id)} className={isSelected ? 'board-selected' : ''}>{board.title} - {board.owner}</h2>
+            <h2 onClick={() => setSelectedBoard(board)} className={isSelected ? 'board-selected' : ''}>{board.title} - {board.owner}</h2>
           </div>
         )
       })}
