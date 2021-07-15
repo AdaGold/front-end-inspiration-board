@@ -38,8 +38,7 @@ main{
   border: 2px solid hsla(323, 98%, 60%, .8);
   width:18em;
   height:22.2em;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   background-color: #fef5ff;
   margin: 1.8em;
   border-radius: 0.5em;
@@ -66,7 +65,8 @@ padding: .2em .4em;
 }
 
 .board label, .board input{
-  padding:0.8em;
+  font-size:18px;
+  padding:0.3em;
 }
 
 
@@ -169,8 +169,7 @@ padding: .2em .4em;
   width:15em;
   min-width:15em;
   height:15.5em;
-  /* overflow-y: scroll; */
-  overflow-x: hidden;
+  overflow: hidden;
   word-wrap: break-word;
   position:relative;
   border-radius: 0.5em;
@@ -212,6 +211,7 @@ textarea{
 	cursor: pointer;
 	outline: inherit;
   font-weight: bold;
+  font-size:24px;
 }
 
 .add-card{
@@ -226,4 +226,8 @@ textarea{
 
 .right{
   margin-left:6.25em !important;
+}
+
+p{
+  font-size:18px;
 }
