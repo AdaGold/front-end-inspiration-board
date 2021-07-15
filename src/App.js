@@ -9,8 +9,10 @@ import Header from './components/Header';
 import Boards from './components/Boards';
 import Cards from './components/Cards';
 import Footer from './components/Footer';
+import AddBoard from './components/AddBoard';
 
 function App() {
+  const [showAddBoard, setShowAddBoard] = useState(false)
   const [boards, setBoards] = useState([])
 
   useEffect(() => {
@@ -38,15 +40,36 @@ function App() {
     return data
   }
 
+  // Add Board
+  const addBoard = async (board) => {
+    const res = await fetch('https://inspo--board.herokuapp.com/boards', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(board),
+    })
+
+    const data = await res.json()
+
+    setBoards([...boards, data])
+  }
+
   return (
     <div className="App">
       <Header />
-      <Boards boards={boards} />
+      <Boards 
+        onAdd={() => setShowAddBoard(!showAddBoard)}
+        showAdd={showAddBoard}
+        boards={boards} 
+      />
+      {showAddBoard && <AddBoard onAdd={addBoard}/>}
       <Route
           path='/'
           exact
           render={(props) => (
             <>
+              {showAddBoard && <AddBoard onAdd={addBoard} />}
               {boards.length > 0 ? (
                 <Boards
                   boards={boards}
