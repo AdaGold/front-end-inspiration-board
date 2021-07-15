@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const boards = [
     { id: 1, title: 'board 1', owner: 'andrea'},
     { id: 2, title: 'board 2', owner: 'jacob'},
@@ -37,7 +39,15 @@ class InspirationApi {
     }
     async getBoards() {
         // TODO: replace below with get.axios
-        return this.mockBoards();
+        // console.log('RESPONSE', this.mockBoards())
+        // return this.mockBoards();
+        return axios.get('https://duck-backend.herokuapp.com/boards')
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
     }
     async getCards(boardId) {
         // TODO: replace below with get.axios
@@ -46,3 +56,18 @@ class InspirationApi {
 };
 
 export default InspirationApi;
+
+// response.data:
+// [
+//     {
+//         "board_id": 1,
+//         "owner": "duck",
+//         "title": "duck"
+//     },
+//     {
+//         "board_id": 2,
+//         "owner": "Quacker McQuackFace",
+//         "title": "An super cool duck board"
+//     }
+// ]
+
