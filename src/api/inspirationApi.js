@@ -34,6 +34,26 @@ class InspirationApi {
         return boards;
     }
 
+    async incrementCardLike(cardLikes) {
+        return cardLikes + 1;
+    }
+
+    async incrementCardLike() {
+        // backend not yet implemented 
+    }
+
+    async addCard(boardId, message) {
+        return axios.post(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`, message)
+            .then((response) => {
+                console.log('POST response', response)
+                return response.data;
+            })
+            .catch((error) => {
+                console.log('POST error', error)
+                return error;
+            });
+    }
+
     async addBoard(board) {
         // return this.mockNewBoard(board);
         
