@@ -7,6 +7,7 @@ const Card = (props) => {
         <div className='card'>
             <div>
                 <p>{props.card.message}</p>
+                <p>{props.card.likes_count} 🐼</p>
             </div>
         </div>
     )
