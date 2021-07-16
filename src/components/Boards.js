@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from './Button';
 
 const Boards = (props) => {
+    console.log(props)
     return (
         <div style={{display: 'flex',
         alignItems: 'center',
@@ -19,7 +20,12 @@ const Boards = (props) => {
                 </Card.Header>
                 <Card.Body>
                     {props.boards.map((board) => (
-                        <Board key={board.board_id} board={board} onDelete={props.onDelete} />
+                        <Board 
+                            key={board.board_id} 
+                            board={board} 
+                            onDelete={props.onDelete} 
+                            onClick={props.onClick}
+                        />
                     ))}
                 </Card.Body>   
             </Card>
