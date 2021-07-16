@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const boards = [
     { id: 1, title: 'board 1', owner: 'andrea'},
     { id: 2, title: 'board 2', owner: 'jacob'},
@@ -32,16 +34,61 @@ class InspirationApi {
         return boards;
     }
 
+    async incrementCardLike(cardLikes) {
+        return cardLikes + 1;
+    }
+
+    async incrementCardLike() {
+        // backend not yet implemented 
+    }
+
+    async addCard(boardId, message) {
+        return axios.post(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`, message)
+            .then((response) => {
+                console.log('POST response', response)
+                return response.data;
+            })
+            .catch((error) => {
+                console.log('POST error', error)
+                return error;
+            });
+    }
+
     async addBoard(board) {
-        return this.mockNewBoard(board);
+        // return this.mockNewBoard(board);
+        
+        return axios.post('https://duck-backend.herokuapp.com/boards', board)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
     }
+
     async getBoards() {
-        // TODO: replace below with get.axios
-        return this.mockBoards();
+        // return this.mockBoards();
+        return axios.get('https://duck-backend.herokuapp.com/boards')
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
     }
+
     async getCards(boardId) {
-        // TODO: replace below with get.axios
-        return this.mockCards(boardId);
+        // return this.mockCards(boardId);
+        
+        return axios.get(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`)
+        .then((response) => {
+            console.log('AXIOS', response)
+            return response.data.cards;
+        })
+        .catch((error) => {
+            console.log('get cards failed!', error)
+            return [];
+        });
     }
 };
 

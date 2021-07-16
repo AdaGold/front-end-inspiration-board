@@ -15,7 +15,7 @@ function App() {
         <SelectedBoardInfo selectedBoard={selectedBoard} />
         <NewBoardForm setSelectedBoard={setSelectedBoard} />
       </section>
-      <Board selectedBoardId={selectedBoard?.id} />
+      <Board selectedBoardId={selectedBoard} />
     </div>
   );
 }
