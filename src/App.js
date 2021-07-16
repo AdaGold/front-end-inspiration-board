@@ -15,6 +15,8 @@ import AddBoard from './components/AddBoard';
 function App() {
   const [showAddBoard, setShowAddBoard] = useState(false)
   const [boards, setBoards] = useState([])
+  const [selectedBoard, setSelectedBoard] = useState({ title: '', owner: '', board_id: null })
+  const [cards, setCards] = useState([])
 
   const getBoards = async () => {
     const boardsFromServer = await fetchBoards()
@@ -34,14 +36,6 @@ function App() {
     return data
   }
 
-  // Fetch Board
-  // const fetchBoard = async (id) => {
-  //   const res = await fetch(`https://inspo--board.herokuapp.com/boards/${id}`)
-  //   const data = await res.json()
-
-  //   return data
-  // }
-
   // Add Board
   const addBoard = async (board) => {
     const res = await fetch('https://inspo--board.herokuapp.com/boards', {
@@ -57,12 +51,43 @@ function App() {
     setBoards([...boards, data])
   }
 
-  const deleteBoard = async (id) => {
-    axios.delete(`https://inspo--board.herokuapp.com/boards/${id}`)
+  const deleteBoard = async (board_id) => {
+    axios.delete(`https://inspo--board.herokuapp.com/boards/${board_id}`)
       .then(() => {
           getBoards()
       })
+      .catch((e) => {
+        console.log('error!', e);
+      });
   }
+
+  const onClickBoard = (board_id) => {
+    console.log("hello", board_id)
+    return axios.get(`https://inspo--board.herokuapp.com/boards/${board_id}/cards`)
+      .then((res) => {
+        console.log(res.data.cards)
+        setCards(res.data.cards)
+      })
+      .catch((e) => {
+        console.log('error!', e);
+      });
+  }
+
+  const selectBoard = (board) => {
+    setSelectedBoard(board)
+  }
+
+  // Get Cards
+  // const getCards = (board_id) => {
+  //   console.log(board_id)
+  //   return axios.get(`https://inspo--board.herokuapp.com/boards/${board_id}/cards`)
+  //     .then((res) => {
+  //       return 
+  //     })
+  //     .catch((e) => {
+  //       console.log('error!', e);
+  //     });
+  // }
 
   return (
     <div className="App">
@@ -72,6 +97,8 @@ function App() {
         showAdd={showAddBoard}
         boards={boards} 
         onDelete={deleteBoard}
+        onClick={onClickBoard}
+        setBoard={selectBoard}
       />
       {showAddBoard && <AddBoard onAdd={addBoard}/>}
       <Route
@@ -91,7 +118,10 @@ function App() {
             </>
           )}
         />
-      <Cards />
+      <Cards 
+        cards={cards}
+        setCards={setCards}
+      />
       <Footer />
     </div>
   );

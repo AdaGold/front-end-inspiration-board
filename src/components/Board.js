@@ -10,7 +10,7 @@ const Board = ( props ) => {
     return (
         <div className='board'>
             <ListGroup as="ul">
-                <ListGroup.Item as="li">
+                <ListGroup.Item as="li" onClick={()=> props.onClick(props.board.board_id)}>
                     {props.board.title}
                     <FaTrash 
                         className='alignright' 
