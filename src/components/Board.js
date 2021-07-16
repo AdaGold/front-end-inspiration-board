@@ -8,7 +8,9 @@ const Board = ({ selectedBoardId }) => {
   const [cards, setCards] = useState();
 
   const fetchCards = async () => {
+    console.log('selectedBoardId', selectedBoardId)
     const cards = await new InspirationApi().getCards(selectedBoardId);
+    console.log('CARDS', cards)
     setCards(cards);
     return;
   } 

@@ -19,10 +19,11 @@ function BoardsList({ selectedBoard, setSelectedBoard }) {
   return (
     <div className="boards-list-container">
       { boards?.map(board => {
-        const isSelected = selectedBoard?.board_id === board.board_id;
+        const isSelected = selectedBoard === board.board_id;
+        console.log('SELECTED BOARD', board)
         return(
           <div className="boards-list-item">
-            <h2 onClick={() => setSelectedBoard(board)} className={isSelected ? 'board-selected' : ''}>{board.title} - {board.owner}</h2>
+            <h2 onClick={() => setSelectedBoard(board.board_id)} className={isSelected ? 'board-selected' : ''}>{board.title} - {board.owner}</h2>
           </div>
         )
       })}

@@ -51,7 +51,17 @@ class InspirationApi {
     }
     async getCards(boardId) {
         // TODO: replace below with get.axios
-        return this.mockCards(boardId);
+        // return this.mockCards(boardId);
+        
+
+        return axios.get(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`)
+        .then((response) => {
+            console.log('AXIOS', response)
+            return response.data.cards;
+        })
+        .catch((error) => {
+            return error;
+        });
     }
 };
 
