@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.nav-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.boards-list-container {
+  background-color: palegoldenrod;
+  padding: 10px;
+  max-width: 500px;
+  height: 350px;
+  overflow: scroll;
+}
+
+.form-flex-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.boards-list-item {
+  margin: 0;
+}
+
+.board-selected {
+  background-color: orange;
+}
+
+.cards-flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 40px;
+  justify-content: center;
+  width: 100%;
+}
+
+.new-card-textbox {
+  height: 100px;
+}
+
+.card {
+  text-align: left;
+  margin-left: 10px;
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  background-color: palegoldenrod;
+}
+
+.selected-board-info-container {
+  max-width: 500px;
+  font-size: 2rem;
+  background-color: palegoldenrod;
+  padding: 40px;
+}
+
+.new-board-form-container {
+  margin-top: 40px;
+}
