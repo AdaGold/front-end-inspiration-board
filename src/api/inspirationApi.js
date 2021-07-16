@@ -35,11 +35,18 @@ class InspirationApi {
     }
 
     async addBoard(board) {
-        return this.mockNewBoard(board);
+        // return this.mockNewBoard(board);
+        
+        return axios.post('https://duck-backend.herokuapp.com/boards', board)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                return error;
+            });
     }
+
     async getBoards() {
-        // TODO: replace below with get.axios
-        // console.log('RESPONSE', this.mockBoards())
         // return this.mockBoards();
         return axios.get('https://duck-backend.herokuapp.com/boards')
             .then((response) => {
@@ -49,35 +56,20 @@ class InspirationApi {
                 return error;
             });
     }
+
     async getCards(boardId) {
-        // TODO: replace below with get.axios
         // return this.mockCards(boardId);
         
-
         return axios.get(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`)
         .then((response) => {
             console.log('AXIOS', response)
             return response.data.cards;
         })
         .catch((error) => {
-            return error;
+            console.log('get cards failed!', error)
+            return [];
         });
     }
 };
 
 export default InspirationApi;
-
-// response.data:
-// [
-//     {
-//         "board_id": 1,
-//         "owner": "duck",
-//         "title": "duck"
-//     },
-//     {
-//         "board_id": 2,
-//         "owner": "Quacker McQuackFace",
-//         "title": "An super cool duck board"
-//     }
-// ]
-
