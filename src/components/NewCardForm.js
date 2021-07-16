@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import InspirationApi from '../api/inspirationApi';
 
-const NewCardForm = ({setSelectedBoard}) => {
+const NewCardForm = ({ selectedBoardId, fetchCards }) => {
   const [cardMessage, setCardMessage] = useState('');
 
   const onNewCardSubmit = async (e) => {
     e.preventDefault();
-    const newCreatedCard = await new InspirationApi().addCard(message);
+    await new InspirationApi().addCard(selectedBoardId, cardMessage);
+
     setCardMessage('');
+
+    setTimeout(() => {
+      fetchCards();
+    }, 1000);
   };
 
   const onMessageChange = (event) => {
@@ -18,7 +23,7 @@ const NewCardForm = ({setSelectedBoard}) => {
     <form onSubmit={(e) => onNewCardSubmit(e)}>
       <label>
         New Card:
-        <textarea maxLength="40" type="text" value={boardFormFields.title} onChange={onTitleChange} />
+        <textarea maxLength="40" type="text" value={cardMessage} onChange={onMessageChange} />
       </label>
       <input type="submit" value="Submit" />
     </form> 

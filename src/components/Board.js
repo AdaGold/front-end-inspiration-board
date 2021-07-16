@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InspirationApi from '../api/inspirationApi';
-
+import NewCardForm from './NewCardForm';
 import Card from './Card';
 // import PropTypes from 'prop-types';
 
@@ -20,6 +20,7 @@ const Board = ({ selectedBoardId }) => {
 
   return (
     <div className="cardsFlexBox">
+      <NewCardForm selectedBoardId={selectedBoardId} fetchCards={fetchCards} />
       { cards?.map(card => <Card card={card} /> ) }
     </div>
   )
