@@ -3,6 +3,7 @@ import { BrowserRouter as Route } from 'react-router-dom';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import axios from 'axios';
 
 //Components
 import Header from './components/Header';
@@ -34,12 +35,12 @@ function App() {
   }
 
   // Fetch Board
-  const fetchBoard = async (id) => {
-    const res = await fetch(`https://inspo--board.herokuapp.com/boards/${id}`)
-    const data = await res.json()
+  // const fetchBoard = async (id) => {
+  //   const res = await fetch(`https://inspo--board.herokuapp.com/boards/${id}`)
+  //   const data = await res.json()
 
-    return data
-  }
+  //   return data
+  // }
 
   // Add Board
   const addBoard = async (board) => {
@@ -56,6 +57,13 @@ function App() {
     setBoards([...boards, data])
   }
 
+  const deleteBoard = async (id) => {
+    axios.delete(`https://inspo--board.herokuapp.com/boards/${id}`)
+      .then(() => {
+          getBoards()
+      })
+  }
+
   return (
     <div className="App">
       <Header />
@@ -63,6 +71,7 @@ function App() {
         onAdd={() => setShowAddBoard(!showAddBoard)}
         showAdd={showAddBoard}
         boards={boards} 
+        onDelete={deleteBoard}
       />
       {showAddBoard && <AddBoard onAdd={addBoard}/>}
       <Route
@@ -74,6 +83,7 @@ function App() {
               {boards.length > 0 ? (
                 <Boards
                   boards={boards}
+                  onDelete={deleteBoard}
                 />
               ) : (
                 'No Boards To Show'

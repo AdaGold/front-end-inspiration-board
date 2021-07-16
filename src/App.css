@@ -14,3 +14,10 @@
   padding: 1em;
   margin-top: auto;
 }
+
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
