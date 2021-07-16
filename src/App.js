@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <section className='nav-flex-container'>
         <BoardsList selectedBoard={selectedBoard} setSelectedBoard={setSelectedBoard} />
-        <SelectedBoardInfo selectedBoard={selectedBoard} />
+        <SelectedBoardInfo selectedBoardId={selectedBoard} />
         <NewBoardForm setSelectedBoard={setSelectedBoard} />
       </section>
       <Board selectedBoardId={selectedBoard} />

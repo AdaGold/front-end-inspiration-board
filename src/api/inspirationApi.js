@@ -45,11 +45,9 @@ class InspirationApi {
     async addCard(boardId, message) {
         return axios.post(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`, message)
             .then((response) => {
-                console.log('POST response', response)
                 return response.data;
             })
             .catch((error) => {
-                console.log('POST error', error)
                 return error;
             });
     }
@@ -82,7 +80,6 @@ class InspirationApi {
         
         return axios.get(`https://duck-backend.herokuapp.com/boards/${boardId}/cards`)
         .then((response) => {
-            console.log('AXIOS', response)
             return response.data.cards;
         })
         .catch((error) => {

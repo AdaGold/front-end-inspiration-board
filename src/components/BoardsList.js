@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import InspirationApi from '../api/inspirationApi';
 import PropTypes from 'prop-types';
-import Card from './Card';
 
 function BoardsList({ selectedBoard, setSelectedBoard }) {
   const [boards, setBoards] = useState()
@@ -20,7 +19,6 @@ function BoardsList({ selectedBoard, setSelectedBoard }) {
     <div className="boards-list-container">
       { boards?.map(board => {
         const isSelected = selectedBoard === board.board_id;
-        console.log('SELECTED BOARD', board)
         return(
           <div className="boards-list-item">
             <h2 onClick={() => setSelectedBoard(board.board_id)} className={isSelected ? 'board-selected' : ''}>{board.title} - {board.owner}</h2>
