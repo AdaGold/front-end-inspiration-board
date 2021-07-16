@@ -10,9 +10,11 @@ function App() {
 
   return (
     <div className="App">
-      <BoardsList selectedBoard={selectedBoard} setSelectedBoard={setSelectedBoard} />
-      <NewBoardForm setSelectedBoard={setSelectedBoard} />
-      <SelectedBoardInfo selectedBoard={selectedBoard} />
+      <section className='nav-flex-container'>
+        <BoardsList selectedBoard={selectedBoard} setSelectedBoard={setSelectedBoard} />
+        <SelectedBoardInfo selectedBoard={selectedBoard} />
+        <NewBoardForm setSelectedBoard={setSelectedBoard} />
+      </section>
       <Board selectedBoardId={selectedBoard?.id} />
     </div>
   );

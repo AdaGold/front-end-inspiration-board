@@ -32,17 +32,21 @@ const NewBoardForm = ({setSelectedBoard}) => {
   };
 
   return (
+
     <form onSubmit={(e) => onNewBoardSubmit(e)}>
-      <label>
-        New Board Title:
-        <input type="text" value={boardFormFields.title} onChange={onTitleChange} />
-      </label>
-      <label>
-        Board Owner:
-        <input type="text" value={boardFormFields.owner} onChange={onOwnerChange} />
-      </label>
-      <input type="submit" value="Submit" />
+      <section className="form-flex-container">
+        <label>
+          New Board Title:
+          <input type="text" value={boardFormFields.title} onChange={onTitleChange} />
+        </label>
+        <label>
+          Board Owner:
+          <input type="text" value={boardFormFields.owner} onChange={onOwnerChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </section>
     </form> 
+
   )
 }
 
