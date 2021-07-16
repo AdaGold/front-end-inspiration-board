@@ -21,3 +21,14 @@
 .alignright {
   float: right;
 }
+
+.card {
+  border: 3px solid #fff;
+  padding: 20px;
+}
+
+.card-child{
+  width: 50%;
+  padding: 20px;
+  border: 2px solid purple;
+}
