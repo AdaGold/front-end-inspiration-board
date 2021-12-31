@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+
+body {
+  margin: 3rem;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  background-color: rgb(126, 224, 229);
+}
+
+h2 {
+  padding: 0.6em 1em;
+  display: inline-block;
+  color: black;
+  text-align: center;
+}
+
+h1 {
+  color:black;
+  text-align:center;
+  font-family: 'Architects Daughter', cursive;
+  transform: rotate(-5deg) skew(-10deg);
+  font-weight: bolder;
+}
+
+.boards__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.boards__list {
+  max-height: 9rem;
+  min-height: 9rem;
+  overflow: scroll;
+  margin-right: 2rem;
+  border: black solid 1px;
+} 
+.boards__list {
+  align-items: center;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.new-board-form__container,
+.new-card-form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.new-board-form__form,
+.new-card-form__form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.new-board-form__form-submit-btn,
+.new-board-form__toggle-btn,
+.new-card-form__form-submit-btn {
+  /* padding: 0.5em;
+  background-color: white;
+  border: 2px solid black; */
+  border: none;
+  background: #20bf55;;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-left: 25px;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+}
+
+.new-board-form__form-submit-btn,
+.new-board-form__toggle-btn,
+.new-card-form__form-submit-btn:hover { 
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
+}
+.cards__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.card-items__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 2rem;
+}
+
+.card-item {
+  font-family: 'Architects Daughter', cursive;
+  color: black;
+  background-color: #fbff12;
+  box-shadow: -10px 7px 7px rgb(14, 13, 13);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+/* 
+ul li:nth-child(even) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background: #006120;
+    color: white;
+}
+
+ul li:nth-child(3n) {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+    background: #b79ced;
+    color: black;
+}
+
+ul li:nth-child(5n) {
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+    background: #ff6b6b;
+    color: white;
+}
+ul li:nth-child(7n) {
+    transform:rotate(4deg);
+    position:relative;
+    top:10px;
+    background: #59d2fe;
+    color: black;
+}
+
+ul li:hover,ul li:focus{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
+    position:relative;
+    z-index:5;
+}
+*/
+
+.card-item__controls {
+  font-family: "Open Sans", sans-serif;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.card-item__message {
+  text-align: center;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+.card-item__controls > li:hover, .footer__delete-btn:hover {
+  text-decoration: underline;
+}
+
+input {
+  /* box-sizing: content-box; */
+    margin: 40px 25px;
+    width: 200px;
+    display: block;
+    border: none;
+    padding: 10px 0;
+    border-bottom: solid 5px #20bf55;
+    transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, #20bf55 4%);
+    background-position: -200px 0;
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    color: darken(#20bf55, 20%);
+}
+input:focus, input:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+}
+
+.invalid-form-input {
+  border-bottom: red solid 1px;
+  box-shadow: 10 10 5px red;
+}
+
+footer {
+  text-align: center;
+}
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content__container {
+  flex: 1 0 auto;
+}
+
+/* Add a background color to the top navigation */
+.top__nav {
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  overflow: hidden;
+  box-shadow: 0px 15px 10px -15px #111;
+  border-radius: 25px;
+  margin-bottom: 50px;
+}
+
+/* Style the links inside the navigation bar */
+.top__nav select, .top__nav section{
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.top__nav select:hover {
+  background-color: #ddd;
+  color: green;
+}
+
+/* Add a color to the active/current link */
+.top__nav select.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.select__dropdown {
+  border-radius: 25px
+}
