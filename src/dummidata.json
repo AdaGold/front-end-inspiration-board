@@ -1,10 +1,36 @@
-{
+[
     {
-        
-
+        "board_id": 0,
+        "title": "test board",
+        "owner": "max",
+        "cards": [
+            {
+                "card_id": 0,
+                "message": "test card 1",
+                "likes_count": 0
+            },
+            {
+                "card_id": 1,
+                "message": "test card 2",
+                "likes_count": 0
+            }
+        ]
+    },
+    {
+        "board_id": 1,
+        "title": "test board 2",
+        "owner": "max",
+        "cards": [
+            {
+                "card_id": 2,
+                "message": "test card 3",
+                "likes_count": 0
+            },
+            {
+                "card_id": 3,
+                "message": "test card 4",
+                "likes_count": 0
+            }
+        ]
     }
-
-
-
-
-}
+]
