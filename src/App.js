@@ -18,6 +18,19 @@ function App() {
     }
   };
 
+  const createBoard = (newBoardData) => {
+    // this is pulling from dummi data need 2 update when linking to backend
+    const nextId = Math.max(...data.map(board => board.board_id)) + 1;
+    
+    const newBoard = {
+      id: nextId, 
+      title: newBoardData.title,
+      owner: newBoardData.owner,
+      cards: [],
+    }
+    console.log(newBoard)
+  }
+
   return (
     <div className="App">
       {/* Side bar which contains website title, board list, and creat board form */}
@@ -33,7 +46,7 @@ function App() {
         </nav>
 
         <div id="board-form">
-          <BoardForm />
+          <BoardForm createBoard={createBoard}/>
         </div>
         <div id="card-wall">
           <CardWall cards={currentBoard.cards} onUpdateSelected={selectBoard} />
