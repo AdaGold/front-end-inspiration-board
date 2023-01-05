@@ -23,7 +23,7 @@ function App() {
     const nextId = Math.max(...data.map(board => board.board_id)) + 1;
     
     const newBoard = {
-      id: nextId, 
+      board_id: nextId, 
       title: newBoardData.title,
       owner: newBoardData.owner,
       cards: [],
