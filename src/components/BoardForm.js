@@ -7,8 +7,21 @@ const BoardForm = () => {
     owner: "",
   });
 
-  const setTitle = (event) => {};
-  const setOwner = (event) => {};
+  const setTitle = (event) => {
+    setFormFields({
+      ...formFields,
+      title: event.target.value
+    });
+
+  };
+  const setOwner = (event) => {
+      setFormFields({
+        ...formFields,
+        owner: event.target.value
+      });
+      
+
+  };
 
   return (
     <form>
