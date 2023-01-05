@@ -7,29 +7,30 @@ import CardWall from "./components/CardWall";
 import data from "./dummidata.json";
 
 function App() {
-  const [currentBoard, setBoard] = useState(data[0]);
-  console.log(currentBoard);
+  const [currentBoard, setBoard] = useState({
+    board_id: null,
+    title: null,
+    owner: null,
+    cards: [],
+  });
 
   const selectBoard = (selectedBoard) => {
-    for (const board in data) {
-      if (selectedBoard.id === board.id) {
-        setBoard(board);
-      }
-    }
+    setBoard(selectedBoard);
+    console.log(currentBoard);
   };
 
   const createBoard = (newBoardData) => {
     // this is pulling from dummi data need 2 update when linking to backend
-    const nextId = Math.max(...data.map(board => board.board_id)) + 1;
-    
+    const nextId = Math.max(...data.map((board) => board.board_id)) + 1;
+
     const newBoard = {
-      id: nextId, 
+      id: nextId,
       title: newBoardData.title,
       owner: newBoardData.owner,
       cards: [],
-    }
-    console.log(newBoard)
-  }
+    };
+    console.log(newBoard);
+  };
 
   return (
     <div className="App">
@@ -42,14 +43,14 @@ function App() {
       {/* board menu contains board select and drop down create board form */}
       <div id="board-menu">
         <nav>
-          <BoardList />
+          <BoardList onSelect={selectBoard} />
         </nav>
 
         <div id="board-form">
-          <BoardForm createBoard={createBoard}/>
+          <BoardForm createBoard={createBoard} />
         </div>
         <div id="card-wall">
-          <CardWall cards={currentBoard.cards} onUpdateSelected={selectBoard} />
+          <CardWall cards={currentBoard.cards} />
         </div>
       </div>
     </div>

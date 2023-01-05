@@ -1,10 +1,23 @@
 import data from "../dummidata.json";
+import PropTypes from "prop-types";
 
-const BoardList = () => {
+const BoardList = (props) => {
   const boardList = data.map((board) => {
-    return <button>{board.title}</button>;
+    return (
+      <button
+        onClick={() => {
+          props.onSelect(board);
+        }}
+      >
+        {board.title}
+      </button>
+    );
   });
   return <div>{boardList}</div>;
+};
+
+BoardList.propTypes = {
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default BoardList;
