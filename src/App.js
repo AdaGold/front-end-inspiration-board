@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import axios from "axios";
+import Board from "./components/Board";
+import NewBoard from "./components/NewBoardForm";
+import Header from "./components/Header";
+// import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
+  // run on component initialization
+  useEffect(() => {
+    runAxios();
+  }, []);
+
+  async function runAxios() {
+    console.log("runAxios()");
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .then((response) => {
+        console.log(response.data);
+      });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <NewBoard />
+      <Board id={123} owner="maggie" title="something inspirational" />
+      {/* <Footer /> */}
     </div>
   );
 }
-
-export default App;
