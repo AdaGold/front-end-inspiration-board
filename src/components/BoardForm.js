@@ -5,38 +5,57 @@ import PropTypes from 'prop-types';
 
 
 const BoardForm = (props) => {
+    const [formFields, setFormFields] = useState({title: '',owner: ''})
 
 
     console.log('render')
     const onTitleChange = (event) => {
-        props.setFormFields({...props.state,title:event.target.value})
+        setFormFields({...formFields,title: event.target.value})
 
     };
     const onOwnerChange = (event) => {
-        props.setFormFields({...props.state,owner:event.target.value})
+        setFormFields({...formFields,owner:event.target.value})
     }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.addBoardData({
+            title: formFields.title,
+            owner: formFields.owner
+        });
+
+        setFormFields({
+            title: '',
+            owner: '',
+        });
+    };
+        console.log('submitted!')
+
     console.log(onTitleChange)
     console.log(onOwnerChange)
     return (
 
-    <form>
+    <form onSubmit={handleSubmit}>
         <div>
             <label htmlFor='Title'>Board title </label>
-            <input name='Title' value= {props.state.title} onChange={onTitleChange}></input>
+            <input name='Title' value= {formFields.title} onChange={onTitleChange}></input>
             
         </div>
         <div>
             <label htmlFor='Owner'>Owner of board</label>
-            <input name='Owner' value={props.state.owner} onChange={onOwnerChange}></input>
+            <input name='Owner' value={formFields.owner} onChange={onOwnerChange}></input>
         </div>
+        <input
+                type="submit"
+                value="Add Board" />
+       
     </form>
     
 
 )};
 
 BoardForm.propTypes = {
-    state: PropTypes.array.isRequired,
-    setFormFields : PropTypes.func.isRequired
+    addBoard: PropTypes.func.isRequired
+    
 };
 
 

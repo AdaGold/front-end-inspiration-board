@@ -4,13 +4,24 @@ import BoardForm from './components/BoardForm';
 import {useState} from 'react'
 import React from 'react';
 function App() {
-  const [formFields, setFormFields] = useState([])
+  const [BoardData, setBoardData] = useState([])
+  
+  const addBoardData = newBoard => {
+
+    const newBoardList = [...BoardData];
+
+    newBoardList.push({
+      title: newBoard.title,
+      owner: newBoard.owner
+    });
+    setBoardData(newBoardList)
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <BoardForm state={formFields}setFormFields={setFormFields}></BoardForm>
+          <BoardForm addBoard={addBoardData} ></BoardForm>
         </div>
       
       </header>
