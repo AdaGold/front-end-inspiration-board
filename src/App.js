@@ -1,11 +1,23 @@
 import "./App.css";
 import React from "react";
+import { useState } from "react";
 import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
 import CardWall from "./components/CardWall";
 import data from "./dummidata.json";
 
 function App() {
+  const [currentBoard, setBoard] = useState(data[0]);
+  console.log(currentBoard);
+
+  const selectBoard = (selectedBoard) => {
+    for (const board in data) {
+      if (selectedBoard.id === board.id) {
+        setBoard(board);
+      }
+    }
+  };
+
   return (
     <div className="App">
       {/* Side bar which contains website title, board list, and creat board form */}
@@ -24,7 +36,7 @@ function App() {
           <BoardForm />
         </div>
         <div id="card-wall">
-          <CardWall cards={data[0].cards} />
+          <CardWall cards={currentBoard.cards} onUpdateSelected={selectBoard} />
         </div>
       </div>
     </div>
