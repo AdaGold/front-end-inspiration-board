@@ -24,20 +24,24 @@ const BoardForm = (props) => {
     event.preventDefault();
     // This function works now, the error was a syntax error in the way we were passing this down from App. 
     // On submit we now update state
-    if (formFields.title !== '' || formFields.owner !== '') {
-    props.addBoard({
-      title: formFields.title,
-      owner: formFields.owner,
-    })
-    } 
-    else {
-        alert("Fields can\'t be blank")
-    };
+    newFunction();
 
     setFormFields({
       title: "",
       owner: "",
     });
+
+    function newFunction() {
+      if (formFields.title !== '' || formFields.owner !== '') {
+        props.addBoard({
+          title: formFields.title,
+          owner: formFields.owner,
+        });
+      }
+      else {
+        alert("Fields can\'t be blank");
+      };
+    }
   };
   // How is this being stored in our App's state empty list? 
 
