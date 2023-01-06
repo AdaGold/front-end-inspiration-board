@@ -28,21 +28,21 @@ const CreateNewBoard = (props) => {
   return (
     <div className="create-new-board">
       <h2>Create A New Board</h2>
-      <form class="add-board">
+      <form className="add-board">
         <label>Owner:</label>
-        <input type="text" placeholder="enter name" name="Owner" />
+        <input type="text" placeholder="enter name" name="owner" />
         <br />
         <br />
         <label>Title:</label>
         <input type="text" placeholder="enter title" title="title" />
         <br />
         <br />
-        <input type="Submit" className="new-board-sub-buttn"></input>
+        <input type="submit" className="new-board-sub-button"></input>
         {/* <button onClick={handleClick}>Submit</button> */}
       </form>
       <br />
       <br />
-      <span class="hide-board-toggle">Hide New Board Form</span>
+      <span className="hide-board-toggle">Hide New Board Form</span>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import axios from "axios";
 import Board from "./components/Board";
 import NewBoard from "./components/NewBoardForm";
 import Header from "./components/Header";
+import Card from './components/Card'
 // import Footer from "./components/Footer";
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
       <Header />
       <NewBoard />
       <Board id={123} owner="maggie" title="something inspirational" />
+      <Card />
       {/* <Footer /> */}
     </div>
   );

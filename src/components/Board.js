@@ -15,7 +15,7 @@ const Board = (props) => {
         <section>
           <h2>id={props.id}</h2>
           <h2>title={props.title}</h2>
-          <h2>owner={props.owner}></h2>
+          <h2>owner={props.owner}</h2> 
         </section>
       </div>
     )
