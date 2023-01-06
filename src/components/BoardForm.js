@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+
 
 const BoardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -21,8 +22,9 @@ const BoardForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    props.addBoardData({
+    // This function works now, the error was a syntax error in the way we were passing this down from App. 
+    // On submit we now update state
+    props.addBoard({
       title: formFields.title,
       owner: formFields.owner,
     });
