@@ -15,34 +15,48 @@ function App() {
     owner: null,
     cards: [],
   });
+  const [error, setError] = useState("");
 
   const selectBoard = (selectedBoard) => {
     setBoard(selectedBoard);
+    setError("");
     console.log(currentBoard);
   };
 
   const createBoard = (newBoardData) => {
     // this is pulling from dummi data need 2 update when linking to backend
-    const nextId = Math.max(...data.map((board) => board.board_id)) + 1;
-    const newBoard = {
-      board_id: nextId,
-      title: newBoardData.title,
-      owner: newBoardData.owner,
-      cards: [],
-    };
-    console.log(newBoard);
+    if (newBoardData.title && newBoardData.owner) {
+      const nextId = Math.max(...data.map((board) => board.board_id)) + 1;
+      const newBoard = {
+        board_id: nextId,
+        title: newBoardData.title,
+        owner: newBoardData.owner,
+        cards: [],
+      };
+      setError("");
+      console.log(newBoard);
+    } else {
+      setError("Error: Boards must have a title and an owner!");
+    }
   };
 
   const createCard = (newCardData) => {
-    const nextId =
-      Math.max(...currentBoard.cards.map((card) => card.card_id)) + 1;
-    const newCard = {
-      card_id: nextId,
-      message: newCardData.message,
-      likes_count: 0,
-    };
-    console.log(newCard);
-    console.log(`added to board id ${currentBoard.board_id}`);
+    if (!newCardData.message) {
+      setError("Error: Cards must have a message!");
+    } else if (newCardData.message.length > 40) {
+      setError("Error: Cards must be less than 40 characters long!");
+    } else {
+      const nextId =
+        Math.max(...currentBoard.cards.map((card) => card.card_id)) + 1;
+      const newCard = {
+        card_id: nextId,
+        message: newCardData.message,
+        likes_count: 0,
+      };
+      setError("");
+      console.log(newCard);
+      console.log(`added to board id ${currentBoard.board_id}`);
+    }
   };
 
   return (
