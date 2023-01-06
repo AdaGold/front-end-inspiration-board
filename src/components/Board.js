@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-//start with post component for connecting to backend
-//PROPS
-//createNewBoard
-//STATE
-//title, owner
 
 const Board = (props) => {
   // console.log(props);

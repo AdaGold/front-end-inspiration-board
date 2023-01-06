@@ -32,3 +32,13 @@ export default function App() {
     </div>
   );
 }
+
+//functions that will communicate with back-end
+
+//post(URL), post info (title,owner,
+
+//get(URL--use above code), get boards
+
+//post(URL), post info for cards
+
+//get(URL), get card info
