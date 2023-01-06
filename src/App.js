@@ -32,7 +32,16 @@ function App() {
     console.log(newBoard);
   };
 
-  const createCard = (newCardData) => {};
+  const createCard = (newCardData) => {
+    const nextId = Math.max(currentBoard.cards.map((card) => card.card_id)) + 1;
+    const newCard = {
+      card_id: nextId,
+      message: newCardData.message,
+      likes_count: 0,
+    };
+    console.log(newCard);
+    console.log(`added to board id ${currentBoard.board_id}`);
+  };
 
   return (
     <div className="App">
@@ -50,12 +59,12 @@ function App() {
         <div id="board-form">
           <BoardForm createBoard={createBoard} />
         </div>
-        <div>
-          <CardForm createCard={createCard} />
-        </div>
         <div id="card-wall">
           <CardWall cards={currentBoard.cards} />
         </div>
+      </div>
+      <div>
+        <CardForm createCard={createCard} />
       </div>
     </div>
   );
