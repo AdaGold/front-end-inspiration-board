@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
+import CardForm from "./components/CardForm";
 import CardWall from "./components/CardWall";
 import data from "./dummidata.json";
 
@@ -22,7 +23,6 @@ function App() {
   const createBoard = (newBoardData) => {
     // this is pulling from dummi data need 2 update when linking to backend
     const nextId = Math.max(...data.map((board) => board.board_id)) + 1;
-
     const newBoard = {
       board_id: nextId,
       title: newBoardData.title,
@@ -31,6 +31,8 @@ function App() {
     };
     console.log(newBoard);
   };
+
+  const createCard = (newCardData) => {};
 
   return (
     <div className="App">
@@ -45,9 +47,11 @@ function App() {
         <nav>
           <BoardList onSelect={selectBoard} />
         </nav>
-
         <div id="board-form">
           <BoardForm createBoard={createBoard} />
+        </div>
+        <div>
+          <CardForm createCard={createCard} />
         </div>
         <div id="card-wall">
           <CardWall cards={currentBoard.cards} />
