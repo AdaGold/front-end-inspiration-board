@@ -47,27 +47,30 @@ function App() {
     <div className="App">
       {/* Side bar which contains website title, board list, and creat board form */}
 
-      <header>
-        <h1 id="title">The Burn Book</h1>
-      </header>
-
-      {/* board menu contains board select and drop down create board form */}
-      <div id="board-menu">
-        <nav>
-          <BoardList onSelect={selectBoard} />
-        </nav>
-        <div id="board-form">
-          <BoardForm createBoard={createBoard} />
+      <div id="sidebar">
+        <div id="logo">
+          <img
+            src={require("./assets/burn-book-logo.jpeg")}
+            alt="logo"
+            width="100%"
+          ></img>
         </div>
-        <div id="card-wall">
-          <CardWall cards={currentBoard.cards} />
+
+        {/* board menu contains board select and drop down create board form */}
+        <div id="board-menu">
+          <nav id="board-list">
+            <BoardList onSelect={selectBoard} />
+          </nav>
+
+          <div id="board-form">
+            <BoardForm createBoard={createBoard} />
+          </div>
         </div>
       </div>
-      <div>
-        <CardForm createCard={createCard} />
+      <div id="card-wall">
+        <CardWall cards={currentBoard.cards} />
       </div>
     </div>
   );
 }
-
 export default App;
