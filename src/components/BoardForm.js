@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const BoardForm = (props) => {
-  const [formFields, setFormFields] = useState({ title: "", owner: "" });
+  const [formFields, setFormFields] = useState({
+    title: "",
+    owner: "",
+  });
 
-  console.log("rendering BoardForm");
+  console.log("~~rendering BoardForm.js main function component~~");
 
   const onTitleChange = (event) => {
+    console.log("current value: ", event.target.value);
     setFormFields({ ...formFields, title: event.target.value });
   };
 
   const onOwnerChange = (event) => {
+    console.log("current value: ", event.target.value);
     setFormFields({ ...formFields, owner: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     props.addBoardData({
       title: formFields.title,
       owner: formFields.owner,
@@ -26,10 +32,11 @@ const BoardForm = (props) => {
       owner: "",
     });
   };
+  // How is this being stored in our App's state empty list?
 
-  console.log("Form submitted!");
-  console.log(onTitleChange);
-  console.log(onOwnerChange);
+  console.log("~~onTitleChange: ", onTitleChange);
+  console.log("~~onOwnerChange: ", onOwnerChange);
+  console.log("~~lifting up state:", handleSubmit);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -41,6 +48,7 @@ const BoardForm = (props) => {
           onChange={onTitleChange}
         ></input>
       </div>
+
       <div>
         <label htmlFor="Owner">Owner of board</label>
         <input
@@ -49,13 +57,22 @@ const BoardForm = (props) => {
           onChange={onOwnerChange}
         ></input>
       </div>
+
       <input type="submit" value="Add Board" />
     </form>
   );
 };
 
-// BoardForm.propTypes = {
-//   addBoardData: PropTypes.object.isRequired,
-// };
+BoardForm.propTypes = {
+  addBoard: PropTypes.func.isRequired,
+};
 
 export default BoardForm;
+
+/*
+OnTitleChange() and onOwnerChange() are not updating 
+    live as you type on the form. (nothing logs to the console);
+--> Everything re-renders with each new letter though.
+
+Q: is '...FormFields' the problem?
+*/
