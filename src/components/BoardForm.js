@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types"
-
+import PropTypes from "prop-types";
 
 const BoardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -22,7 +21,7 @@ const BoardForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // This function works now, the error was a syntax error in the way we were passing this down from App. 
+    // This function works now, the error was a syntax error in the way we were passing this down from App.
     // On submit we now update state
     newFunction();
 
@@ -32,22 +31,16 @@ const BoardForm = (props) => {
     });
 
     function newFunction() {
-      if (formFields.title !== '' || formFields.owner !== '') {
+      if (formFields.owner && formFields.title) {
         props.addBoard({
           title: formFields.title,
           owner: formFields.owner,
         });
+      } else {
+        alert("Fields can't be blank");
       }
-      else {
-        alert("Fields can\'t be blank");
-      };
     }
   };
-  // How is this being stored in our App's state empty list? 
-
-  console.log("~~onTitleChange: ", onTitleChange);
-  console.log("~~onOwnerChange: ", onOwnerChange);
-  console.log("~~lifting up state:", handleSubmit);
 
   return (
     <form onSubmit={handleSubmit}>
