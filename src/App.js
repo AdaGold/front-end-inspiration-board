@@ -2,26 +2,26 @@ import "./App.css";
 import BoardForm from "./components/BoardForm";
 import { useState } from "react";
 import React from "react";
-import Select from 'react-select'
+import Select from "react-select";
 
 function App() {
   const [BoardData, setBoardData] = useState([]);
-  const [Options, setOptions] = useState([])
+  const [Options, setOptions] = useState([]);
 
   const addBoardData = (newBoard) => {
     const newBoardList = [...BoardData];
-    const optionsList = [...Options]
+    const optionsList = [...Options];
 
     newBoardList.push({
       title: newBoard.title,
       owner: newBoard.owner,
     });
-    optionsList.push({ 
+    optionsList.push({
       value: "Title",
       label: newBoard.title,
       bgColor: "#da3b01", // background color of each title in select
-      color: "#fAf"  // text color of each title in select
-    })
+      color: "#fAf", // text color of each title in select
+    });
     setBoardData(newBoardList);
     setOptions(optionsList);
   };
@@ -32,8 +32,8 @@ function App() {
       fontWeight: state.isSelected ? "bold" : "normal",
       color: state.data.color,
       backgroundColor: state.data.bgColor,
-      fontSize: state.selectProps.myFontSize
-    })
+      fontSize: state.selectProps.myFontSize,
+    }),
   };
   // is this 'push' pushing our data from BoardForm.js
   //            into the empty state list?
