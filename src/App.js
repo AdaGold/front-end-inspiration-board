@@ -34,7 +34,8 @@ function App() {
   };
 
   const createCard = (newCardData) => {
-    const nextId = Math.max(currentBoard.cards.map((card) => card.card_id)) + 1;
+    const nextId =
+      Math.max(...currentBoard.cards.map((card) => card.card_id)) + 1;
     const newCard = {
       card_id: nextId,
       message: newCardData.message,
