@@ -6,6 +6,7 @@ import BoardForm from "./components/BoardForm";
 import CardForm from "./components/CardForm";
 import CardWall from "./components/CardWall";
 import data from "./dummidata.json";
+// import Card from "./components/Card";
 
 function App() {
   const [currentBoard, setBoard] = useState({
@@ -67,8 +68,14 @@ function App() {
           </div>
         </div>
       </div>
-      <div id="card-wall">
-        <CardWall cards={currentBoard.cards} />
+      {/* card menu contains card for selected board and form to add a new card */}
+      <div id="card-menu">
+        <div id="card-wall">
+          <CardWall cards={currentBoard.cards} />
+        </div>
+        <div id="card-form">
+          <CardForm createCard={createCard} />
+        </div>
       </div>
     </div>
   );
