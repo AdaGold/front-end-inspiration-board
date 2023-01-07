@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
@@ -20,7 +20,7 @@ function App() {
   const selectBoard = (selectedBoard) => {
     setBoard(selectedBoard);
     setError("");
-    console.log(currentBoard);
+    console.log(currentBoard); // for debugging
   };
 
   const createBoard = (newBoardData) => {
@@ -34,7 +34,7 @@ function App() {
         cards: [],
       };
       setError("");
-      console.log(newBoard);
+      console.log(newBoard); // replace with CREATE axios call
     } else {
       setError("Error: Boards must have a title and an owner!");
     }
@@ -58,6 +58,8 @@ function App() {
       console.log(`added to board id ${currentBoard.board_id}`);
     }
   };
+
+  // hides/shows board form when toggle button is clicked
   const [boardFormStatus, setBoardFormStatus] = useState("hidden");
   const toggleBoardForm = () => {
     if (!boardFormStatus) {
@@ -66,6 +68,16 @@ function App() {
       setBoardFormStatus("");
     }
   };
+
+  // hides card form when no board is selected
+  const [cardFormStatus, setCardFormStatus] = useState("hidden");
+  useEffect(() => {
+    if (!currentBoard.title) {
+      setCardFormStatus("hidden");
+    } else {
+      setCardFormStatus("");
+    }
+  }, [currentBoard]);
 
   return (
     <div className="App">
@@ -97,6 +109,7 @@ function App() {
           </div>
         </div>
       </div>
+
       <div id="main-display">
         {/* header displays currently selected board name and any error messages */}
         <div id="header">
@@ -105,12 +118,13 @@ function App() {
           </div>
           <p id="error-msg">{error}</p>
         </div>
-        {/* card menu contains card for selected board and form to add a new card */}
+
+        {/* card menu contains cards for selected board and form to add a new card */}
         <div id="card-menu">
           <div id="card-wall">
             <CardWall cards={currentBoard.cards} />
           </div>
-          <div id="card-form">
+          <div className={cardFormStatus} id="card-form">
             <CardForm createCard={createCard} />
           </div>
         </div>
