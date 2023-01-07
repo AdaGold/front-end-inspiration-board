@@ -4,7 +4,7 @@ import axios from "axios";
 import Board from "./components/Board";
 import NewBoard from "./components/NewBoardForm";
 import Header from "./components/Header";
-import Card from './components/Card'
+import Card from "./components/Card";
 // import Footer from "./components/Footer";
 
 export default function App() {
@@ -12,13 +12,16 @@ export default function App() {
   useEffect(() => {
     runAxios();
   }, []);
-
   async function runAxios() {
     console.log("runAxios()");
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}`)
       .then((response) => {
         console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error:", error);
+        console.log("error response:", error.response);
       });
   }
 
@@ -26,7 +29,7 @@ export default function App() {
     <div>
       <Header />
       <NewBoard />
-      <Board id={123} owner="maggie" title="something inspirational" />
+      <Board />
       <Card />
       {/* <Footer /> */}
     </div>
