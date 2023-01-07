@@ -97,13 +97,22 @@ function App() {
           </div>
         </div>
       </div>
-      {/* card menu contains card for selected board and form to add a new card */}
-      <div id="card-menu">
-        <div id="card-wall">
-          <CardWall cards={currentBoard.cards} />
+      <div id="main-display">
+        {/* header displays currently selected board name and any error messages */}
+        <div id="header">
+          <div id="title-container">
+            <h1 id="title">{currentBoard.title}</h1>
+          </div>
+          <p id="error-msg">{error}</p>
         </div>
-        <div id="card-form">
-          <CardForm createCard={createCard} />
+        {/* card menu contains card for selected board and form to add a new card */}
+        <div id="card-menu">
+          <div id="card-wall">
+            <CardWall cards={currentBoard.cards} />
+          </div>
+          <div id="card-form">
+            <CardForm createCard={createCard} />
+          </div>
         </div>
       </div>
     </div>

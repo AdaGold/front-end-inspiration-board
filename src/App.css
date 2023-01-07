@@ -31,6 +31,10 @@
   margin: 20px;
 }
 
+#main-display {
+  grid-column: 2;
+}
+
 #logo {
   object-fit: fill;
 
@@ -69,12 +73,33 @@
 }
 
 #card-menu{
-  grid-column:2;
   display: flexbox;
 }
 
+#title-container {
+  margin-top: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  color: white;
+  background-color: #F576A1;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #12110F;
+}
+
+#title {
+  margin: 10px 0px;
+}
 
 
+#error-msg {
+  color:red;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bolder;
+  text-shadow: white 2px 2px 2px;
+  margin: 10px;
+}
 
 
 
