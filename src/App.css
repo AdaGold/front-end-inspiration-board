@@ -29,6 +29,7 @@
   border-width: 15px;
   border-color: #12110F;
   margin: 20px;
+  box-shadow: 5px 10px 60px 10px ;
 }
 
 #logo {
@@ -70,8 +71,42 @@
 
 #card-menu{
   grid-column:2;
-  display: flexbox;
+
 }
+
+
+#card-wall{
+  display: flexbox;
+  margin-top: 10%;
+  margin-right: 5%;
+
+  min-height: 60vh;
+  min-width: 60vw;
+}
+
+
+#card-form{
+  position:absolute;
+  bottom: 0;
+  left: 50%;
+}
+ 
+
+.card{
+  background-color: #E9D758;
+  display: inline-block;
+  text-align: left;
+  height: 150px;
+  width: 200px;
+  margin: 5%;
+  box-shadow:5px 10px 30px 10px  rgb(63, 62, 62);
+}
+
+
+.card-text{
+  margin:10%;
+}
+
 
 
 

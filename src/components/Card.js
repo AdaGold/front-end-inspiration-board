@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 
 const Card = (props) => {
-  return <p>{props.messageData}</p>;
-};
+  return(
+    <div className="card">
+      <p className="card-text">{props.messageData}</p>
+    </div>
+)};
 
 export default Card;
 

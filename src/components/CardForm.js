@@ -24,13 +24,14 @@ const CardForm = (props) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <div>
+    <form onSubmit={onFormSubmit} id="card-form">
+      <div id="card-input">
         <label htmlFor="message">Message</label>
         <input
           name="message"
           value={formFields.message}
           onChange={setMessage}
+          className="card"
         />
       </div>
       <button type="submit">Create Card</button>
