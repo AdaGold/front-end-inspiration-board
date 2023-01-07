@@ -5,7 +5,11 @@ const CardWall = (props) => {
   console.log(props.cards);
   const allCards = props.cards.map((card) => {
     return (
-      <Card messageData={card.message} likesCountData={card.likes_count} />
+      <Card
+        key={card.card_id}
+        messageData={card.message}
+        likesCountData={card.likes_count}
+      />
     );
   });
   return <div>{allCards}</div>;

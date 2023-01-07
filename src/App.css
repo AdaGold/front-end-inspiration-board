@@ -67,7 +67,7 @@
   padding: 0px;
 }
 
-#card-wall{
+#card-menu{
   grid-column:2;
   background-image: url(./assets/desk-background.jpeg);
   display: flexbox;
