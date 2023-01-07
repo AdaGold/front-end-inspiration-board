@@ -54,11 +54,6 @@ const CreateNewBoard = (props) => {
   return (
     <div className="create-new-board">
       <h2>Create A New Board</h2>
-<<<<<<< Updated upstream
-      <form className="add-board">
-        <label>Owner:</label>
-        <input type="text" placeholder="enter name" name="owner" />
-=======
       <form className="add-board-form" onSubmit={handleSubmit}>
         <button className="test--only">Click Me</button>
         <label>Owner:</label>
@@ -69,7 +64,6 @@ const CreateNewBoard = (props) => {
           value={boardOwner}
           onChange={handleBoardOwner}
         />
->>>>>>> Stashed changes
         <br />
         <br />
         <label>Title:</label>
@@ -82,24 +76,13 @@ const CreateNewBoard = (props) => {
         />
         <br />
         <br />
-<<<<<<< Updated upstream
-        <input type="submit" className="new-board-sub-button"></input>
-        {/* <button onClick={handleClick}>Submit</button> */}
-        {/* <input type="Submit" className="new-board-sub-buttn"></input> */}
-        <button onClick={handleSubmit}>Submit</button>
-=======
         <input type="Submit" className="new-board-sub-buttn"></input>
->>>>>>> Stashed changes
       </form>
       <br />
       {/* <button onClick={handleSubmit}>Submit</button> */}
       <br />
-<<<<<<< Updated upstream
-      <span className="hide-board-toggle">Hide New Board Form</span>
-=======
       <br />
       <button className="hide-board-toggle">Hide Board Form</button>
->>>>>>> Stashed changes
     </div>
   );
 };
