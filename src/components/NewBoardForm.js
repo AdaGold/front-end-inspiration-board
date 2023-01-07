@@ -59,8 +59,6 @@ const CreateNewBoard = (props) => {
     }
   };
 
- 
-
   if (showForm === true) {
     return (
       <div className="create-new-board">
