@@ -17,8 +17,6 @@ function App() {
   });
   const [error, setError] = useState("");
 
-
-
   const selectBoard = (selectedBoard) => {
     setBoard(selectedBoard);
     setError("");
@@ -60,15 +58,14 @@ function App() {
       console.log(`added to board id ${currentBoard.board_id}`);
     }
   };
-  const [boardFormStatus, setBoardFormStatus] = useState("board-form-hidden")
+  const [boardFormStatus, setBoardFormStatus] = useState("hidden");
   const toggleBoardForm = () => {
-    if (boardFormStatus === "board-form"){
-      setBoardFormStatus("board-form-hidden")
+    if (!boardFormStatus) {
+      setBoardFormStatus("hidden");
+    } else {
+      setBoardFormStatus("");
     }
-    else{
-      setBoardFormStatus("board-form")
-    }
-  }
+  };
 
   return (
     <div className="App">
@@ -90,10 +87,12 @@ function App() {
           </nav>
 
           <div>
-            <button type="button" onClick={toggleBoardForm}>Arrow</button>
+            <button type="button" onClick={toggleBoardForm}>
+              Arrow
+            </button>
           </div>
 
-          <div id={boardFormStatus}>
+          <div className={boardFormStatus} id="board-form">
             <BoardForm createBoard={createBoard} />
           </div>
         </div>

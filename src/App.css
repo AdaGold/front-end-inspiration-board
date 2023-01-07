@@ -50,11 +50,9 @@
 
 #board-form{
   margin-bottom: 30px;
-
 }
 
-
-#board-form-hidden{
+.hidden{
   display: none;
 }
 
