@@ -14,6 +14,8 @@ function App() {
     cards: [],
   });
 
+
+
   const selectBoard = (selectedBoard) => {
     setBoard(selectedBoard);
     console.log(currentBoard);
@@ -31,6 +33,15 @@ function App() {
     };
     console.log(newBoard);
   };
+  const [boardFormStatus, setBoardFormStatus] = useState("board-form-hidden")
+  const toggleBoardForm = () => {
+    if (boardFormStatus === "board-form"){
+      setBoardFormStatus("board-form-hidden")
+    }
+    else{
+      setBoardFormStatus("board-form")
+    }
+  }
 
   return (
     <div className="App">
@@ -47,7 +58,11 @@ function App() {
             <BoardList onSelect={selectBoard} />
           </nav>
 
-          <div id="board-form">
+          <div>
+            <button type="button" onClick={toggleBoardForm}>Arrow</button>
+          </div>
+
+          <div id={boardFormStatus}>
             <BoardForm createBoard={createBoard} />
           </div>
         </div>

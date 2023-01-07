@@ -22,7 +22,10 @@
   grid-column: 1;
   flex-direction: column;
   background-color: #F576A1;
-  box-shadow: 1000px 100px 10000px black;
+  min-height:97vh;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #12110F;
 }
 
 #logo {
@@ -31,9 +34,12 @@
 }
 
 #board-menu {
-  background-color: skyblue;
+  background-color: #A6D9F7;
   margin: 10%;
-  min-height: 60vh;
+  display: flexbox;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #12110F;
 }
 
 #board-list{
@@ -43,7 +49,13 @@
 }
 
 #board-form{
-  margin-top: 50px;
+  margin-bottom: 30px;
+
+}
+
+
+#board-form-hidden{
+  display: none;
 }
 
 .form-field{
