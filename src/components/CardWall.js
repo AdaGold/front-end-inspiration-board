@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 
 const CardWall = (props) => {
-  console.log(props.cards);
   const allCards = props.cards.map((card) => {
     return (
       <Card
