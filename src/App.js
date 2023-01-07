@@ -5,10 +5,26 @@ import Board from "./components/Board";
 import NewBoard from "./components/NewBoardForm";
 import Header from "./components/Header";
 import Card from "./components/Card";
+import SelectBoard from "./components/SelectBoard.js"
 // import Footer from "./components/Footer";
 
 export default function App() {
+
+//function for likes count
+
+//function to update the board
+
+//function for updating the card
+
+
+
+
+
+
+
+
   // run on component initialization
+  //axios get request
   useEffect(() => {
     runAxios();
   }, []);
@@ -29,7 +45,8 @@ export default function App() {
     <div>
       <Header />
       <NewBoard />
-      <Board />
+      <SelectBoard /> 
+      {/* <Board /> */}
       <Card />
       {/* <Footer /> */}
     </div>

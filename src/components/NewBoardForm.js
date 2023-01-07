@@ -59,10 +59,12 @@ const CreateNewBoard = (props) => {
     }
   };
 
+ 
+
   if (showForm === true) {
     return (
       <div className="create-new-board">
-        <h2>Create A New Board</h2>
+        <h2 className="create-board-header">Create A New Board</h2>
         <form className="add-board-form" onSubmit={handleSubmit}>
           <label>Owner:</label>
           <input
