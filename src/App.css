@@ -38,10 +38,10 @@
 }
 
 #board-menu {
-  background-color: #A6D9F7;
+  background-color: #effbfd;
   margin: 10%;
   display: flexbox;
-  border-style: solid;
+  border-style: dashed;
   border-width: 5px;
   border-color: #12110F;
 }
