@@ -4,7 +4,7 @@ import axios from "axios";
 import Board from "./components/Board";
 import Header from "./components/Header";
 import Card from "./components/Card";
-import MainContentContainer from "./components/MainContentContainer";
+import CreateNewBoard from "./components/CreateNewBoard";
 
 // import Footer from "./components/Footer";
 
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <MainContentContainer />
+      <CreateNewBoard />
       {/* <Board /> */}
       <Card />
       {/* <Footer /> */}
