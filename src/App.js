@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Board from "./components/Board";
-import NewBoard from "./components/NewBoardForm";
 import Header from "./components/Header";
 import Card from "./components/Card";
-import SelectBoard from "./components/SelectBoard.js"
+import CreateNewBoard from "./components/CreateNewBoard";
+
 // import Footer from "./components/Footer";
 
 //function for likes count
@@ -40,8 +40,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <NewBoard />
-      <SelectBoard /> 
+      <CreateNewBoard />
       {/* <Board /> */}
       <Card />
       {/* <Footer /> */}
