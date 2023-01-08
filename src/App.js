@@ -8,22 +8,17 @@ import Card from "./components/Card";
 import SelectBoard from "./components/SelectBoard.js"
 // import Footer from "./components/Footer";
 
-export default function App() {
-
 //function for likes count
-
 //function to update the board
-
 //function for updating the card
 
+export default function App() {
+  const[data,setData]=useState([]);
 
 
 
 
-
-
-
-  // run on component initialization
+  //run on component initialization
   //axios get request
   useEffect(() => {
     runAxios();
@@ -34,6 +29,7 @@ export default function App() {
       .get(`${process.env.REACT_APP_BACKEND_URL}`)
       .then((response) => {
         console.log(response.data);
+        
       })
       .catch((error) => {
         console.log("error:", error);

@@ -1,16 +1,21 @@
 import { useState } from "react";
 
-//user actions
 const CreateNewBoard = (props) => {
-  //add and set board title=--need to check for valid input
-  //add and set board owner--need to check for valid input
   const [boardTitle, setBoardTitle] = useState("");
   const [validTitle, setValidTitle] = useState(true);
   const [boardOwner, setBoardOwner] = useState("");
   const [validOwner, setValidOwner] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [boardInfo, setBoardInfo] = useState({
+    title: "",
+    owner: "",
+  });
 
-  //change in board form title
+  const handleBoardChange = (event) => {
+    setBoardInfo({ ...boardInfo, [event.target.name]: event.target.value });
+  };
+
+  //monitor change in board form title
   //if board title input is valid (validate by length of input?) then set board title
   const handleBoardTitle = (event) => {
     console.log("Added a title");
@@ -20,16 +25,7 @@ const CreateNewBoard = (props) => {
     }
   };
 
-  // const handleShowForm = (event) => {
-  // const onClick = () => setShowForm(true);
-  // return (
-  //   <div>
-  //     <input type="submit" value="Search" onClick={onClick} />
-  //     { showForm ? <Results /> : null }
-  //   </div>
-  // )}
-
-  //change in board form owner input
+  //monitor change in board form owner input
   //if board form input is valid (validate by length of input) then set board owner
   const handleBoardOwner = (event) => {
     setBoardOwner(event.target.value);
@@ -39,12 +35,17 @@ const CreateNewBoard = (props) => {
     }
   };
 
-  //submit new board form UPDATE TO REFLECT ONCHANGE
+  // const createNewBoard ={
+  //   title: boardTitle,
+  //   owner: boardOwner,
+  // }
+  //submit new board form
   //if setBoardTitle &/or setBoardOwner are invalid (false?): (add function for checking valid title and owner)
   //disable submit button
-  //allow submit form button to be clicked and trigger click event
-
   const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("name");
+    console.log("title");
     if (boardTitle.length > 0) {
       setValidTitle(true);
       console.log("Tile is set!");
@@ -61,40 +62,38 @@ const CreateNewBoard = (props) => {
 
   if (showForm === true) {
     return (
-      <div className="create-new-board">
-        <h2 className="create-board-header">Create A New Board</h2>
-        <form className="add-board-form" onSubmit={handleSubmit}>
-          <label>Owner:</label>
-          <input
-            type="text"
-            placeholder="enter name"
-            name="Owner"
-            value={boardOwner}
-            onChange={handleBoardOwner}
-          />
+      <div className="form-container">
+        <h2>Create A New Board</h2>
+        <form className="submit-board-form" onSubmit={handleSubmit}>
+          <div className="form-owner">
+            <label>Owner:</label>
+            <input
+              type="text"
+              placeholder="enter name"
+              name="Owner"
+              value={boardOwner}
+              onChange={handleBoardOwner}
+            />
+          </div>
+
+          <div className="form-title">
+            <label>Title:</label>
+            <input
+              type="text"
+              placeholder="enter title"
+              name="title"
+              value={boardTitle}
+              onChange={handleBoardTitle}
+            />
+          </div>
+
           <br />
+          <input type="Submit" className="new-board-submit-buttn"></input>
           <br />
-          <label>Title:</label>
-          <input
-            type="text"
-            placeholder="enter title"
-            title="title"
-            value={boardTitle}
-            onChange={handleBoardTitle}
-          />
-          <br />
-          <br />
-          <input type="Submit" className="new-board-sub-buttn"></input>
-          <br />
-          {/* <button type="submit">Submit</button> */}
-          <br />
-          <br />
+
           <button className="hide-board" onClick={() => setShowForm(false)}>
             Hide
           </button>
-          {/* <button className="show-board" onClick={() => setShowForm(true)}>
-          Show
-        </button> */}
         </form>
       </div>
     );
@@ -109,6 +108,14 @@ const CreateNewBoard = (props) => {
 
 export default CreateNewBoard;
 
+{
+  /* <button className="show-board" onClick={() => setShowForm(true)}>
+          Show
+        </button> */
+}
+{
+  /* <button type="submit">Submit</button> */
+}
 // //add new board to boards list//create a new component for updating boards list ??
 // function addToBoardsList() {
 //   console.log("New Board Added To List!");
@@ -119,3 +126,12 @@ export default CreateNewBoard;
 // function clearTextBoxes() {
 //   console.log("Clear Text Boxes");
 // }
+
+// const handleShowForm = (event) => {
+// const onClick = () => setShowForm(true);
+// return (
+//   <div>
+//     <input type="submit" value="Search" onClick={onClick} />
+//     { showForm ? <Results /> : null }
+//   </div>
+// )}
