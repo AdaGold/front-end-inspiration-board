@@ -23,8 +23,8 @@
   color: #e86ce0;
 }
 
-
-.select-board-menu {
+/* NOTE FROM TIFFANY - Moved this css to the "SelectBoard.css" file */
+/* .select-board-menu {
   flex-direction: column;
   justify-content: center;
 }
@@ -34,5 +34,5 @@
   font-size: 20px;
   color: #e86ce0;
   margin: 30px;
-}
+} */
 /* #c1cbf9 #2cd2ee #e4b4ef #e86ce0 #2b0719 */

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Board from "./components/Board";
-import NewBoard from "./components/NewBoardForm";
 import Header from "./components/Header";
 import Card from "./components/Card";
-import SelectBoard from "./components/SelectBoard.js"
+import MainContentContainer from "./components/MainContentContainer";
+
 // import Footer from "./components/Footer";
 
 export default function App() {
@@ -15,13 +15,6 @@ export default function App() {
 //function to update the board
 
 //function for updating the card
-
-
-
-
-
-
-
 
   // run on component initialization
   //axios get request
@@ -44,8 +37,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <NewBoard />
-      <SelectBoard /> 
+      <MainContentContainer />
       {/* <Board /> */}
       <Card />
       {/* <Footer /> */}
