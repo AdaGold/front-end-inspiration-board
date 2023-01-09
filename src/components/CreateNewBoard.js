@@ -62,8 +62,6 @@ const CreateNewBoard = (props) => {
     setBoardOwner(event.target.value);
 
 
-
-
     // console.log("Added an Owner");
     if (event.target.value.length > 0) {
       setValidOwner(true);
