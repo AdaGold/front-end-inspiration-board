@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 // import Board from "./components/Boards/Board";
@@ -6,15 +6,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CardSection from "./components/Cards/CardSection";
 import CreateNewBoard from "./components/Boards/CreateNewBoard";
+import Card from "./components/Cards/Card";
+
+//function for likes count
+//function to update the board
+//function for updating the card
 
 export default function App() {
-  //function for likes count
+  const[data,setData]=useState([]);
 
-  //function to update the board
 
-  //function for updating the card
 
-  // run on component initialization
+
+  //run on component initialization
   //axios get request
   useEffect(() => {
     runAxios();
@@ -24,6 +28,7 @@ export default function App() {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}`)
       .then((response) => {
         console.log(response.data);
+        
       })
       .catch((error) => {
         console.log("error:", error);
