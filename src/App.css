@@ -1,27 +1,37 @@
 * { 
   box-sizing: border-box;
-}
+} 
 
-.header {
-  display: flex;
-  align-items: center;
-  font-size: 22px;
-  background: #c1cbf9;
-  color: #e86ce0;
-  padding: 18px;
+body {
+  background-color: black;
 }
-.create-new-board {
+/* Moved to Header.css */
+/* .header {
+  text-align: center; */
+  /* align-items: center; */
+  /* font-size: 22px;
+  color: #e86ce0;
+  
+} */
+
+.top-section{
+  display:flex;
+  position:relative;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+/* .create-new-board {
   display: flex;
   flex-direction: column;
   float: right;
   padding: 30px;
-  margin: 30px;
+  margin: 30px; */
 
-}
-.create-board-header {
+/* } */
+/* .create-board-header {
   font-size: 16 px;
   color: #e86ce0;
-}
+} */
 
 /* NOTE FROM TIFFANY - Moved this css to the "SelectBoard.css" file */
 /* .select-board-menu {
@@ -36,3 +46,18 @@
   margin: 30px;
 } */
 /* #c1cbf9 #2cd2ee #e4b4ef #e86ce0 #2b0719 */
+button{
+  border-radius: 2rem;
+  padding:0.5rem 0.5rem;
+  font-weight: bolder;
+  color:white;
+  background-color: #2cd2ee;
+  font-size: 1rem;
+  border: 1px solid transparent
+}
+
+button:hover{
+  background-color: white;
+  color:#2cd2ee;
+  cursor:pointer;
+}

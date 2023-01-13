@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import axios from "axios";
-import Board from "./components/Board";
+import "./App.css";
+// import Board from "./components/Boards/Board";
 import Header from "./components/Header";
-import Card from "./components/Card";
-import CreateNewBoard from "./components/CreateNewBoard";
-
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
+import CardSection from "./components/Cards/CardSection";
+import CreateNewBoard from "./components/Boards/CreateNewBoard";
+import Card from "./components/Cards/Card";
 
 //function for likes count
 //function to update the board
@@ -25,8 +25,7 @@ export default function App() {
   }, []);
   async function runAxios() {
     console.log("runAxios()");
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}`)
       .then((response) => {
         console.log(response.data);
         
@@ -38,13 +37,17 @@ export default function App() {
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <CreateNewBoard />
-      {/* <Board /> */}
-      <Card />
-      {/* <Footer /> */}
-    </div>
+      <div>
+        <div className='top-section'>
+          <CreateNewBoard />
+          {/* <Board /> */}
+          <CardSection />
+        </div>
+        <Footer />
+      </div>
+    </>
   );
 }
 
