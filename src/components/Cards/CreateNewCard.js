@@ -21,11 +21,13 @@ function CreateNewCard(props) {
           value={cardMessage}
           onChange={cardMessageHandler}
         />
+{/* @Tiffany, I added the setCardMessage("") on line 30 so that it is clears after its submitted.  */}
         <button
           className='btn-submit'
           onClick={(e) => {
             props.cardMessagesDisplay(cardMessage);
             e.preventDefault();
+            setCardMessage("");
           }}
         >
           Submit

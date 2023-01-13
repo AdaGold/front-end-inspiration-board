@@ -13,10 +13,7 @@ import Card from "./components/Cards/Card";
 //function for updating the card
 
 export default function App() {
-  const[data,setData]=useState([]);
-
-
-
+  const [data, setData] = useState([]);
 
   //run on component initialization
   //axios get request
@@ -25,10 +22,10 @@ export default function App() {
   }, []);
   async function runAxios() {
     console.log("runAxios()");
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}`)
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}`)
       .then((response) => {
         console.log(response.data);
-        
       })
       .catch((error) => {
         console.log("error:", error);
@@ -40,7 +37,7 @@ export default function App() {
     <>
       <Header />
       <div>
-        <div className='top-section'>
+        <div className="top-section">
           <CreateNewBoard />
           {/* <Board /> */}
           <CardSection />
@@ -60,3 +57,7 @@ export default function App() {
 //post(URL), post info for cards
 
 //get(URL), get card info
+
+//delete boards
+
+//
