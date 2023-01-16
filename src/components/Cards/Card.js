@@ -9,12 +9,14 @@ const Card = (props) => {
   // I outlined the likeCard and deleteCard functions and their associated buttons (bottom of page). Both likeCard and deleteCard need to connect with axios in order to function. The code for likeCard is placeholder code that I used to make sure the like button was rendering.
   const likeCard = (event) => {
     setCardLikes(event.target.value);
-  };
+  }
   //   axios.patch('${process.env.REACT_APP_BACKEND_URL}/cards')
+  //   .then((response) => {
+
   // }
   // This need to be finished so tht it deletes cards and updates w/ axios
-  // const deleteCard = (event) => {
-  // }
+  const deleteCard = (event) => {
+  }
 
   return (
     <div className="cards-container">
