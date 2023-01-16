@@ -8,24 +8,13 @@ import CardSection from "./components/Cards/CardSection";
 import CreateNewBoard from "./components/Boards/CreateNewBoard";
 import Card from "./components/Cards/Card";
 
-//function to update the board
-//function for updating the card
 
 export default function App() {
   const [boardData, setBoardData] = useState([]);
 
-  // //functiuon to update the board
-  //   const updateBoard = (e) => {
-  //     const changeBoard = boardData.find(currentBoard) => {
-  //       return currentBoard.title.trim() === event.target.value.trim();
-  //     });
-  //   }
-
-  //function for likes count
 
   //run on component initialization
-
-  //axios get request
+  //axios get request tester code
   useEffect(() => {
     runAxios();
   }, []);
@@ -41,18 +30,7 @@ export default function App() {
         console.log("error response:", error.response);
       });
   }
-
-  // const onHandleSubmitBoard = (setBoardInfo) => {
-  //   console.log(boardInfo);
-
-  //   axios
-  //     .post("REACT_APP_BACKEND_URL", [
-  //       {title:}
-  //     ])
-  // }
-
-  //axios post request
-
+  
   return (
     <>
       <Header />
@@ -78,6 +56,4 @@ export default function App() {
 
 //get(URL), get card info
 
-//delete boards
 
-//
