@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./CardSection.css";
 import CreateNewCard from "./CreateNewCard";
 import Card from "./Card";
+
+
 function CardSection() {
   const [savedCardMessages, setSavedCardMessages] = useState([]);
   const cardMessagesDisplay = (message) => {
@@ -13,10 +15,13 @@ function CardSection() {
   return (
     <>
       <CreateNewCard cardMessagesDisplay={cardMessagesDisplay} />
-
       <Card savedCardMessages={savedCardMessages} />
     </>
   );
 }
+
+
+
+
 
 export default CardSection;

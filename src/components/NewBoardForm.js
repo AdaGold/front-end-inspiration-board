@@ -26,7 +26,6 @@ const CreateNewBoard = (props) => {
   };
 
   //monitor change in board form owner input
-  //if board form input is valid (validate by length of input) then set board owner
   const handleBoardOwner = (event) => {
     setBoardOwner(event.target.value);
     console.log("Added an Owner");
@@ -35,12 +34,7 @@ const CreateNewBoard = (props) => {
     }
   };
 
-  // const createNewBoard ={
-  //   title: boardTitle,
-  //   owner: boardOwner,
-  // }
   //submit new board form
-  //if setBoardTitle &/or setBoardOwner are invalid (false?): (add function for checking valid title and owner)
   //disable submit button
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -108,30 +102,3 @@ const CreateNewBoard = (props) => {
 
 export default CreateNewBoard;
 
-{
-  /* <button className="show-board" onClick={() => setShowForm(true)}>
-          Show
-        </button> */
-}
-{
-  /* <button type="submit">Submit</button> */
-}
-// //add new board to boards list//create a new component for updating boards list ??
-// function addToBoardsList() {
-//   console.log("New Board Added To List!");
-// }
-
-// //clear text boxes once submitted
-// //if board owner and title are valid and submit button is clicked than update text boes
-// function clearTextBoxes() {
-//   console.log("Clear Text Boxes");
-// }
-
-// const handleShowForm = (event) => {
-// const onClick = () => setShowForm(true);
-// return (
-//   <div>
-//     <input type="submit" value="Search" onClick={onClick} />
-//     { showForm ? <Results /> : null }
-//   </div>
-// )}
