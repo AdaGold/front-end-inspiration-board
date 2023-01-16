@@ -7,14 +7,11 @@ const CreateNewBoard = () => {
   const [validTitle, setValidTitle] = useState(false);
   const [boardOwner, setBoardOwner] = useState("");
   const [validOwner, setValidOwner] = useState(false);
-  //States for adding/saving the title and owner when the form is submitted
   const [savedTitles, setSavedTitles] = useState([]);
   const [savedOwners, setSavedOwners] = useState([]);
 
   // TIFFANY'S NOTE - I changed the below code and set the state to true instead of false. I did
   // this so that the Create a new Board component is displayed when the user first loads the website.
-  // Anytime a user reloads the site, or leaves and comes back the create a new board component
-  //will be visible by default.
 
   const [showForm, setShowForm] = useState(true);
 
@@ -23,20 +20,14 @@ const CreateNewBoard = () => {
     setBoardTitle(event.target.value);
     if (event.target.value.length > 0) {
       setValidTitle(true);
-      // NOTE FROM TIFFANY- Added this else statement to cover the condition in which the user
-      // starts to type a title, but then deletes their characters/title and tries to submit the
-      // form anyways.
     } else setValidTitle(false);
   };
   
   //change in board form owner input
-  //if board form input is valid (validate by length of input) then set board owner
   const handleBoardOwner = (event) => {
     setBoardOwner(event.target.value);
     if (event.target.value.length > 0) {
       setValidOwner(true);
-      // NOTE FROM TIFFANY  - Added this else statement to cover the condition in which the user
-      // starts to type the owner name, but then deletes their characters/owner name
     } else setValidOwner(false);
   };
 
@@ -116,23 +107,6 @@ const CreateNewBoard = () => {
 export default CreateNewBoard;
 
 
-   //submit new board form UPDATE TO REFLECT ONCHANGE
+
   //if setBoardTitle &/or setBoardOwner are invalid (false?): (add function for checking valid title and owner)
   //disable submit button
-  //allow submit form button to be clicked and trigger click event
-
-  // const handleSubmit = (event) => {
-  //   if (boardTitle.length > 0) {
-  //     setValidTitle(true);
-  //     console.log("Title is set!");
-  //   } else if (boardTitle.length === 0) {
-  //     setValidTitle(false);
-  //   }
-  //   if (boardOwner.length > 0) {
-  //     setValidOwner(true);
-  //     console.log("Board owner is set!");
-  //   } else if (boardOwner.length === 0) {
-  //     setBoardOwner(false);
-  //   }
-
-  //   event.preventDefault()
