@@ -54,7 +54,7 @@ const CreateNewCard = (props)  => {
 
 export default CreateNewCard;
 
-
+// This code was on line 30 but was commented out. I moved it here to remove clutter while I was working on it but we can move it back if needed. 
 
 {/* <label for='new-card-input' style={{ alignSelf: "center" }}>
           Message
