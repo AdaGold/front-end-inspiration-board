@@ -1,12 +1,12 @@
 import "./App.css";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
 import CardForm from "./components/CardForm";
 import CardWall from "./components/CardWall";
-import data from "./dummidata.json";
-// import Card from "./components/Card";
+
+const URL = "https://mean-girls-2004-inspo-board.herokuapp.com";
 
 function App() {
   const [currentBoard, setBoard] = useState({
@@ -24,17 +24,19 @@ function App() {
   };
 
   const createBoard = (newBoardData) => {
-    // this is pulling from dummi data need 2 update when linking to backend
     if (newBoardData.title && newBoardData.owner) {
-      const nextId = Math.max(...data.map((board) => board.board_id)) + 1;
-      const newBoard = {
-        board_id: nextId,
-        title: newBoardData.title,
-        owner: newBoardData.owner,
-        cards: [],
-      };
       setError("");
-      console.log(newBoard); // replace with CREATE axios call
+      axios
+        .post(URL + "/boards", {
+          title: newBoardData.title,
+          owner: newBoardData.owner,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     } else {
       setError("Error: Boards must have a title and an owner!");
     }
