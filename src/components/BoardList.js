@@ -1,23 +1,27 @@
-import data from "../dummidata.json";
+// import data from "../dummidata.json";
 import PropTypes from "prop-types";
 
 const BoardList = (props) => {
-  const boardList = data.map((board) => {
-    return (
-      <button
-        key={board.board_id}
-        onClick={() => {
-          props.onSelect(board);
-        }}
-      >
-        {board.title}
-      </button>
-    );
-  });
-  return <div>{boardList}</div>;
+  const getBoardList = () => {
+    const buttonList = props.boards.map((board) => {
+      return (
+        <button
+          key={board.board_id}
+          onClick={() => {
+            props.onSelect(board);
+          }}
+        >
+          {board.title}
+        </button>
+      );
+    });
+    return buttonList;
+  };
+  return <div>{getBoardList()}</div>;
 };
 
 BoardList.propTypes = {
+  boards: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
 };
 

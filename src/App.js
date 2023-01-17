@@ -6,7 +6,7 @@ import BoardForm from "./components/BoardForm";
 import CardForm from "./components/CardForm";
 import CardWall from "./components/CardWall";
 
-const URL = "https://mean-girls-2004-inspo-board.herokuapp.com";
+export const URL = "https://mean-girls-2004-inspo-board.herokuapp.com";
 
 function App() {
   const [currentBoard, setBoard] = useState({
@@ -16,6 +16,17 @@ function App() {
     cards: [],
   });
   const [error, setError] = useState("");
+
+  const [boards, setAllBoards] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      await axios.get(URL + "/boards").then((result) => {
+        setAllBoards(result.data);
+      });
+    };
+    getData();
+  });
 
   const selectBoard = (selectedBoard) => {
     setBoard(selectedBoard);
@@ -97,7 +108,7 @@ function App() {
         {/* board menu contains board select and drop down create board form */}
         <div id="board-menu">
           <nav id="board-list">
-            <BoardList onSelect={selectBoard} />
+            <BoardList boards={boards} onSelect={selectBoard} />
           </nav>
 
           <div>
