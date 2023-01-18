@@ -18,6 +18,7 @@ function App() {
   const [error, setError] = useState("");
   const [boards, setAllBoards] = useState([]);
 
+  // gets list of all boards and updates when one is added
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(URL + "/boards").catch((err) => {
@@ -28,6 +29,7 @@ function App() {
     getData();
   }, [boards]);
 
+  // for BoardList - updates state to selected board + gets its cards
   const selectBoard = async (selectedBoard) => {
     const response = await axios.get(
       `${URL}/boards/${selectedBoard.board_id}/cards`
@@ -36,6 +38,7 @@ function App() {
     setError("");
   };
 
+  // for BoardList - creates a new board and posts it to db
   const createBoard = (newBoardData) => {
     if (newBoardData.title && newBoardData.owner) {
       setError("");
@@ -55,6 +58,7 @@ function App() {
     }
   };
 
+  // for CardForm - creates a new card, pushes it to db, and updates state so it is rendered immediately
   const createCard = (newCardData) => {
     if (!newCardData.message) {
       setError("Error: Cards must have a message!");
@@ -80,6 +84,18 @@ function App() {
         });
       console.log(`added to board id ${currentBoard.board_id}`);
     }
+  };
+
+  // for CardWall - deletes card from database and state
+  const deleteCard = (cardToDelete) => {
+    const newCardList = [];
+    for (const card of currentBoard.cards) {
+      if (card.card_id !== cardToDelete.card_id) {
+        newCardList.push(card);
+      }
+    }
+    setBoard({ ...currentBoard, cards: newCardList });
+    axios.delete(`${URL}/cards/${cardToDelete.card_id}`);
   };
 
   // hides/shows board form when toggle button is clicked
@@ -145,7 +161,7 @@ function App() {
         {/* card menu contains cards for selected board and form to add a new card */}
         <div id="card-menu">
           <div id="card-wall">
-            <CardWall cards={currentBoard.cards} />
+            <CardWall cards={currentBoard.cards} onDelete={deleteCard} />
           </div>
           <div className={cardFormStatus} id="card-form">
             <CardForm createCard={createCard} />
