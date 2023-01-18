@@ -1,12 +1,12 @@
 import "./App.css";
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
 import CardForm from "./components/CardForm";
 import CardWall from "./components/CardWall";
-import data from "./dummidata.json";
-// import Card from "./components/Card";
+
+export const URL = "https://mean-girls-2004-inspo-board.herokuapp.com";
 
 function App() {
   const [currentBoard, setBoard] = useState({
@@ -17,24 +17,37 @@ function App() {
   });
   const [error, setError] = useState("");
 
+  const [boards, setAllBoards] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      await axios.get(URL + "/boards").then((result) => {
+        setAllBoards(result.data);
+      });
+    };
+    getData();
+  });
+
   const selectBoard = (selectedBoard) => {
     setBoard(selectedBoard);
     setError("");
-    console.log(currentBoard);
+    console.log(currentBoard); // for debugging
   };
 
   const createBoard = (newBoardData) => {
-    // this is pulling from dummi data need 2 update when linking to backend
     if (newBoardData.title && newBoardData.owner) {
-      const nextId = Math.max(...data.map((board) => board.board_id)) + 1;
-      const newBoard = {
-        board_id: nextId,
-        title: newBoardData.title,
-        owner: newBoardData.owner,
-        cards: [],
-      };
       setError("");
-      console.log(newBoard);
+      axios
+        .post(URL + "/boards", {
+          title: newBoardData.title,
+          owner: newBoardData.owner,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     } else {
       setError("Error: Boards must have a title and an owner!");
     }
@@ -58,6 +71,8 @@ function App() {
       console.log(`added to board id ${currentBoard.board_id}`);
     }
   };
+
+  // hides/shows board form when toggle button is clicked
   const [boardFormStatus, setBoardFormStatus] = useState("hidden");
   const toggleBoardForm = () => {
     if (!boardFormStatus) {
@@ -66,6 +81,16 @@ function App() {
       setBoardFormStatus("");
     }
   };
+
+  // hides card form when no board is selected
+  const [cardFormStatus, setCardFormStatus] = useState("hidden");
+  useEffect(() => {
+    if (!currentBoard.title) {
+      setCardFormStatus("hidden");
+    } else {
+      setCardFormStatus("");
+    }
+  }, [currentBoard]);
 
   return (
     <div className="App">
@@ -83,7 +108,7 @@ function App() {
         {/* board menu contains board select and drop down create board form */}
         <div id="board-menu">
           <nav id="board-list">
-            <BoardList onSelect={selectBoard} />
+            <BoardList boards={boards} onSelect={selectBoard} />
           </nav>
 
           <div>
@@ -97,13 +122,24 @@ function App() {
           </div>
         </div>
       </div>
-      {/* card menu contains card for selected board and form to add a new card */}
-      <div id="card-menu">
-        <div id="card-wall">
-          <CardWall cards={currentBoard.cards} />
+
+      <div id="main-display">
+        {/* header displays currently selected board name and any error messages */}
+        <div id="header">
+          <div id="title-container">
+            <h1 id="title">{currentBoard.title}</h1>
+          </div>
+          <p id="error-msg">{error}</p>
         </div>
-        <div id="card-form">
-          <CardForm createCard={createCard} />
+
+        {/* card menu contains cards for selected board and form to add a new card */}
+        <div id="card-menu">
+          <div id="card-wall">
+            <CardWall cards={currentBoard.cards} />
+          </div>
+          <div className={cardFormStatus} id="card-form">
+            <CardForm createCard={createCard} />
+          </div>
         </div>
       </div>
     </div>

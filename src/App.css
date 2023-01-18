@@ -3,7 +3,6 @@
   src: url(./assets/emobot.ttf);
 }
 
-
 .App {
   text-align: center;
   display: grid;
@@ -14,10 +13,6 @@
   background-image: url(./assets/desk-background.jpeg);
   background-size: cover;
 }
-
-
-
-
 
 #sidebar {
   display: flexbox;
@@ -30,6 +25,14 @@
   border-color: #12110F;
   margin: 20px;
   box-shadow: 5px 10px 60px 10px ;
+}
+
+#main-display {
+  grid-column: 2;
+}
+
+#main-display {
+  grid-column: 2;
 }
 
 #logo {
@@ -64,7 +67,6 @@
   padding: 20px;
 }
 
-
 #form-fields{
   padding: 0px;
 }
@@ -83,35 +85,33 @@
   min-height: 60vh;
   min-width: 60vw;
 }
-
+ 
+#title-container {
+  margin-top: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  color: white;
+  background-color: #F576A1;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #12110F;
+  height: 75px;
+}
 
 #card-form{
   position:absolute;
   bottom: 0;
   left: 50%;
 }
- 
 
-.card{
-  background-color: #E9D758;
-  display: inline-block;
-  text-align: left;
-  height: 150px;
-  width: 200px;
-  margin: 5%;
-  box-shadow:5px 10px 30px 10px  rgb(63, 62, 62);
+
+
+#error-msg {
+  color:red;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bolder;
+  text-shadow: white 2px 2px 2px;
+  margin: 10px;
 }
-
-
-.card-text{
-  margin:10%;
-}
-
-
-
-
-
-
-
-
 
