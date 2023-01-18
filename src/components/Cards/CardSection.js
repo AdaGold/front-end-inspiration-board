@@ -28,7 +28,7 @@ export default CardSection;
 
 {/* <Card
 key={card.card_id}
-increaseLikes={PaymentResponse.increaseLikes}
+increaseLikes={increaseLikes}
 card={card}
-deleteCard={PaymentResponse.deleteCard}
+deleteCard={deleteCard}
 /> */}

@@ -13,41 +13,8 @@ function App() {
   const [boardData, setBoardData] = useState([]);
   const [currentBoard, setBoard] = useState([]);
   const [showForm, setShowForm] = useState(true);
-  const [cards, setCards] = useState([]);
+  const [card, setCard] = useState([]);
   const [cardLikes, setCardLikes] = useState();
-
-  // When like card button is clicked, like card should be called, and increase like count should be called, and likesCount should be updated
-  const likeCard = () => {
-  axios.patch('${process.env.REACT_APP_BACKEND_URL}/cards/card_id')
-  .then((response) => { 
-    console.log("Card Liked");
-  })
-  .catch((error) => {
-    console.log(error);
-    console.log(error.response);
-  })
-  };
-
-// //   const [likesCount, setLikesCount] = useState(0);
-// //   const increaseLikes = () => {
-// //     console.log('Like Count Increased!');
-// //     setLikesCount(likesCount + 1);
-// // };
-
-  // }
-  // This need to be finished so tht it deletes cards and updates w/ axios
-  // const deleteCard = () => {
-  //   // eslint-disable-next-line no-template-curly-in-string
-  //   axios.delete('${process.env.REACT_APP_BACKEND_URL}/cards/card_id')
-  //   .then((response) => {
-  //     console.log("Card deleted")
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     console.log(error.response);
-  //   })
-  // };
-
 
 
 
@@ -91,7 +58,24 @@ function App() {
   }
 };
 
- 
+//post new card to board
+const makeNewCard = (cardData) => {
+  axios
+    .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, 
+        {
+          message: cardData.messag,
+          board_id: cardData.board_id,
+        },
+      )
+    .then((response) => {
+      console.log("response:", response);
+      console.log("response data:", response.data);
+      console.log("it worked")
+    })
+    .catch((error) => {
+      console.log("error:", error);
+    })
+  };
 
   return (
     <>
@@ -100,7 +84,7 @@ function App() {
         <div className="top-section">
           <CreateNewBoard onSubmitBoard={makeNewBoard} />
           {/* <Board /> */}
-          <CardSection />
+          <CardSection createNewCard={makeNewCard}/>
           <SelectBoard boardData={boardData} />
         </div>
         <Footer />
@@ -115,9 +99,7 @@ function App() {
 
 //get(URL), get card info
 
-//delete cards
 
-//like cards
 
 
 export default App;
