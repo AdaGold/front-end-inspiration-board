@@ -13,14 +13,29 @@ const App = () => {
   // const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
-  const [selectedBoard, setSelectedBoard] = useState();
+  const [selectedBoard, setSelectedBoard] = useState([]);
+  console.log(boardsData);
 
   const selectBoard = (clickedBoard) => {
-    for (const board in boardsData) {
-      if (board.id === clickedBoard.id) {
-        setSelectedBoard(boardsData[board]);
-      }
-    }
+    console.log(clickedBoard);
+    axios
+      .get(
+        `https://ancient-inlet-63477.herokuapp.com/boards/${clickedBoard.id}/cards`
+      )
+      .then((response) => {
+        const cards = response.data.map((card) => {
+          return {
+            id: card.id,
+            message: card.message,
+            likes: card.likes,
+          };
+        });
+        console.log(cards);
+        setSelectedBoard(cards);
+      })
+      .catch(() => {
+        console.log("This request could not go through");
+      });
   };
 
   // const deleteCard = (CardData) => {
@@ -45,7 +60,7 @@ const App = () => {
           return {
             id: board.id,
             title: board.title,
-            owner: board.owner,
+            owner: board.owner_name,
             cards: board.cards,
           };
         });
@@ -54,7 +69,7 @@ const App = () => {
       .catch(() => {
         console.log("This request could not go through");
       });
-  });
+  }, []);
 
   return (
     <div id="App">
@@ -62,8 +77,7 @@ const App = () => {
       <main>
         <BoardList boards={boardsData} selectBoard={selectBoard} />
         <NewBoardForm />
-        <NewCardForm />
-        <Board board={selectedBoard} />
+        <Board board={selectedBoard}/>
       </main>
     </div>
   );

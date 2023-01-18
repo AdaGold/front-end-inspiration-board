@@ -1,16 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import Board from "./Board";
-import "./BoardList.css"
+import "./BoardList.css";
 
 const BoardList = (props) => {
-  console.log(props.boards)
   const boardComponents = props.boards.map((board) => {
-    return (
-      <li onClick={props.selectBoard}>{board.title}</li>
-    )
+    return <li onClick={() => props.selectBoard(board)}>{board.title}</li>;
   });
-  return <div className="boardList"><ol>{boardComponents}</ol></div>;
+  return (
+    <div className="boardList">
+      <ol>{boardComponents}</ol>
+    </div>
+  );
 };
 
 BoardList.propsTypes = {
@@ -24,8 +25,5 @@ BoardList.propsTypes = {
   // showBoardCallBack: PropTypes.func,
   selectBoard: PropTypes.func,
 };
-
-
-
 
 export default BoardList;

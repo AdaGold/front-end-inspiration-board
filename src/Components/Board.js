@@ -1,34 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
-import Card from './Card.js';
+import Card from "./Card.js";
 import NewCardForm from "./NewCardForm";
 
 const Board = (props) => {
-  if (typeof props.board != "undefined") {
-    console.log(props)
-    console.log(props.card)
+  if (props.board.length !== 0) {
     const getCardsJSX = (props) => {
-    return props.cards.map((card) => {
-      return (
-        <Card
-          id={card.id}
-          message={card.message}
-          likes={card.likes}
-        />
-        );
+      return props.board.map((card) => {
+        return <Card id={card.id} message={card.message} likes={card.likes} />;
       });
     };
 
-    return <div>
+    return (
+      <div>
         <section class="cardsContainer">
           <ul>{getCardsJSX(props)}</ul>
         </section>
         <NewCardForm />
-        </div>
-
+      </div>
+    );
   } else {
-    return <section></section>
+    return <section></section>;
   }
 };
 
