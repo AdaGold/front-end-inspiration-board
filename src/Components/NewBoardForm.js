@@ -10,6 +10,7 @@ const NewBoardForm = () => {
         title: '',
         owner: '',
     });
+    const [showError, setShowError] = useState(false)
 
   
     const handleChange = (event) => {
@@ -22,11 +23,21 @@ const NewBoardForm = () => {
 
     const onFormSubmit = (event) => {
       event.preventDefault();
+      if (!formFields.title || !formFields.owner){
+        setShowError(true);
 
+      }
+      else{
+        setShowError(false);
+      }
       setFormFields({
         title:'',
         owner: ''
       })
+
+
+      // add code to push to backend
+      // reload board forms
     }
 
     return (
@@ -49,6 +60,8 @@ const NewBoardForm = () => {
                     value={formFields.owner}
                     onChange={handleChange} />
             </div>
+            {showError ? <p>Error: Owner and Title need to be filled out</p> : null }
+            
             <input
                 type="submit"
                 value="Add Board" />
