@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./CreateNewCard.css";
 
 const CreateNewCard = (props) => {
+
   const [cardMessage, setCardMessage] = useState("");
   const cardMessageHandler = (event) => {
     setCardMessage(event.target.value);
   };
-  // This is the same code you wrote starting on line 40 but I added the first few lines to check the length of the message to make sure it is greater than 0 characters and less than 40
+
+  // This is the same code you wrote starting on line 40 but I added the conditional to ensure it meets the length requiremnts
   const submitCard = (e) => {
     if (cardMessage.length < 1 || cardMessage.length > 40) {
       alert("Card must be over 0 characters and less than 40 characters");
@@ -29,8 +31,7 @@ const CreateNewCard = (props) => {
           value={cardMessage}
           onChange={cardMessageHandler}
         />
-        {/* I added setCardMessage("") on line 19 so that it is clears after its submitted.  */}
-        {/* I added the functon submitCard on line 13 to incorporate the length conditionals. We can use the code on line 40 and add the conditional there but I was struggling to keep it organized and concise. I didn't change anything, only commented it out so its still fully functional.  */}
+        {/* I added setCardMessage("") on line 18 so that it is clears after its submitted.  */}
         <button className="btn-submit">Submit Card</button>
         {/* <button
           className="btn-submit"

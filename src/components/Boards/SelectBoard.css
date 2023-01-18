@@ -1,7 +1,9 @@
+
 .select-board-menu {
     flex-direction: column;
     justify-content: center;
 } 
+
 .select-board-header {
   font-family: 'Warnes';
   font-size: 30px;

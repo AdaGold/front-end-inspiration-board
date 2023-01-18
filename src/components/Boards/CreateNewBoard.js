@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./CreateNewBoard.css";
 
+//Refactored version of CreateNewBoard based on Ghameerah's feedback when I met with her. They suggested to add the conditional logic that was in the original CreateBoard to each function in App.js.
+//We can move hte newBoard function to App.js if we want to refactor further and make this more minimal.
+
 const CreateNewBoard = (props) => {
   const [boardTitle, setBoardTitle] = useState("");
   const [boardOwner, setBoardOwner] = useState("");

@@ -1,3 +1,12 @@
+
+
+// This is the original CreateNewBoard File. I want to keep it as we may need some of the logic as we refactor and add it to App.js. The entire file can be deleted when we are finished.
+
+
+
+
+
+
 // import React, { useState } from "react";
 // import SelectBoard from "./SelectBoard";
 // import "./CreateNewBoard.css";

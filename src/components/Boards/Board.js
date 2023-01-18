@@ -1,3 +1,7 @@
+// The code in this file has been incoporated into select board and is no longer necessary, kept file in case we need to refer to it during refactoring
+
+
+
 // import React from "react";
 // import PropTypes from "prop-types";
 
@@ -12,12 +16,6 @@
 //       </section>
 //     </div>
 //   );
-// };
-
-// Board.propTypes = {
-//   id: PropTypes.number,
-//   owner: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
 // };
 
 // export default Board;
