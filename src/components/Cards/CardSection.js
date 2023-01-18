@@ -20,8 +20,15 @@ function CardSection() {
   );
 }
 
-
-
-
-
 export default CardSection;
+
+
+
+// I think we need something like this in one of the card components
+
+{/* <Card
+key={card.card_id}
+increaseLikes={PaymentResponse.increaseLikes}
+card={card}
+deleteCard={PaymentResponse.deleteCard}
+/> */}
