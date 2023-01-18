@@ -6,6 +6,7 @@ const BoardList = (props) => {
     const buttonList = props.boards.map((board) => {
       return (
         <button
+          type="button"
           key={board.board_id}
           onClick={() => {
             props.onSelect(board);
