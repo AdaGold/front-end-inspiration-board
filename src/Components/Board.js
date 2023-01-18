@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles/Board.css";
+import "./Board.css";
 import Card from 'src/components/Card.js';
 
 const Board = (props) => {
@@ -18,12 +18,12 @@ const Board = (props) => {
     };
 
     return <div>
-    <section class="cardsContainer">
-      <ul>{getCardsJSX(props)}</ul>
-    </section>
-    <NewCardForm />
+      <section class="cardsContainer">
+        <ul>{getCardsJSX(props)}</ul>
+      </section>
+      <NewCardForm />
     <div />
-    
+
   } else {
     return null
   }
