@@ -13,6 +13,7 @@ function App() {
   const [board, setBoard] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showBoard, setShowBoard] = useState(true);
+  
 
   //get all boards with get request to axios--This is working but need to be refactored
   useEffect(() => {
@@ -52,21 +53,23 @@ function App() {
   };
 
   //post new card to board--This is not working
+ 
   const makeNewCard = (cardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
-        message: "puppies",
+        message: '',
         board_id: 2,
-      })
+  })
       .then((response) => {
         console.log("response:", response);
         console.log("response data:", response.data);
         console.log("it worked");
       })
       .catch((error) => {
-        console.log("error:", error);
+        console.log("error:", error.response.data);
       });
   };
+ 
 
   //get all cards
   // const getAllCards = () => {
@@ -83,22 +86,27 @@ function App() {
   // };0
 
   //hide the board when user clicks hide button, needs to be updated (add conditional logic from createnewboard)
-  const hideBoard = () => {
-    setShowBoard(false);
-  };
 
+  const hideBoard = () => setShowBoard(!showBoard);
+    
+  
+    
   return (
     <>
       <Header />
       <div>
         <div className="top-section">
           <div className="board-section">
-            <CreateNewBoard onSubmitBoard={makeNewBoard} />
+            {/* <CreateNewBoard onSubmitBoard={makeNewBoard} /> */}
             <button className="hide-board-button" onClick={hideBoard}>
-              Hide Board
-            </button>
+              {showBoard ? 'Hide Board' : 'Show Board'}
+              </button>
+              {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard}/> : null}
           </div>
           <CardSection createNewCard={makeNewCard} />
+
+          {/* <CardSection cardMessagesDisplay={makeNewCard} /> */}
+
           <SelectBoard boardData={boardData} />
         </div>
         <Footer />

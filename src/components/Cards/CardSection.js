@@ -5,6 +5,7 @@ import Card from "./Card";
 
 function CardSection() {
   const [savedCardMessages, setSavedCardMessages] = useState([]);
+  console.log("This array is a result of CardSection")
   const cardMessagesDisplay = (message) => {
     setSavedCardMessages((prev) => {
       return [...prev, message];

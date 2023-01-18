@@ -9,11 +9,11 @@ const CreateNewCard = (props) => {
   };
 
   // This is the same code you wrote starting on line 40 but I added the conditional to ensure it meets the length requiremnts
-  const submitCard = (e) => {
+  const submitCard = (event) => {
     if (cardMessage.length < 1 || cardMessage.length > 40) {
       alert("Card must be over 0 characters and less than 40 characters");
     } else {
-      e.preventDefault();
+      event.preventDefault();
       props.cardMessagesDisplay(cardMessage);
       setCardMessage("");
     }

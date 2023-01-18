@@ -27,8 +27,8 @@ const CreateNewBoard = (props) => {
     props.onSubmitBoard(newBoard);
     setBoardTitle("");
     setBoardOwner("");
-
   };
+  
   return (
     <div className="create-new-board-container">
       <div className="form-container">
