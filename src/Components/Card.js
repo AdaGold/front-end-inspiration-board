@@ -1,4 +1,4 @@
-import "../styles/Card.css";
+import "./Card.css";
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -21,8 +21,11 @@ const Card = (props) => {
     );
 };
 
-Card.propTypes = {
-id: PropTypes.number.isRequired,
-message: PropTypes.string.isRequired,
-likes: PropTypes.number.isRequired,
-};
+// Card.propTypes = {
+// id: PropTypes.number.isRequired,
+// message: PropTypes.string.isRequired,
+// likes: PropTypes.number.isRequired,
+// };
+
+
+export default Card;

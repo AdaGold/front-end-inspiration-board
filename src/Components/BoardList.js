@@ -2,23 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Board from "./Board";
 
-const BoardsList = (props) => {
-  const boardComponents = props.boardsList.map((board) => {
+const BoardList = (props) => {
+  console.log(props.boards)
+  const boardComponents = props.boards.map((board) => {
     return (
-      <Board
-        key={board.id}
-        id={board.id}
-        title={board.title}
-        creator={board.creator}
-        // showBoardCallBack={props.showBoardCallBack}
-        selectBoard={props.selectBoard}
-      />
+      <li>{board.title}</li>
+      // <Board
+      //   key={board.id}
+      //   id={board.id}
+      //   title={board.title}
+      //   owner={board.owner}
+      //   // showBoardCallBack={props.showBoardCallBack}
+      //   selectBoard={props.selectBoard}
+      // />
     );
   });
-  return <div>{boardComponents}</div>;
+  return <div><ol>{boardComponents}</ol></div>;
 };
 
-BoardsList.propsTypes = {
+BoardList.propsTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -30,9 +32,6 @@ BoardsList.propsTypes = {
   selectBoard: PropTypes.func,
 };
 
-export default BoardsList;
-  );
-};
 
 
 
