@@ -10,13 +10,11 @@ import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 
 const App = () => {
-  const axios = require("axios");
+  //const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
 
-  const selectBoard = () => {
-    
-  }
+  const selectBoard = () => {};
 
   useEffect(() => {
     axios
@@ -30,7 +28,7 @@ const App = () => {
             cards: board.cards,
           };
         });
-        console.log(boards)
+        console.log(boards);
         setBoardsData(boards);
       })
       .catch(() => {
