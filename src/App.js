@@ -10,13 +10,35 @@ import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 
 const App = () => {
-  const axios = require("axios");
+  // const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
+  const [selectedBoard, setSelectedBoard] = useState()
 
-  const selectBoard = () => {
-    
+  const selectBoard = (clickedBoard) => { 
+    console.log(boardsData)
+    for (const board in boardsData) {
+      console.log(boardsData[board])
+      if (board.id === clickedBoard.id) {
+        console.log(boardsData[board])
+        setSelectedBoard(boardsData[board])
+      }
+    }
   }
+
+  // const deleteCard = (CardData) => {
+  //   const cards = board.card.filter((card) => card.id !== CardData.id);
+  //   setBoardsData(cards);
+  //   const taskId = updatedTaskData.id;
+  //   axios
+  //     .delete('https://task-list-api-c17.herokuapp.com/tasks/' + taskId)
+  //     .then(() => {
+  //       console.log('The task has been deleted.');
+  //     })
+  //     .catch(() => {
+  //       console.log('The task cannot be deleted.');
+  //     });
+  // };
 
   useEffect(() => {
     axios
@@ -30,8 +52,8 @@ const App = () => {
             cards: board.cards,
           };
         });
-        console.log(boards)
         setBoardsData(boards);
+        
       })
       .catch(() => {
         console.log("This request could not go through");
@@ -42,10 +64,15 @@ const App = () => {
     <div id="App">
       <header></header>
       <main>
-        <BoardList boards={boardsData} />
+        <BoardList 
+          boards={boardsData}
+          selectBoard={selectBoard}
+        />
         <NewBoardForm />
         <NewCardForm />
-        {/* <Board /> */}
+        <Board 
+          board={selectedBoard}
+        />
       </main>
     </div>
   );

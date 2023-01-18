@@ -1,23 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Board from "./Board";
+import "./BoardList.css"
 
 const BoardList = (props) => {
   console.log(props.boards)
   const boardComponents = props.boards.map((board) => {
     return (
-      <li>{board.title}</li>
-      // <Board
-      //   key={board.id}
-      //   id={board.id}
-      //   title={board.title}
-      //   owner={board.owner}
-      //   // showBoardCallBack={props.showBoardCallBack}
-      //   selectBoard={props.selectBoard}
-      // />
-    );
+      <li onClick={props.selectBoard}>{board.title}</li>
+    )
   });
-  return <div><ol>{boardComponents}</ol></div>;
+  return <div className="boardList"><ol>{boardComponents}</ol></div>;
 };
 
 BoardList.propsTypes = {

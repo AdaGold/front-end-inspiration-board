@@ -6,6 +6,7 @@ import NewCardForm from "./NewCardForm";
 
 const Board = (props) => {
   if (typeof props.board != "undefined") {
+    console.log(props)
     const getCardsJSX = (props) => {
     return props.cards.map((card) => {
       return (
