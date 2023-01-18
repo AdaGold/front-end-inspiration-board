@@ -98,6 +98,16 @@ function App() {
     axios.delete(`${URL}/cards/${cardToDelete.card_id}`);
   };
 
+  // for CardWall - adds 1 to the card's like counter in database and state
+  const likeCard = (cardToLike) => {
+    for (const card of currentBoard.cards) {
+      if (card.card_id === cardToLike.card_id) {
+        card.likes_count += 1;
+      }
+    }
+    axios.patch(`${URL}/cards/${cardToLike.card_id}`);
+  };
+
   // hides/shows board form when toggle button is clicked
   const [boardFormStatus, setBoardFormStatus] = useState("hidden");
   const toggleBoardForm = () => {
@@ -161,7 +171,11 @@ function App() {
         {/* card menu contains cards for selected board and form to add a new card */}
         <div id="card-menu">
           <div id="card-wall">
-            <CardWall cards={currentBoard.cards} onDelete={deleteCard} />
+            <CardWall
+              cards={currentBoard.cards}
+              onDelete={deleteCard}
+              onLike={likeCard}
+            />
           </div>
           <div className={cardFormStatus} id="card-form">
             <CardForm createCard={createCard} />

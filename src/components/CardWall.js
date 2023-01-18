@@ -14,7 +14,9 @@ const CardWall = (props) => {
           Delete
         </button>
         <p>{card.likes_count}</p>
-        <button type="button">+1</button>
+        <button type="button" onClick={() => props.onLike(card)}>
+          +1
+        </button>
       </div>
     );
   });
@@ -28,7 +30,7 @@ CardWall.propTypes = {
       likes_count: PropTypes.number.isRequired,
     })
   ),
-  // onLike: PropTypes.func.isRequired,
+  onLike: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
