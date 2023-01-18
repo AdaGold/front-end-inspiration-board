@@ -33,8 +33,10 @@ function App() {
   //Function needs to be updated because it currently allows the user to enter spaces (empty strings) and submit, which are then added to the select board list.
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
-    if (enteredData.title.length < 1 ||enteredData.owner.length < 1) {
-      alert("You must enter a title and owner");
+    if (enteredData.title.replaceAll(' ', '').length < 1 || enteredData.owner.replaceAll(' ', '').length < 1) {
+      alert(
+        "You must enter a valid title and owner. A valid title and owner must be greater than one character and cannot be white spaces."
+      );
     } else {
       axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
@@ -96,16 +98,13 @@ function App() {
         <div className="top-section">
           <div className="board-section">
             {/* <CreateNewBoard onSubmitBoard={makeNewBoard} /> */}
+            {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard} /> : null}
             <button className="hide-board-button" onClick={hideBoard}>
               {showBoard ? "Hide Board" : "Show Board"}
             </button>
-            {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard} /> : null}
           </div>
-          <CardSection createNewCard={makeNewCard} />
-
-          {/* <CardSection cardMessagesDisplay={makeNewCard} /> */}
-
           <SelectBoard boardData={boardData} />
+          <CardSection createNewCard={makeNewCard} />
         </div>
         <Footer />
       </div>

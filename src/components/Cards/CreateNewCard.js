@@ -5,7 +5,7 @@ const CreateNewCard = (props) => {
 
   const [cardMessage, setCardMessage] = useState("");
   const cardMessageHandler = (event) => {
-    setCardMessage(event.target.value.trim());
+    setCardMessage(event.target.value);
   };
 
   // This is the same code you wrote starting on line 40 but I added the conditional to ensure it meets the length requiremnts
@@ -13,7 +13,7 @@ const CreateNewCard = (props) => {
  //Can also be moved to axios post card request when it is completed
   const submitCard = (event) => {
     if (cardMessage.length < 1 || cardMessage.length > 40) {
-      alert("Card must be over 0 characters and less than 40 characters");
+      alert("Enter valid card information to submit a card. A valid card must have between one and forty characters and cannot include only whitespaces.");
     } else {
       event.preventDefault();
       props.cardMessagesDisplay(cardMessage);

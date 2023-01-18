@@ -1,3 +1,4 @@
+import { getAllByPlaceholderText } from "@testing-library/react";
 import React, { useState } from "react";
 import "./CreateNewBoard.css";
 
@@ -9,25 +10,26 @@ const CreateNewBoard = (props) => {
   const [boardOwner, setBoardOwner] = useState("");
 
   const handleBoardTitle = (event) => {
-    setBoardTitle(event.target.value.trim());
+    setBoardTitle(event.target.value);
   };
 
   const handleBoardOwner = (event) => {
-    setBoardOwner(event.target.value.trim());
+    setBoardOwner(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+   
+      const newBoard = {
+        title: boardTitle,
+        owner: boardOwner,
+      };
 
-    const newBoard = {
-      title: boardTitle,
-      owner: boardOwner,
-    };
+      props.onSubmitBoard(newBoard);
+      setBoardTitle("");
+      setBoardOwner("");
+    }
 
-    props.onSubmitBoard(newBoard);
-    setBoardTitle("");
-    setBoardOwner("");
-  };
   const enabled = boardTitle.length > 0 && boardOwner.length > 0;
 
   return (
