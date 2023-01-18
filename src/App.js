@@ -13,8 +13,8 @@ function App() {
   const [board, setBoard] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showBoard, setShowBoard] = useState(true);
-  
-  //get all boards with get request to axios--This is working
+
+  //get all boards with get request to axios--This is working but need to be refactored
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
@@ -51,15 +51,13 @@ function App() {
     }
   };
 
-  //post new card to board--This is not working 
+  //post new card to board--This is not working
   const makeNewCard = (cardData) => {
-    // const board_id = selectedBoard.board_id
-
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
         message: "puppies",
         board_id: 2,
-  })
+      })
       .then((response) => {
         console.log("response:", response);
         console.log("response data:", response.data);

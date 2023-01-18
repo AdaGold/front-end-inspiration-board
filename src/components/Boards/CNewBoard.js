@@ -119,5 +119,3 @@
 
 
 
-  //if setBoardTitle &/or setBoardOwner are invalid (false?): (add function for checking valid title and owner)
-  //disable submit button
