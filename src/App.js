@@ -67,14 +67,16 @@ function App() {
           message: newCardData.message,
         })
         .then((response) => {
+          const cardState = [...currentBoard.cards, response.data.message];
+          setBoard({ ...currentBoard, cards: cardState });
           axios
             .post(`${URL}/boards/${currentBoard.board_id}/cards`, {
               card_ids: [response.data.message.card_id],
             })
-            .catch((err) => console.log("error linking card to board" + err));
+            .catch((err) => console.log("error linking card to board: " + err));
         })
         .catch((err) => {
-          console.log("error posting new card" + err);
+          console.log("error posting new card: " + err);
         });
       console.log(`added to board id ${currentBoard.board_id}`);
     }
