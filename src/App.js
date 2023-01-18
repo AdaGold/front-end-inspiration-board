@@ -16,7 +16,6 @@ function App() {
     cards: [],
   });
   const [error, setError] = useState("");
-
   const [boards, setAllBoards] = useState([]);
 
   useEffect(() => {
@@ -34,6 +33,7 @@ function App() {
       `${URL}/boards/${selectedBoard.board_id}/cards`
     );
     setBoard(response.data);
+    setError("");
   };
 
   const createBoard = (newBoardData) => {
@@ -44,11 +44,11 @@ function App() {
           title: newBoardData.title,
           owner: newBoardData.owner,
         })
-        .then(function (response) {
+        .then((response) => {
           console.log(response);
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     } else {
       setError("Error: Boards must have a title and an owner!");
@@ -61,15 +61,21 @@ function App() {
     } else if (newCardData.message.length > 40) {
       setError("Error: Cards must be less than 40 characters long!");
     } else {
-      const nextId =
-        Math.max(...currentBoard.cards.map((card) => card.card_id)) + 1;
-      const newCard = {
-        card_id: nextId,
-        message: newCardData.message,
-        likes_count: 0,
-      };
       setError("");
-      console.log(newCard);
+      axios
+        .post(URL + "/cards", {
+          message: newCardData.message,
+        })
+        .then((response) => {
+          axios
+            .post(`${URL}/boards/${currentBoard.board_id}/cards`, {
+              card_ids: [response.data.message.card_id],
+            })
+            .catch((err) => console.log("error linking card to board" + err));
+        })
+        .catch((err) => {
+          console.log("error posting new card" + err);
+        });
       console.log(`added to board id ${currentBoard.board_id}`);
     }
   };
