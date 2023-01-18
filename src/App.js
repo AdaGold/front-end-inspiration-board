@@ -13,7 +13,6 @@ function App() {
   const [board, setBoard] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showBoard, setShowBoard] = useState(true);
-  
 
   //get all boards with get request to axios--This is working but need to be refactored
   useEffect(() => {
@@ -34,7 +33,7 @@ function App() {
   //Function needs to be updated because it currently allows the user to enter spaces (empty strings) and submit, which are then added to the select board list.
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
-    if (enteredData.title.length < 1 || enteredData.owner.length < 1) {
+    if (enteredData.title.length < 1 ||enteredData.owner.length < 1) {
       alert("You must enter a title and owner");
     } else {
       axios
@@ -55,12 +54,13 @@ function App() {
 
   //post new card to board--This is not working
   //This function will also allow the user to enter empty strings and it will render cards with no words
+  //Add logic to disable submission and return error if there are no boards
   const makeNewCard = (cardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
-        message: '',
+        message: "",
         board_id: 2,
-  })
+      })
       .then((response) => {
         console.log("response:", response);
         console.log("response data:", response.data);
@@ -70,7 +70,6 @@ function App() {
         console.log("error:", error.response.data);
       });
   };
- 
 
   //get all cards
   // const getAllCards = () => {
@@ -89,9 +88,7 @@ function App() {
   //hide the board when user clicks hide button, needs to be updated (add conditional logic from createnewboard)
 
   const hideBoard = () => setShowBoard(!showBoard);
-    
-  
-    
+
   return (
     <>
       <Header />
@@ -100,9 +97,9 @@ function App() {
           <div className="board-section">
             {/* <CreateNewBoard onSubmitBoard={makeNewBoard} /> */}
             <button className="hide-board-button" onClick={hideBoard}>
-              {showBoard ? 'Hide Board' : 'Show Board'}
-              </button>
-              {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard}/> : null}
+              {showBoard ? "Hide Board" : "Show Board"}
+            </button>
+            {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard} /> : null}
           </div>
           <CardSection createNewCard={makeNewCard} />
 

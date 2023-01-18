@@ -26,7 +26,7 @@ const Card = (props) => {
   
 //function to delete a card, works with delete card button, onClick event in return statement
     const deleteCard = () => {
-      axios.delete('${process.env.REACT_APP_BACKEND_URL}/cards/<card_id>')
+      axios.delete('${process.env.REACT_APP_BACKEND_URL}/cards/1')
       .then((response) => {
         console.log("Card deleted")
       })
@@ -35,6 +35,12 @@ const Card = (props) => {
         console.log(error.response);
       })
     };
+
+    // deleteCard()
+
+  // function to disable the ability to submit a card if there are no boards created and prompt the user to first create a board
+  // const enabled = 
+  
   
   return (
     <div className="cards-container">

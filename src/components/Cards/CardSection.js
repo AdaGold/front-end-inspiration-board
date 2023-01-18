@@ -22,6 +22,3 @@ function CardSection() {
 
 export default CardSection;
 
-// I think we need something like this 
-// key={card.card_id}
-// increaseLikes={increaseLikes}

@@ -5,7 +5,7 @@ const CreateNewCard = (props) => {
 
   const [cardMessage, setCardMessage] = useState("");
   const cardMessageHandler = (event) => {
-    setCardMessage(event.target.value);
+    setCardMessage(event.target.value.trim());
   };
 
   // This is the same code you wrote starting on line 40 but I added the conditional to ensure it meets the length requiremnts

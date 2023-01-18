@@ -9,11 +9,11 @@ const CreateNewBoard = (props) => {
   const [boardOwner, setBoardOwner] = useState("");
 
   const handleBoardTitle = (event) => {
-    setBoardTitle(event.target.value);
+    setBoardTitle(event.target.value.trim());
   };
 
   const handleBoardOwner = (event) => {
-    setBoardOwner(event.target.value);
+    setBoardOwner(event.target.value.trim());
   };
 
   const handleSubmit = (event) => {
