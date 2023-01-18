@@ -9,6 +9,8 @@ const CreateNewCard = (props) => {
   };
 
   // This is the same code you wrote starting on line 40 but I added the conditional to ensure it meets the length requiremnts
+ //This needs to be updated so that it does not allow empty strings to be submitted as card input
+ //Can also be moved to axios post card request when it is completed
   const submitCard = (event) => {
     if (cardMessage.length < 1 || cardMessage.length > 40) {
       alert("Card must be over 0 characters and less than 40 characters");

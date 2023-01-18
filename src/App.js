@@ -31,6 +31,7 @@ function App() {
   }, []);
 
   //create a new board with post request to axios --This is working
+  //Function needs to be updated because it currently allows the user to enter spaces (empty strings) and submit, which are then added to the select board list.
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
     if (enteredData.title.length < 1 || enteredData.owner.length < 1) {
@@ -53,7 +54,7 @@ function App() {
   };
 
   //post new card to board--This is not working
- 
+  //This function will also allow the user to enter empty strings and it will render cards with no words
   const makeNewCard = (cardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {

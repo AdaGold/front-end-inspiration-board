@@ -28,7 +28,8 @@ const CreateNewBoard = (props) => {
     setBoardTitle("");
     setBoardOwner("");
   };
-  
+  const enabled = boardTitle.length > 0 && boardOwner.length > 0;
+
   return (
     <div className="create-new-board-container">
       <div className="form-container">
@@ -50,7 +51,9 @@ const CreateNewBoard = (props) => {
             value={boardTitle}
             onChange={handleBoardTitle}
           />
-          <button className="new-board-sub-button">Submit Board</button>
+          <button className="new-board-sub-button" disabled={!enabled}>
+            Submit Board
+          </button>
         </form>
       </div>
     </div>
