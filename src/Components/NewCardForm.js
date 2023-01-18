@@ -8,6 +8,8 @@ const NewCardForm = (props) => {
     message: "",
   });
 
+  const [showError, setShowError] = useState(false);
+
   const handleChange = (event) => {
     setFormFields({
       ...formFields,
@@ -17,6 +19,12 @@ const NewCardForm = (props) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    if (formFields.message.length > 40) {
+      setShowError(true);
+      return;
+    } else {
+      setShowError(false);
+    }
 
     setFormFields({
       message: "",
@@ -42,6 +50,9 @@ const NewCardForm = (props) => {
             {formFields.message}
           </div>
         </div>
+        {showError ? (
+          <p>Error: Message cannot be longer than 40 characters.</p>
+        ) : null}
         <input type="submit" value="Submit" />
       </form>
     </div>
