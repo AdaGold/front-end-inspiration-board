@@ -27,7 +27,7 @@ function App() {
       setAllBoards(response.data);
     };
     getData();
-  });
+  }, [boards]);
 
   const selectBoard = async (selectedBoard) => {
     const response = await axios.get(
