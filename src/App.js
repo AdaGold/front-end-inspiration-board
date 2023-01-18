@@ -11,17 +11,17 @@ import SelectBoard from "./components/Boards/SelectBoard";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
-  cont[(board, setBoard)] = useState([]);
+  const [board, setBoard] = useState([]);
 
   const [showBoard, setShowBoard] = useState(true);
   const [cardbyId, setCardbbyId] = useState({});
 
-  //get(URL--use above code), get boards
-  // axios get request tester code
+  //get(URL--use above code), get all boards
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
+        console.log("response:", response);
         console.log("response data", response.data);
         setBoardData(response.data);
       })
@@ -34,7 +34,7 @@ function App() {
   //create a new board
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
-    if (enteredData.title.length < 1 && enteredData.owner.length < 1) {
+    if (enteredData.title.length < 1 || enteredData.owner.length < 1) {
       alert("You must enter a title and owner");
     } else {
       axios

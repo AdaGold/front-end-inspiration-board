@@ -25,13 +25,6 @@ const SelectBoard = (props) => {
 };
 
 //  {/* <option default>Select an Inspiration Board</option> */} line 20
-// return (
-//   <div className="container pt-3 select-board">
-//     <h2>Select a Board</h2>
-//     <select className="custom-select" size="6" onChange={props.onSelectBoard}>
-//       {boardList}
-//     </select>
-//   </div>
 // );
 // };
 // {boardTitles.map((title) => {
