@@ -7,6 +7,7 @@ import CardSection from "./components/Cards/CardSection";
 import CreateNewBoard from "./components/Boards/CreateNewBoard";
 import Card from "./components/Cards/Card";
 import SelectBoard from "./components/Boards/SelectBoard";
+import CreateNewCard from "./components/Cards/CreateNewCard";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
@@ -33,7 +34,10 @@ function App() {
   //Function needs to be updated because it currently allows the user to enter spaces (empty strings) and submit, which are then added to the select board list.
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
-    if (enteredData.title.replaceAll(' ', '').length < 1 || enteredData.owner.replaceAll(' ', '').length < 1) {
+    if (
+      enteredData.title.replaceAll(" ", "").length < 1 ||
+      enteredData.owner.replaceAll(" ", "").length < 1
+    ) {
       alert(
         "You must enter a valid title and owner. A valid title and owner must be greater than one character and cannot be white spaces."
       );
@@ -60,8 +64,9 @@ function App() {
   const makeNewCard = (cardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
+        //card message data and the id
         message: "",
-        board_id: 2,
+        board_id: 6,
       })
       .then((response) => {
         console.log("response:", response);
@@ -72,6 +77,7 @@ function App() {
         console.log("error:", error.response.data);
       });
   };
+  //pass in id for a specific board and use it to make a new card
 
   //get all cards
   // const getAllCards = () => {
@@ -104,7 +110,8 @@ function App() {
             </button>
           </div>
           <SelectBoard boardData={boardData} />
-          <CardSection createNewCard={makeNewCard} />
+          {/* <CardSection createNewCard={makeNewCard} /> */}
+          <CreateNewCard onSubmitCard={makeNewCard} />
         </div>
         <Footer />
       </div>

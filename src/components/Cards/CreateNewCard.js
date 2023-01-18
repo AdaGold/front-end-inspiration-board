@@ -12,19 +12,25 @@ const CreateNewCard = (props) => {
  //This needs to be updated so that it does not allow empty strings to be submitted as card input
  //Can also be moved to axios post card request when it is completed
   const submitCard = (event) => {
-    if (cardMessage.length < 1 || cardMessage.length > 40) {
-      alert("Enter valid card information to submit a card. A valid card must have between one and forty characters and cannot include only whitespaces.");
-    } else {
+    // if (cardMessage.length < 1 || cardMessage.length > 40) {
+    //   alert("Enter valid card information to submit a card. A valid card must have between one and forty characters and cannot include only whitespaces.");
+    // } else {
+      const newCard = {
+        message: cardMessage,
+      }
       event.preventDefault();
-      props.cardMessagesDisplay(cardMessage);
+      // make new card function here, submit card message
+      // props.cardMessagesDisplay(cardMessage);
+      props.onSubmitCard(newCard)
       setCardMessage("");
     }
-  };
+  
 
   return (
     <div>
       <h1 id="new-card-section-header">Create a New Card</h1>
       {/* should we add a onSubmit button since this is a form? */}
+      {/* //replace line 29 with the makenewcard */}
       <form className="new-card-form" onSubmit={submitCard}>
         <input
           id="new-card-input"
