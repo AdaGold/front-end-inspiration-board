@@ -47,11 +47,8 @@ function App() {
           title: newBoardData.title,
           owner: newBoardData.owner,
         })
-        .then((response) => {
-          console.log(response);
-        })
         .catch((err) => {
-          console.log(err);
+          console.log("error creating board: " + err);
         });
     } else {
       setError("Error: Boards must have a title and an owner!");
@@ -82,7 +79,6 @@ function App() {
         .catch((err) => {
           console.log("error posting new card: " + err);
         });
-      console.log(`added to board id ${currentBoard.board_id}`);
     }
   };
 

@@ -4,12 +4,8 @@ import Card from "./Card";
 const CardWall = (props) => {
   const allCards = props.cards.map((card) => {
     return (
-      <div className="card">
-        <Card
-          key={card.card_id}
-          messageData={card.message}
-          likesCountData={card.likes_count}
-        />
+      <div className="card" key={card.card_id}>
+        <Card messageData={card.message} likesCountData={card.likes_count} />
         <button type="button" onClick={() => props.onDelete(card)}>
           Delete
         </button>
