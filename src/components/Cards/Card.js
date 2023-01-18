@@ -1,5 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
-//card component
 import React, { useState } from "react";
 import "./Card.css";
 import axios from "axios";
@@ -46,6 +44,7 @@ const Card = (props) => {
           <div className="card">
             <div className="body">
               <p className="text">{message}</p>
+              {/* //I will update this display the total likes count when the addLikes function is finished */}
               <p>Number of likes:add the likes count here </p>
               <button onClick={addLike}>🖤 </button>
               <button onClick={deleteCard}>Delete Card</button>
