@@ -13,18 +13,15 @@ const App = () => {
   // const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
-  const [selectedBoard, setSelectedBoard] = useState()
+  const [selectedBoard, setSelectedBoard] = useState();
 
-  const selectBoard = (clickedBoard) => { 
-    console.log(boardsData)
+  const selectBoard = (clickedBoard) => {
     for (const board in boardsData) {
-      console.log(boardsData[board])
       if (board.id === clickedBoard.id) {
-        console.log(boardsData[board])
-        setSelectedBoard(boardsData[board])
+        setSelectedBoard(boardsData[board]);
       }
     }
-  }
+  };
 
   // const deleteCard = (CardData) => {
   //   const cards = board.card.filter((card) => card.id !== CardData.id);
@@ -53,7 +50,6 @@ const App = () => {
           };
         });
         setBoardsData(boards);
-        
       })
       .catch(() => {
         console.log("This request could not go through");
@@ -64,15 +60,10 @@ const App = () => {
     <div id="App">
       <header></header>
       <main>
-        <BoardList 
-          boards={boardsData}
-          selectBoard={selectBoard}
-        />
+        <BoardList boards={boardsData} selectBoard={selectBoard} />
         <NewBoardForm />
         <NewCardForm />
-        <Board 
-          board={selectedBoard}
-        />
+        <Board board={selectedBoard} />
       </main>
     </div>
   );
