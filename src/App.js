@@ -21,17 +21,19 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      await axios.get(URL + "/boards").then((result) => {
-        setAllBoards(result.data);
+      const response = await axios.get(URL + "/boards").catch((err) => {
+        console.log(err);
       });
+      setAllBoards(response.data);
     };
     getData();
   });
 
-  const selectBoard = (selectedBoard) => {
-    setBoard(selectedBoard);
-    setError("");
-    console.log(currentBoard); // for debugging
+  const selectBoard = async (selectedBoard) => {
+    const response = await axios.get(
+      `${URL}/boards/${selectedBoard.board_id}/cards`
+    );
+    setBoard(response.data);
   };
 
   const createBoard = (newBoardData) => {
