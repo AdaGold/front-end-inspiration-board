@@ -3,15 +3,12 @@ import "./CreateNewCard.css";
 
 const CreateNewCard = (props) => {
   const [cardMessage, setCardMessage] = useState("");
-
   const cardMessageHandler = (event) => {
     setCardMessage(event.target.value);
   };
-
-  
   // This is the same code you wrote starting on line 40 but I added the first few lines to check the length of the message to make sure it is greater than 0 characters and less than 40
   const submitCard = (e) => {
-    if (cardMessage.length < 1 && cardMessage.length > 40) {
+    if (cardMessage.length < 1 || cardMessage.length > 40) {
       alert("Card must be over 0 characters and less than 40 characters");
     } else {
       e.preventDefault();

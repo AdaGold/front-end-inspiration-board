@@ -11,13 +11,10 @@ import SelectBoard from "./components/Boards/SelectBoard";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
-  const [currentBoard, setBoard] = useState([]);
-  const [showForm, setShowForm] = useState(true);
-  const [card, setCard] = useState([]);
-  const [cardLikes, setCardLikes] = useState();
+  cont[(board, setBoard)] = useState([]);
 
-
-
+  const [showBoard, setShowBoard] = useState(true);
+  const [cardbyId, setCardbbyId] = useState({});
 
   //get(URL--use above code), get boards
   // axios get request tester code
@@ -34,47 +31,52 @@ function App() {
       });
   }, []);
 
-  //create a new board 
+  //create a new board
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
     if (enteredData.title.length < 1 && enteredData.owner.length < 1) {
-      alert("You must enter a title and owner")
+      alert("You must enter a title and owner");
     } else {
-    axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, 
-        {
+      axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
           title: enteredData.title,
           owner: enteredData.owner,
-        },
-      )
+        })
+        .then((response) => {
+          console.log("response:", response);
+          console.log("response data:", response.data);
+          setBoardData([...boardData, response.data]);
+        })
+        .catch((error) => {
+          console.log("error:", error);
+        });
+    }
+  };
+
+  //post new card to board
+  const makeNewCard = (cardData) => {
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
+        message: cardData.messag,
+        board_id: cardData.board_id,
+      })
       .then((response) => {
         console.log("response:", response);
         console.log("response data:", response.data);
-        setBoardData([...boardData, response.data]);
+        console.log("it worked");
       })
       .catch((error) => {
         console.log("error:", error);
-      })
-  }
-};
+      });
+  };
 
-//post new card to board
-const makeNewCard = (cardData) => {
-  axios
-    .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, 
-        {
-          message: cardData.messag,
-          board_id: cardData.board_id,
-        },
-      )
-    .then((response) => {
-      console.log("response:", response);
-      console.log("response data:", response.data);
-      console.log("it worked")
-    })
-    .catch((error) => {
-      console.log("error:", error);
-    })
+  //get list of all boards
+
+  //get list of all cards
+
+  //hide the board, needs to be updated to show/hide board when button is clicked (add conditional logic)
+  const hideBoard = () => {
+    setShowBoard(false);
   };
 
   return (
@@ -82,9 +84,13 @@ const makeNewCard = (cardData) => {
       <Header />
       <div>
         <div className="top-section">
-          <CreateNewBoard onSubmitBoard={makeNewBoard} />
-          {/* <Board /> */}
-          <CardSection createNewCard={makeNewCard}/>
+          <div className="board-section">
+            <CreateNewBoard onSubmitBoard={makeNewBoard} />
+            <button className="hide-board-button" onClick={hideBoard}>
+              Hide Board
+            </button>
+          </div>
+          <CardSection createNewCard={makeNewCard} />
           <SelectBoard boardData={boardData} />
         </div>
         <Footer />
@@ -92,14 +98,5 @@ const makeNewCard = (cardData) => {
     </>
   );
 }
-
-//get(URL--use above code), get boards
-
-//post(URL), post info for cards
-
-//get(URL), get card info
-
-
-
 
 export default App;
