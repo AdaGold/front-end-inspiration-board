@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import "./App.css";
 import BoardList from "./components/BoardList";
 import NewBoardForm from "./components/NewBoardForm";
+import Board from "./componenets/Board"
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <main>
         <BoardList />
         <NewBoardForm />
+        <Board />
       </main>
     </div>
   );

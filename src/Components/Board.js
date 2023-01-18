@@ -1,17 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../styles/Board.css";
+import Card from 'src/components/Card.js';
 
 const Board = (props) => {
-  const selectBoard = () => {
-    props.selectBoard(props.boardId);
-  };
+  if (typeof props.board != "undefined") {
+    const getCardsJSX = (props) => {
+    return props.cards.map((card) => {
+      return (
+        <Card
+          id={card.id}
+          message={card.message}
+          likes={card.likes}
+        />
+        );
+      });
+    };
 
-  return (
-    <div>
-      'Board'
-    </div>
-  );
+    return <div>
+    <section class="cardsContainer">
+      <ul>{getCardsJSX(props)}</ul>
+    </section>
+    <NewCardForm />
+    <div />
+    
+  } else {
+    return null
+  }
 };
 
 Board.propTypes = {

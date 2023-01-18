@@ -1,0 +1,11 @@
+li {
+    display: grid;
+    grid-template-rows: 80% auto;
+    outline: solid;
+    padding: 10%;
+    min-height: 20% vh;
+}
+
+button {
+    grid-row-start: 2;
+}
