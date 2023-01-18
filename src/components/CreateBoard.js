@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const BoardForm = (props) => {
+const CreateBoard = (props) => {
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
   });
 
-  console.log("~~rendering BoardForm.js main function component~~");
+  console.log("~~rendering CreateBoard.js main function component~~");
 
   const onTitleChange = (event) => {
     console.log("current value: ", event.target.value);
@@ -21,10 +21,7 @@ const BoardForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // This function works now, the error was a syntax error in the way we were passing this down from App.
-    // On submit we now update state
     newFunction();
-
     setFormFields({
       title: "",
       owner: "",
@@ -63,15 +60,21 @@ const BoardForm = (props) => {
       </div>
 
       <input type="submit" value="Add Board" />
+
+{/* 
+      need to display cards based on Select menu board options
+      --> requires GET request from back-end API
+*/}
+
     </form>
   );
 };
 
-BoardForm.propTypes = {
+CreateBoard.propTypes = {
   addBoard: PropTypes.func.isRequired,
 };
 
-export default BoardForm;
+export default CreateBoard;
 
 /*
 OnTitleChange() and onOwnerChange() are not updating 

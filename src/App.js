@@ -1,5 +1,5 @@
 import "./App.css";
-import BoardForm from "./components/BoardForm";
+import CreateBoard from "./components/CreateBoard";
 import { useState } from "react";
 import React from "react";
 import Select from "react-select";
@@ -18,9 +18,9 @@ function App() {
     });
     optionsList.push({
       value: "Title",
-      label: newBoard.title,
-      bgColor: "#da3b01", // background color of each title in select
-      color: "#fAf", // text color of each title in select
+      label: `${newBoard.title} by ${newBoard.owner}`,
+      // bgColor: "#da3b01", // background color of each title in select
+      color: "#696969", // text color of each title in select
     });
     setBoardData(newBoardList);
     setOptions(optionsList);
@@ -35,17 +35,26 @@ function App() {
       fontSize: state.selectProps.myFontSize,
     }),
   };
-  // is this 'push' pushing our data from BoardForm.js
+  // is this 'push' pushing our data from CreateBoard.js
   //            into the empty state list?
   console.log([BoardData, setBoardData]);
   console.log(addBoardData);
+
+/* ADD API CALL ON EVENT HANDLER:
+    - When board is selected,  pull all cards associated to that board.
+
+Q: Should this drop-down menu be its own component?
+    */
+
 
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <BoardForm addBoard={addBoardData}></BoardForm>
+          <CreateBoard addBoard={addBoardData}></CreateBoard>
           <Select options={Options} styles={styles} />
+          {/* display board based on Select Options state
+              --> requires GET request from Cards? */}
         </div>
       </header>
     </div>
