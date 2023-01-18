@@ -5,7 +5,10 @@ import "./BoardList.css";
 
 const BoardList = (props) => {
   const boardComponents = props.boards.map((board) => {
-    return <li onClick={() => props.selectBoard(board)}>{board.title}</li>;
+    return <li onClick={() => props.selectBoard(board)}>
+      {board.title} 
+      <button onClick={()=>props.deleteBoard(board)}>x</button>
+      </li>;
   });
   return (
     <div className="boardList">

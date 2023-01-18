@@ -9,13 +9,13 @@ const Card = (props) => {
             <div>
                 {props.message}
             </ div>
-            <button>
+            <button onClick={() => props.updateLikes(props)}>
                 {props.likes}
             </button>
             <button
-            className="tasks__item__remove button"
-            >
-            x
+            className="tasks__item__remove button" 
+            onClick={() => props.deleteCard(props)}
+            >x
             </button>
         </li>
     );
