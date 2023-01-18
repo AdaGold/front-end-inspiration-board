@@ -3,8 +3,9 @@ import "./App.css";
 
 import React, { useState } from "react";
 import "./App.css";
-import BoardList from "./components/BoardList";
-import NewBoardForm from "./components/NewBoardForm";
+import BoardList from "./Components/BoardList";
+import NewBoardForm from "./Components/NewBoardForm";
+import NewCardForm from "./Components/NewCardForm";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <main>
         <BoardList />
         <NewBoardForm />
+        <NewCardForm />
       </main>
     </div>
   );
