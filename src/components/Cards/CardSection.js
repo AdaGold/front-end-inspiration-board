@@ -11,6 +11,10 @@ const CardSection = (props) => {
   const [cardsInBoard, setCardsInBoard] = useState([]);
 
 
+  // once we have the board set up, 
+  // move this to app so we can call this function on events
+  // (right now, we're calling it constantly)
+  // then we can change the props to be the card list
   const getCardsByBoardId = () => {
     axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board_id}/cards`)

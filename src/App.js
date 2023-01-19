@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 import CardSection from "./components/Cards/CardSection";
 import CreateNewBoard from "./components/Boards/CreateNewBoard";
 import Card from "./components/Cards/Card";
-import SelectBoard from "./components/Boards/SelectBoard";
 import CreateNewCard from "./components/Cards/CreateNewCard";
+import Board from "./components/Boards/Board";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
@@ -100,9 +100,9 @@ function App() {
   //wrap the board components not board.title 
 
   const boardsElements = boardData.map((board) => {
+    console.log(board.board_id)
     return (
-    <li key={board.board_id}> <Board /></Board></li>
-    
+    <li key={board.board_id}><Board title={board.title}></Board></li>
     )
   })
   
@@ -126,7 +126,8 @@ function App() {
             </button>
           </div>
           
-          <SelectBoard boardData={boardData} />
+          {/* <SelectBoard boardData={boardData} /> */}
+          <p>{boardsElements}</p>
           <CardSection board_id="26" ></CardSection>
           {/* <CardSection createNewCard={makeNewCard} /> */}
           <CreateNewCard onSubmitCard={makeNewCard} />
