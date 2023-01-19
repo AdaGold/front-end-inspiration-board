@@ -2,8 +2,8 @@ import "./App.css";
 import CreateBoard from "./components/CreateBoard";
 import { useState } from "react";
 import React from "react";
-import Select from "react-select";
 import CreateCard from "./components/CreateCard";
+import BoardsList from "./components/BoardsList";
 
 function App() {
   const [BoardData, setBoardData] = useState([]);
@@ -28,17 +28,6 @@ function App() {
     setOptions(optionsList);
   };
 
-  // Adding to the styles object to use as a prop, this allows us to "style" our dropdown ( <select>) this is built in
-  const styles = {
-    option: (provided, state) => ({
-      ...provided,
-      fontWeight: state.isSelected ? "bold" : "normal",
-      color: state.data.color,
-      backgroundColor: state.data.bgColor,
-      fontSize: state.selectProps.myFontSize,
-    }),
-  };
-
   const addCardsData = (newCard) => {
     const newCardsList = [...CardsData];
 
@@ -49,6 +38,10 @@ function App() {
     });
     setCardsData(newCardsList);
   };
+
+  /*
+  const diplayCardsByBoardId = () => {};
+  */
 
   /* ADD API CALL ON EVENT HANDLER:
     - When board is selected,  pull all cards associated to that board.
@@ -61,9 +54,9 @@ Q: Should this drop-down menu be its own component?
       <header className="App-header">
         <div>
           <CreateBoard addBoard={addBoardData}></CreateBoard>
-          <Select options={Options} styles={styles} />
+          <BoardsList options={Options} />
           <CreateCard addCard={addCardsData}></CreateCard>
-          {/* <Board displayCards={}/> */}
+          {/* <Board displayCards={displayCardByBoardId}/> */}
         </div>
       </header>
     </div>

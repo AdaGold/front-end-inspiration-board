@@ -40,7 +40,7 @@ const CreateBoard = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="Title">Board title </label>
+        <label htmlFor="Title">Board title: </label>
         <input
           name="Title"
           value={formFields.title}
@@ -49,7 +49,7 @@ const CreateBoard = (props) => {
       </div>
 
       <div>
-        <label htmlFor="Owner">Owner of board</label>
+        <label htmlFor="Owner">Owner of board: </label>
         <input
           name="Owner"
           value={formFields.owner}
