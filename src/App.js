@@ -4,10 +4,10 @@ import axios from "axios";
 
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import BoardList from "./components/BoardList";
-import NewBoardForm from "./components/NewBoardForm";
-import NewCardForm from "./components/NewCardForm";
-import Board from "./components/Board";
+import NewBoardForm from "./Components/NewBoardForm.js";
+import BoardList from "./Components/BoardList";
+import NewCardForm from "./Components/NewCardForm";
+import Board from "./Components/Board";
 
 const App = () => {
   // const axios = require("axios");

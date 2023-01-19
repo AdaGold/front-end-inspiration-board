@@ -30,6 +30,15 @@ const Board = (props) => {
         <NewCardForm createCard={props.createCard} />
       </div>
     );
+  } else if (props.title) {
+    return (
+      <div className="cardInfo">
+        <section className="cardsContainer">
+          <h1>Cards for {props.title} </h1>
+        </section>
+        <NewCardForm createCard={props.createCard} />
+      </div>
+    );
   }
 };
 
