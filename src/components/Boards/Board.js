@@ -3,7 +3,7 @@ import "./Board.css"
 
 const Board = (props) => {
   return (
-    <li>{props.title}</li>
+    <li className="board_title">{props.title}</li>
   )
 }
 
