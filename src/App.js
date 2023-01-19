@@ -4,8 +4,8 @@ import axios from "axios";
 
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import BoardList from "./components/BoardList";
 import NewBoardForm from "./components/NewBoardForm";
+import BoardList from "./components/BoardList";
 import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 
