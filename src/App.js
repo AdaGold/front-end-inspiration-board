@@ -13,7 +13,7 @@ const App = () => {
   // const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
-  const [selectedBoard, setSelectedBoard] = useState({ id: null, cards: [] });
+  const [selectedBoard, setSelectedBoard] = useState({title: "", id: null, cards: [] });
 
 
   const getNewCards = (clickedBoard) => {
@@ -34,7 +34,7 @@ const App = () => {
         });
         cards = cards.sort((a,b)=> a.id - b.id)
 
-        setSelectedBoard({id: clickedBoard, cards: cards });
+        setSelectedBoard({...selectedBoard, id: clickedBoard, cards: cards });
       })
       .catch(() => {
         console.log("This request could not go through");
@@ -96,7 +96,7 @@ const App = () => {
     // console.log(clickedBoard);
     // setBoardId(clickedBoard);
     console.log(clickedBoard.id);
-    setSelectedBoard({ cards: [], id: clickedBoard.id });
+    setSelectedBoard({title: clickedBoard.title, cards: [], id: clickedBoard.id });
     getNewCards(clickedBoard.id)
   };
 
@@ -187,6 +187,7 @@ const App = () => {
   return (
     <div id="App">
       <header></header>
+      <h1>Inspiration Board</h1>
       <main>
         <BoardList
           boards={boardsData}
@@ -199,6 +200,7 @@ const App = () => {
           deleteCard={deleteCard}
           createCard={createCard}
           updateLikes={updateLikes}
+          title={selectedBoard.title}
         />
       </main>
     </div>

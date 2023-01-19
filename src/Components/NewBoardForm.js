@@ -13,17 +13,17 @@ const NewBoardForm = (props) => {
   //     description: formFields.description,
   //     isComplete: false,
   //   });
-
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
   });
   const [showError, setShowError] = useState(false);
+  const [hideForm, setHideForm] = useState(false);
 
   const handleChange = (event) => {
     setFormFields({
       ...formFields,
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -34,7 +34,7 @@ const NewBoardForm = (props) => {
     } else {
       setShowError(false);
     }
-    props.createBoard(formFields.title, formFields.owner)
+    props.createBoard(formFields.title, formFields.owner);
     setFormFields({
       title: "",
       owner: "",
@@ -45,9 +45,9 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <div id="newBoardForm">
-      <h1> Add Board </h1>
-      <form onSubmit={onFormSubmit}>
+    <div className="newBoardForm">
+      <h1> Create New Board </h1>
+      <form onSubmit={onFormSubmit} className={hideForm ? "hiddenForm" : ""}>
         <div>
           <label htmlFor="title">Title:</label>
           <input
@@ -66,10 +66,19 @@ const NewBoardForm = (props) => {
             onChange={handleChange}
           />
         </div>
+        <div>
+          <label htmlFor="preview">Preview:</label>
+          <div name="preview" className="preview">
+            {formFields.title}-{formFields.owner}
+          </div>
+        </div>
         {showError ? <p>Error: Owner and Title need to be filled out</p> : null}
 
-        <input type="submit" value="Add Board" />
+        <input type="submit" value="Submit" />
       </form>
+      <button onClick={() => setHideForm(!hideForm)}>
+        {hideForm ? "Show Form" : "Hide Form"}
+      </button>
     </div>
   );
 };
