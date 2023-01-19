@@ -163,19 +163,11 @@ const App = () => {
         .patch(
           `https://ancient-inlet-63477.herokuapp.com/boards/${card.boardId}/cards/${card.id}`, card)
         .then((response) => {
-          const cards = response.data.map((card) => {
-            return {
-              id: card.id,
-              message: card.message,
-              likes: card.likes,
-            };
-          });
-          setSelectedBoard(cards);
-          console.log('That worked!');
-        })
+          getNewCards(card.boardId)
+          })
         .catch((error) => {
-          console.log('Error Status Code:', error.response.status);
-          console.log('Error Message:', error.response.data);
+          console.log('Error Status Code:', error);
+          console.log('Error Message:', error.response);
         });
     }
 
