@@ -21,7 +21,7 @@ const App = () => {
     console.log(clickedBoard)
     axios
       .get(
-        `https://ancient-inlet-63477.herokuapp.com/boards/${clickedBoard.boardId}/cards`
+        `https://ancient-inlet-63477.herokuapp.com/boards/${clickedBoard}/cards`
       )
       .then((response) => {
         console.log(response);
@@ -30,7 +30,7 @@ const App = () => {
             id: card.id,
             message: card.message,
             likes: card.likes,
-            boardId: clickedBoard.id
+            boardId: clickedBoard
           };
         });
       setSelectedBoard(cards);}
@@ -73,13 +73,13 @@ const App = () => {
     const newlyCreatedCard = {
       message: message
     };
-    // console.log(selectedBoard[0])
+    
     axios
       .post(`https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard[0].boardId}/cards`, newlyCreatedCard)
       .then(() => {
         console.log("That worked!");
-        const newCardList = getNewCards(selectedBoard[0]);
-        setSelectedBoard(newCardList);
+        getNewCards(selectedBoard[0].boardId);
+        // setSelectedBoard(newCardList);
       })
       .catch((error) => {
         console.log("Error Status Code:", error.response.status);
