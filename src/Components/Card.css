@@ -1,11 +1,12 @@
 li {
-    display: grid;
     grid-template-rows: 80% auto;
     outline: solid;
-    padding: 10%;
+    padding: 8px 5px;
     min-height: 20% vh;
+    justify-content: center;
 }
 
-button {
+.tasks__item__remove {
     grid-row-start: 2;
+    margin-left: 10px;
 }

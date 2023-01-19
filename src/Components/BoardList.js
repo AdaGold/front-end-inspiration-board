@@ -18,7 +18,12 @@ const BoardList = (props) => {
         }}
       >
         {board.title}
-        <button onClick={() => props.deleteBoard(board)}>x</button>
+        <button
+          className="removeBoardButton"
+          onClick={() => props.deleteBoard(board)}
+        >
+          x
+        </button>
       </li>
       // <Board
       //   key={board.id}
@@ -33,14 +38,16 @@ const BoardList = (props) => {
 
   return (
     <div className="boardList">
-      <h1>Boards</h1>
-      <div>
-        <label htmlFor="preview">Selected Board:</label>
-        <div name="selected" className="selected">
-          {selectBoardTitle} - {selectBoardOwner}
+      <div className="boardListHeader">
+        <h1>Boards</h1>
+        <div>
+          <label htmlFor="preview">Selected Board:</label>
+          <div name="selected" className="selected">
+            {selectBoardTitle} - {selectBoardOwner}
+          </div>
         </div>
       </div>
-      <ol>{boardComponents}</ol>
+      <ol className="olBoardList">{boardComponents}</ol>
     </div>
   );
 };

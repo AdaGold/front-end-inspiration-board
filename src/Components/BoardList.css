@@ -1,4 +1,28 @@
 .boardList {
-    width: 15%;
+    background: white;
+    width: 35%;
     border:1px solid black;
+}
+
+li {
+    background: white;
+    margin-bottom: 10px;
+    align-items: center;
+    list-style-type: none;
+}
+
+.olBoardList {
+    padding: 10px;
+}
+
+.boardListHeader {
+    background: white;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    position: sticky;
+    top: 0px;
+}
+
+.removeBoardButton {
+    float: right;
 }

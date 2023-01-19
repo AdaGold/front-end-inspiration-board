@@ -39,6 +39,7 @@
   }
 }
 body {
+  background-color:#f1f1ff;
   margin: 3rem;
   font-family: 'Open Sans', sans-serif;
   color: black;
@@ -164,4 +165,30 @@ footer {
 
 .content__container {
   flex: 1 0 auto;
+}
+
+.boardInfo {
+  padding: 75px 0px 50px 0px;
+  justify-content: center;
+  display: flex;
+  gap: 50px;
+}
+
+.boardList {
+  height: 300px;
+  overflow: scroll;
+}
+
+.cardInfo {
+  justify-content: center;
+  display: flex;
+}
+
+ul {
+  padding: 0;
+}
+
+button {
+  background-color: pink;
+  border-radius: 4px;
 }

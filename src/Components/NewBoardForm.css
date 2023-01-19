@@ -1,8 +1,25 @@
 .newBoardForm{
-    width: 15%;
+    background: white;
+    max-height: 300px;
+    width: 35%;
     border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hiddenForm {
     display: none;
+}
+
+.toggleFormButton {
+    margin-top: 10px;
+}
+.stickyNewBoardTitle {
+    width: 70%;
+}
+
+.pinkButton {
+    background-color: pink;
+    border-radius: 4px;
 }

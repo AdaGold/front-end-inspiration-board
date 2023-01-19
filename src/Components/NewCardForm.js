@@ -24,7 +24,7 @@ const NewCardForm = (props) => {
       return;
     } else {
       setShowError(false);
-      props.createCard(formFields.message)
+      props.createCard(formFields.message);
     }
 
     setFormFields({
@@ -36,8 +36,8 @@ const NewCardForm = (props) => {
     <div className="newCardForm">
       <h1> Create New Card </h1>
       <form onSubmit={onFormSubmit}>
-        <div>
-          <label htmlFor="message">Message:</label>
+        <div className="bottomSpacing">
+          <label htmlFor="message">Message: </label>
           <input
             name="message"
             id="message"
@@ -45,7 +45,7 @@ const NewCardForm = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="bottomSpacing">
           <label htmlFor="preview">Preview:</label>
           <div name="preview" className="preview">
             {formFields.message}
@@ -54,7 +54,11 @@ const NewCardForm = (props) => {
         {showError ? (
           <p>Error: Message cannot be longer than 40 characters.</p>
         ) : null}
-        <input type="submit" value="Submit" />
+        <input
+          className="toggleFormButton pinkButton bottomSpacing"
+          type="submit"
+          value="Submit"
+        />
       </form>
     </div>
   );

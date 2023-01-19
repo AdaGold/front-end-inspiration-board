@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 const Card = (props) => {
   return (
     <li>
-      <div>{props.message}</div>
-      <div> 💕{props.likes}</div>
+      <div className="bottomSpacing">{props.message}</div>
+      <div className="bottomSpacing"> 💕{props.likes}</div>
       <button onClick={() => props.updateLikes(props)}>+1</button>
       <button
         className="tasks__item__remove button"

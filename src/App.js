@@ -206,16 +206,18 @@ const App = () => {
   }, []);
 
   return (
-    <div id="App">
+    <div className="App">
       <header></header>
       <h1>Inspiration Board</h1>
       <main>
-        <BoardList
-          boards={boardsData}
-          selectBoard={selectBoard}
-          deleteBoard={deleteBoard}
-        />
-        <NewBoardForm createBoard={createBoard} />
+        <div className="boardInfo">
+          <BoardList
+            boards={boardsData}
+            selectBoard={selectBoard}
+            deleteBoard={deleteBoard}
+          />
+          <NewBoardForm createBoard={createBoard} className="cardInfo" />
+        </div>
         <Board
           board={selectedBoard}
           deleteCard={deleteCard}

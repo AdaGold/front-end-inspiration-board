@@ -8,30 +8,28 @@ const Board = (props) => {
   if (props.board.length !== 0) {
     const getCardsJSX = (props) => {
       return props.board.map((card) => {
-        return <Card 
-        id={card.id} 
-        message={card.message} 
-        likes={card.likes} 
-        deleteCard={props.deleteCard} 
-        boardId={card.boardId}
-        updateLikes={props.updateLikes}
-        />;
+        return (
+          <Card
+            id={card.id}
+            message={card.message}
+            likes={card.likes}
+            deleteCard={props.deleteCard}
+            boardId={card.boardId}
+            updateLikes={props.updateLikes}
+          />
+        );
       });
     };
 
     return (
-      <div>
-        <section class="cardsContainer">
+      <div className="cardInfo">
+        <section className="cardsContainer">
           <h1>Cards for {props.title} </h1>
           <ul>{getCardsJSX(props)}</ul>
         </section>
-        <NewCardForm createCard = {props.createCard}/>
+        <NewCardForm createCard={props.createCard} />
       </div>
     );
-  } else {
-    return <section>
-      <NewCardForm createCard = {props.createCard}/>
-      </section>;
   }
 };
 
