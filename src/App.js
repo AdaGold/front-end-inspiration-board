@@ -95,12 +95,24 @@ function App() {
 
   //hide the board when user clicks hide button, needs to be updated (add conditional logic from createnewboard)
   const hideBoardForm = () => setShowBoard(!showBoard);
+  //add a board component 
+  //accept props return div
+  //wrap the board components not board.title 
 
-  const hideBoard = () => setShowBoard(!showBoard);
+  const boardsElements = boardData.map((board) => {
+    return (
+    <li key={board.board_id}> <Board /></Board></li>
+    
+    )
+  })
+  
+
 
   // whenever SelectABoard is changed, run the axios call to find all cards related to that board
 
-
+//add functionality of displaying board here
+//move new board form here and all boards element
+//have a function that determines if we display the cards
   return (
     <>
       <Header />
@@ -113,6 +125,7 @@ function App() {
               {showBoard ? "Hide Board" : "Show Board"}
             </button>
           </div>
+          
           <SelectBoard boardData={boardData} />
           <CardSection board_id="26" ></CardSection>
           {/* <CardSection createNewCard={makeNewCard} /> */}
