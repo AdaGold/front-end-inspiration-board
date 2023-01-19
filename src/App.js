@@ -74,6 +74,11 @@ function App() {
     )
   })
   
+  const onSelectBoardClick = (event) => {
+    setSelectedBoard(event.target.value);
+  }
+
+  
   return (
     <>
       <Header />
