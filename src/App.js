@@ -7,10 +7,11 @@ import CardSection from "./components/Cards/CardSection";
 import CreateNewBoard from "./components/Boards/CreateNewBoard";
 import Card from "./components/Cards/Card";
 import SelectBoard from "./components/Boards/SelectBoard";
+import CreateNewCard from "./components/Cards/CreateNewCard";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
-  const [board, setBoard] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showBoard, setShowBoard] = useState(true);
 
@@ -19,21 +20,26 @@ function App() {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
-        console.log("response:", response);
-        console.log("response data", response.data);
+        // console.log("response:", response);
+        // console.log("response data", response.data);
         setBoardData(response.data);
       })
       .catch((error) => {
-        console.log("error:", error);
-        console.log("error response:", error.response);
+        // console.log("error:", error);
+        // console.log("error response:", error.response);
       });
   }, []);
 
   //create a new board with post request to axios --This is working
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
-    if (enteredData.title.length < 1 || enteredData.owner.length < 1) {
-      alert("You must enter a title and owner");
+    if (
+      enteredData.title.replaceAll(" ", "").length < 1 ||
+      enteredData.owner.replaceAll(" ", "").length < 1
+    ) {
+      alert(
+        "You must enter a valid title and owner. A valid title and owner must be greater than one character and cannot be white spaces."
+      );
     } else {
       axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
@@ -41,51 +47,59 @@ function App() {
           owner: enteredData.owner,
         })
         .then((response) => {
-          console.log("response:", response);
-          console.log("response data:", response.data);
+          // console.log("response:", response);
+          // console.log("response data:", response.data);
           setBoardData([...boardData, response.data]);
         })
         .catch((error) => {
-          console.log("error:", error);
+          // console.log("error:", error);
         });
     }
   };
 
-  //post new card to board--This is not working
+  //post new card to board--This works but currently only accepts hard-coded data
+  //Currently this allows a user to submit a card with empty strings. I'm planning to add the logic above in the post boards function to prevent that when it is complete.
+  //Add logic to disable submission and return error if there are no boards
   const makeNewCard = (cardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
-        message: "puppies",
-        board_id: 2,
+        //card message data and the id
+        message: "inspiration",
+        board_id: 7,
       })
       .then((response) => {
-        console.log("response:", response);
-        console.log("response data:", response.data);
-        console.log("it worked");
+        // console.log("response:", response);
+        // console.log("response data:", response.data);
+        // console.log("it worked");
       })
       .catch((error) => {
-        console.log("error:", error);
+        // console.log("error:", error.response.data);
       });
   };
+  //pass in id for a specific board and use it to make a new card
 
-  //get all cards
-  // const getAllCards = () => {
+  // get card by board id
+  // const getCardbyBoardID = () => {
   //   axios
-  //     .get(url)
+  //     .get(`${process.env.REACT_APP_BACKEND_URL}/boards/6/cards`)
   //     .then((response) => {
   //       console.log("response:", response);
   //       console.log("response data:", response.data);
-  //       setCardData([...cardData, response.data]);
+  //       // setCardData([...cardData, response.data]);
+  //       console.log("Board ID Working");
   //     })
   //     .catch((error) => {
   //       console.log("error:", error);
   //     });
-  // };0
+  // };
 
   //hide the board when user clicks hide button, needs to be updated (add conditional logic from createnewboard)
-  const hideBoard = () => {
-    setShowBoard(false);
-  };
+  const hideBoardForm = () => setShowBoard(!showBoard);
+
+  const hideBoard = () => setShowBoard(!showBoard);
+
+  // whenever SelectABoard is changed, run the axios call to find all cards related to that board
+
 
   return (
     <>
@@ -93,13 +107,18 @@ function App() {
       <div>
         <div className="top-section">
           <div className="board-section">
-            <CreateNewBoard onSubmitBoard={makeNewBoard} />
-            <button className="hide-board-button" onClick={hideBoard}>
-              Hide Board
+            {/* <CreateNewBoard onSubmitBoard={makeNewBoard} /> */}
+            {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard} /> : null}
+            <button className="hide-board-button" onClick={hideBoardForm}>
+              {showBoard ? "Hide Board" : "Show Board"}
             </button>
           </div>
-          <CardSection createNewCard={makeNewCard} />
           <SelectBoard boardData={boardData} />
+          <CardSection board_id="26" ></CardSection>
+          {/* <CardSection createNewCard={makeNewCard} /> */}
+          <CreateNewCard onSubmitCard={makeNewCard} />
+          {/* cardMessagesDisplay={makeNewCard} */}
+          {/* <CardSection  /> */}
         </div>
         <Footer />
       </div>

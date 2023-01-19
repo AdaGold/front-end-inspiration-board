@@ -1,26 +1,51 @@
 import React, { useState } from "react";
-import "./CardSection.css";
-import CreateNewCard from "./CreateNewCard";
+// import CreateNewCard from "./CreateNewCard";
 import Card from "./Card";
+import axios from "axios";
 
-function CardSection() {
-  const [savedCardMessages, setSavedCardMessages] = useState([]);
-  const cardMessagesDisplay = (message) => {
-    setSavedCardMessages((prev) => {
-      return [...prev, message];
-    });
-  };
 
+const CardSection = (props) => {
+  
+  // set state to be able to access cards from database in component without...
+  // needing to work with complicated async issues
+  const [cardsInBoard, setCardsInBoard] = useState([]);
+
+
+  const getCardsByBoardId = () => {
+    axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board_id}/cards`)
+    .then((response) => {
+      let cards = []
+      for (let card of response.data.cards) {
+        cards.push({
+          "message": card.message,
+          "likes_count": card.likes_count
+        })
+      }
+      setCardsInBoard(cards)
+    })
+  }
+
+
+  // call axios to update state with card data
+  getCardsByBoardId()
+
+
+  // map each piece of card data into an array of list items
+  const cardComponents = cardsInBoard.map(card => {
+    return (
+      <li><Card message={card.message} likes_count={card.likes_count}></Card></li>
+    );
+  });
+
+
+  // access the array and return to App as a full card section
   return (
-    <>
-      <CreateNewCard cardMessagesDisplay={cardMessagesDisplay} />
-      <Card savedCardMessages={savedCardMessages} />
-    </>
+    <section className="cards-container">
+      {cardComponents}
+    </section>
   );
-}
+};
+
 
 export default CardSection;
-
-// I think we need something like this 
-// key={card.card_id}
-// increaseLikes={increaseLikes}
