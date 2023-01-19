@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Card = (props) => {
+<<<<<<< HEAD
   return (
     <div className="cards">
       <li>
@@ -13,6 +14,23 @@ const Card = (props) => {
       </li>
     </div>
   );
+=======
+    return (
+        <li>
+            <div>
+                {props.message}
+            </ div>
+            <button onClick={() => props.updateLikes(props)}>
+                {props.likes}
+            </button>
+            <button
+            className="tasks__item__remove button" 
+            onClick={() => props.deleteCard(props)}
+            >x
+            </button>
+        </li>
+    );
+>>>>>>> a39880fd492b85414a421142969d26cbe26c9182
 };
 
 // Card.propTypes = {

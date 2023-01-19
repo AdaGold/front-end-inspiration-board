@@ -8,7 +8,14 @@ const Board = (props) => {
   if (props.board.length !== 0) {
     const getCardsJSX = (props) => {
       return props.board.map((card) => {
-        return <Card id={card.id} message={card.message} likes={card.likes} />;
+        return <Card 
+        id={card.id} 
+        message={card.message} 
+        likes={card.likes} 
+        deleteCard={props.deleteCard} 
+        boardId={card.boardId}
+        updateLikes={props.updateLikes}
+        />;
       });
     };
 
@@ -18,11 +25,13 @@ const Board = (props) => {
           <h1>Cards for {props.title} </h1>
           <ul>{getCardsJSX(props)}</ul>
         </section>
-        <NewCardForm />
+        <NewCardForm createCard = {props.createCard}/>
       </div>
     );
   } else {
-    return <section></section>;
+    return <section>
+      <NewCardForm createCard = {props.createCard}/>
+      </section>;
   }
 };
 

@@ -9,6 +9,7 @@ const BoardList = (props) => {
   const [selectBoardTitle, setSelectedBoardTitle] = useState("Select a Board!");
   const [selectBoardOwner, setSelectedBoardOwner] = useState("");
   const boardComponents = props.boards.map((board) => {
+<<<<<<< HEAD
     return (
       <li
         onClick={() => {
@@ -28,6 +29,12 @@ const BoardList = (props) => {
       //   selectBoard={props.selectBoard}
       // />
     );
+=======
+    return <li onClick={() => props.selectBoard(board)}>
+      {board.title} 
+      <button onClick={()=>props.deleteBoard(board)}>x</button>
+      </li>;
+>>>>>>> a39880fd492b85414a421142969d26cbe26c9182
   });
 
   return (

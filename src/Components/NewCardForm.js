@@ -24,6 +24,7 @@ const NewCardForm = (props) => {
       return;
     } else {
       setShowError(false);
+      props.createCard(formFields.message)
     }
 
     setFormFields({
@@ -59,8 +60,8 @@ const NewCardForm = (props) => {
   );
 };
 
-NewCardForm.propTypes = {
-  board_id: PropTypes.number.isRequired,
-};
+// NewCardForm.propTypes = {
+//   board_id: PropTypes.number.isRequired,
+// };
 
 export default NewCardForm;

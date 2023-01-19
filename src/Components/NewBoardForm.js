@@ -4,7 +4,15 @@ import "./NewBoardForm.css";
 
 import { useState } from "react";
 
-const NewBoardForm = () => {
+const NewBoardForm = (props) => {
+  // const onFormSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   props.createTaskCallback({
+  //     title: formFields.title,
+  //     description: formFields.description,
+  //     isComplete: false,
+  //   });
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
@@ -26,6 +34,7 @@ const NewBoardForm = () => {
     } else {
       setShowError(false);
     }
+    props.createBoard(formFields.title, formFields.owner);
     setFormFields({
       title: "",
       owner: "",
