@@ -12,6 +12,10 @@
   font-family: scrawl;
   background-image: url(./assets/desk-background.jpeg);
   background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
 }
 
 #sidebar {
@@ -19,12 +23,12 @@
   grid-column: 1;
   flex-direction: column;
   background-color: #F576A1;
-  min-height:97vh;
+  height: 92vh;
   border-style: solid;
-  border-width: 15px;
+  border-width: 10px;
   border-color: #12110F;
   margin: 20px;
-  box-shadow: 5px 10px 60px 10px ;
+  box-shadow: 5px 10px 60px 10px rgb(91, 66, 74);
 }
 
 #main-display {
@@ -74,15 +78,23 @@
 
 
 #title-container {
-  margin-top: 20px;
-  margin-right: 20px;
+
   font-size: 25px;
   color: white;
   background-color: #F576A1;
   border-style: solid;
-  border-width: 15px;
+  border-width: 10px;
   border-color: #12110F;
   height: 75px;
+  width: fit-content;
+  margin: 20px auto 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#title{
+  position: relative;
+  bottom: 15px;
 }
 
 #error-msg {
@@ -99,12 +111,13 @@
 
 }
 #card-wall{
+  background-image: url(./assets/card-wall-background.jpeg);
+  box-shadow: 5px 10px 90px 1px rgb(91, 66, 74) ;
+  background-size: cover;
   display: flexbox;
-  margin-top: 10%;
   margin-right: 5%;
-
-  min-height: 60vh;
-  min-width: 60vw;
+  height: 57vh;
+  overflow: scroll;
 }
  
 
@@ -115,6 +128,7 @@
   left: 50%;
 }
 
+
 .card{
   background-color: #E9D758;
   display: inline-block;
@@ -123,7 +137,37 @@
   width: 200px;
   margin: 5%;
   box-shadow:5px 10px 30px 10px  rgb(63, 62, 62);
+  position:relative;
+
 }
+
+#card-form{
+  margin-bottom: 20px;
+}
+
+#buttons {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 65px;
+}
+
+#card-input{
+  background-color: #E9D758;
+  border: none;
+  text-align: center;
+  height: 150px;
+  width: 200px;
+
+}
+
+#create-card{
+  position: absolute;
+  bottom:0;
+  left:54px;
+  margin: auto;
+}
+
+
 
 
 .card-text{

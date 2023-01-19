@@ -6,13 +6,15 @@ const CardWall = (props) => {
     return (
       <div className="card" key={card.card_id}>
         <Card messageData={card.message} likesCountData={card.likes_count} />
-        <button type="button" onClick={() => props.onDelete(card)}>
-          Delete
-        </button>
-        <p>{card.likes_count}</p>
-        <button type="button" onClick={() => props.onLike(card)}>
+        <div id="buttons">
+          <button type="button" onClick={() => props.onDelete(card)}>
+            Delete
+          </button>
+          <p>{card.likes_count}</p>
+          <button type="button" onClick={() => props.onLike(card)}>
           +1
-        </button>
+          </button>
+        </div>
       </div>
     );
   });
