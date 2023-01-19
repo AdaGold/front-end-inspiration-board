@@ -1,13 +1,4 @@
-/* .boardList {
+.boardList {
     width: 15%;
     border:1px solid black;
-} */
-
-
-
-.board-list {
-    width: 500px;
-    align-self: center;
-    justify-content: center;
-    
 }

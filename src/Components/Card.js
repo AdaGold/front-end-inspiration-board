@@ -2,23 +2,17 @@ import "./Card.css";
 import React from "react";
 import PropTypes from "prop-types";
 
-
 const Card = (props) => {
-    return (
-        <li>
-            <div>
-                {props.message}
-            </ div>
-            <button>
-                {props.likes}
-            </button>
-            <button
-            className="tasks__item__remove button"
-            >
-            x
-            </button>
-        </li>
-    );
+  return (
+    <div className="cards">
+      <li>
+        <div>{props.message}</div>
+        <div> 💕{props.likes}</div>
+        <button>+1</button>
+        <button className="tasks__item__remove button">Delete</button>
+      </li>
+    </div>
+  );
 };
 
 // Card.propTypes = {
@@ -26,6 +20,5 @@ const Card = (props) => {
 // message: PropTypes.string.isRequired,
 // likes: PropTypes.number.isRequired,
 // };
-
 
 export default Card;

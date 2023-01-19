@@ -32,7 +32,7 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <div id="newCardForm">
+    <div className="newCardForm">
       <h1> Create New Card </h1>
       <form onSubmit={onFormSubmit}>
         <div>

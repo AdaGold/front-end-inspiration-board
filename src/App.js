@@ -14,6 +14,7 @@ const App = () => {
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
   const [selectedBoard, setSelectedBoard] = useState([]);
+  const [selectedBoardTitle, setSelectedBoardTitle] = useState([]);
   console.log(boardsData);
 
   const selectBoard = (clickedBoard) => {
@@ -32,6 +33,7 @@ const App = () => {
         });
         console.log(cards);
         setSelectedBoard(cards);
+        setSelectedBoardTitle(clickedBoard.title);
       })
       .catch(() => {
         console.log("This request could not go through");
@@ -74,10 +76,11 @@ const App = () => {
   return (
     <div id="App">
       <header></header>
+      <h1>Inspiration Board</h1>
       <main>
         <BoardList boards={boardsData} selectBoard={selectBoard} />
         <NewBoardForm />
-        <Board board={selectedBoard}/>
+        <Board board={selectedBoard} title={selectedBoardTitle} />
       </main>
     </div>
   );

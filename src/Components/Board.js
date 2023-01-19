@@ -15,6 +15,7 @@ const Board = (props) => {
     return (
       <div>
         <section class="cardsContainer">
+          <h1>Cards for {props.title} </h1>
           <ul>{getCardsJSX(props)}</ul>
         </section>
         <NewCardForm />

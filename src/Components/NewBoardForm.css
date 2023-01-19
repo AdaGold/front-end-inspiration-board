@@ -1,6 +1,8 @@
-
-
-#newBoardForm{
+.newBoardForm{
     width: 15%;
     border:1px solid black;
+}
+
+.hiddenForm {
+    display: none;
 }
