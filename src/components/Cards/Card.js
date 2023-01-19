@@ -26,7 +26,7 @@ const Card = (props) => {
           <div className="card">
             <div className="body">
               <p className="text">{message}</p>
-              <button onClick={likeCard}>Like Card</button>
+              <button onClick={likeCard}>+1</button>
             </div>
           </div>
         );

@@ -7,7 +7,7 @@ export default function Footer() {
       className='footer'
       style={{
         color: "white",
-        position: "absolute",
+        position:"fixed",
         bottom: "0",
         left: "45%",
       }}

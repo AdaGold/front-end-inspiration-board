@@ -37,7 +37,6 @@ export default function App() {
       <div>
         <div className="top-section">
           <CreateNewBoard />
-          {/* <Board /> */}
           <CardSection />
         </div>
         <Footer />

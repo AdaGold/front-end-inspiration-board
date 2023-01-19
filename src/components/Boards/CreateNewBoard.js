@@ -87,6 +87,9 @@ const CreateNewBoard = () => {
             </button>
           </form>
         </div>
+          {/* <button className='show-board' onClick={() => setShowForm(true)}>
+          Create a New Board
+          </button> */}
         {/* NOTE FROM TIFFANY - Adding the SelectBoard component here as a child to 
         the CreateNewBoard component so that we can pass props from CreateNewBoard to SelectBoard
         */}

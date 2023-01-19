@@ -1,25 +1,36 @@
 /* styling for card components */
 .cards-container{
-position:absolute;
-left:0;
-top:20rem;
-min-width: 100%;
-max-width: 100%;
-display:flex;
-justify-content: space-evenly;
-gap:1rem;
-flex-direction: row;
-flex-wrap: wrap;
-
-
+    position:absolute;
+    left:0;
+    top:20rem;
+    min-width: 100%;
+    max-width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+    gap:1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .card{
     margin-top: 1rem;
     width: 16rem;
-    height:16rem;
+    height: 16rem;
     background-color:#FFFF33;
     padding: 0 10px;
-    box-shadow: -12px 12px 18px rgba(0,0,0, .3);
+    font-family: monospace;
+    font-size: 1.5rem;
+    text-align: center;
+    box-shadow: -12px 12px 18px rgba(241, 231, 97, 0.994);
+}
+.body{
+    display:flex;
+    flex-wrap: wrap;
 }
 
+.btn-submit{
+    
+    margin-top: 5rem;
+
+
+}
