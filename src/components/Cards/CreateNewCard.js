@@ -8,7 +8,6 @@ const CreateNewCard = (props) => {
     setCardMessage(event.target.value);
   };
 
-// This is the same code you wrote starting on line 40 but I added the conditional to ensure it meets the length requirement
 //Can also be moved to axios post card request when it is completed
   const submitCard = (event) => {
     event.preventDefault();
@@ -19,9 +18,8 @@ const CreateNewCard = (props) => {
       //   message: cardMessage,
       // }
     
-    props.onSubmitCard(cardMessage)
-    props.cardMessagesDisplay(cardMessage);
-    setCardMessage("");
+      props.onSubmitCard(cardMessage)
+      setCardMessage("");
     }
   }
   

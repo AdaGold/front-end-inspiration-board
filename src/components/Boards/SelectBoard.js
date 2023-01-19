@@ -8,8 +8,10 @@ import "./SelectBoard.css";
 const SelectBoard = (props) => {
   // const boardTitles = props.boardTitles;
   const boardTitles = props.boardData.map((board) => {
+    console.log(board.id)
     return (
-      <option key={board.board_id} value={board.id}>
+    
+      <option key={board.boar_id} value={board.id}>
         {/* {board.id} */}
         {board.title}
       </option>
