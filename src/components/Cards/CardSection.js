@@ -1,30 +1,43 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 // import CreateNewCard from "./CreateNewCard";
 import Card from "./Card";
+import axios from "axios";
 
 
-const CardSection = () => {
+const CardSection = (props) => {
   
+  // set state to be able to access cards from database in component without...
+  // needing to work with complicated async issues
+  const [cardsInBoard, setCardsInBoard] = useState([]);
 
-  // get our card data and put it in a list of object with message and likes_count
-  // for now, cardData is arbitrary. connect to database later
-  const cardData = [
-    {
-      message: "Caitlyn's test message 1",
-      likes_count: 0
-    },
-    {
-      message: "Caitlyn's test message 2",
-      likes_count: 5
-    }
-  ]
 
-  // map each pieve of card data into an array of list items
-  const cardComponents = cardData.map(card => {
+  const getCardsByBoardId = () => {
+    axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board_id}/cards`)
+    .then((response) => {
+      let cards = []
+      for (let card of response.data.cards) {
+        cards.push({
+          "message": card.message,
+          "likes_count": card.likes_count
+        })
+      }
+      setCardsInBoard(cards)
+    })
+  }
+
+
+  // call axios to update state with card data
+  getCardsByBoardId()
+
+
+  // map each piece of card data into an array of list items
+  const cardComponents = cardsInBoard.map(card => {
     return (
       <li><Card message={card.message} likes_count={card.likes_count}></Card></li>
     );
   });
+
 
   // access the array and return to App as a full card section
   return (
@@ -33,8 +46,6 @@ const CardSection = () => {
     </section>
   );
 };
-
-
 
 
 export default CardSection;

@@ -20,13 +20,13 @@ function App() {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
       .then((response) => {
-        console.log("response:", response);
-        console.log("response data", response.data);
+        // console.log("response:", response);
+        // console.log("response data", response.data);
         setBoardData(response.data);
       })
       .catch((error) => {
-        console.log("error:", error);
-        console.log("error response:", error.response);
+        // console.log("error:", error);
+        // console.log("error response:", error.response);
       });
   }, []);
 
@@ -47,12 +47,12 @@ function App() {
           owner: enteredData.owner,
         })
         .then((response) => {
-          console.log("response:", response);
-          console.log("response data:", response.data);
+          // console.log("response:", response);
+          // console.log("response data:", response.data);
           setBoardData([...boardData, response.data]);
         })
         .catch((error) => {
-          console.log("error:", error);
+          // console.log("error:", error);
         });
     }
   };
@@ -68,30 +68,30 @@ function App() {
         board_id: 7,
       })
       .then((response) => {
-        console.log("response:", response);
-        console.log("response data:", response.data);
-        console.log("it worked");
+        // console.log("response:", response);
+        // console.log("response data:", response.data);
+        // console.log("it worked");
       })
       .catch((error) => {
-        console.log("error:", error.response.data);
+        // console.log("error:", error.response.data);
       });
   };
   //pass in id for a specific board and use it to make a new card
 
   // get card by board id
-  const getCardbyBoardID = () => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/6/cards`)
-      .then((response) => {
-        console.log("response:", response);
-        console.log("response data:", response.data);
-        // setCardData([...cardData, response.data]);
-        console.log("Board ID Working");
-      })
-      .catch((error) => {
-        console.log("error:", error);
-      });
-  };
+  // const getCardbyBoardID = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_BACKEND_URL}/boards/6/cards`)
+  //     .then((response) => {
+  //       console.log("response:", response);
+  //       console.log("response data:", response.data);
+  //       // setCardData([...cardData, response.data]);
+  //       console.log("Board ID Working");
+  //     })
+  //     .catch((error) => {
+  //       console.log("error:", error);
+  //     });
+  // };
 
   //hide the board when user clicks hide button, needs to be updated (add conditional logic from createnewboard)
   const hideBoardForm = () => setShowBoard(!showBoard);
@@ -114,7 +114,7 @@ function App() {
             </button>
           </div>
           <SelectBoard boardData={boardData} />
-          <CardSection></CardSection>
+          <CardSection board_id="26" ></CardSection>
           {/* <CardSection createNewCard={makeNewCard} /> */}
           <CreateNewCard onSubmitCard={makeNewCard} />
           {/* cardMessagesDisplay={makeNewCard} */}
