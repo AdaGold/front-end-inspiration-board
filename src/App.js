@@ -97,6 +97,9 @@ function App() {
 
   const hideBoard = () => setShowBoard(!showBoard);
 
+  // whenever SelectABoard is changed, run the axios call to find all cards related to that board
+
+
   return (
     <>
       <Header />
@@ -110,6 +113,7 @@ function App() {
             </button>
           </div>
           <SelectBoard boardData={boardData} />
+          <CardSection></CardSection>
           {/* <CardSection createNewCard={makeNewCard} /> */}
           <CreateNewCard onSubmitCard={makeNewCard} />
         </div>
