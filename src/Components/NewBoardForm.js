@@ -33,8 +33,9 @@ const NewBoardForm = (props) => {
       setShowError(true);
     } else {
       setShowError(false);
+      props.createBoard(formFields.title, formFields.owner);
+
     }
-    props.createBoard(formFields.title, formFields.owner);
     setFormFields({
       title: "",
       owner: "",
