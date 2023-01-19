@@ -18,6 +18,8 @@ const SelectBoard = (props) => {
     );
   });
 
+  //e.value.getattribute
+
   return (
     <div className="select-board-menu">
       <h2 className="select-board-header">Select a Board</h2>
