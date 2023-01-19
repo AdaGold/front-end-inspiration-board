@@ -1,9 +1,24 @@
 
 .new-card-form{
-    /* display:flex; */
-     /* flex-direction:column; */
-     max-width:25%;
-     min-width:10rem
+    
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    min-width:.5rem;
+    margin-top:2.9rem;
+    margin-right: 4rem;
+    min-height: 6rem;
+    gap: -3rem;
+}
+
+#new-card-input{
+    justify-content: center;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+
 }
 
 #new-card-section-header{
@@ -12,5 +27,5 @@
     color:#fff;
     text-align: center;
     text-shadow: 0 8px rgb(157, 0, 255), 0 0 15px rgb(255,105,180), 0 0 15px rgb(157, 0, 255), 0 0 15px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 10px #0073e6;
-    margin-top:1.9rem
+    margin-top:2rem;
 }

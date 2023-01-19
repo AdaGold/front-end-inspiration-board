@@ -27,6 +27,9 @@ const CreateNewCard = (props) => {
     <div>
       <h1 id="new-card-section-header">Create a New Card</h1>
       <form className="new-card-form" onSubmit={submitCard}>
+      {/* <label for='new-card-input' style={{ alignSelf: "center" }}>
+          Message
+        </label> */}
         <input
           id="new-card-input"
           placeholder="Type Message"

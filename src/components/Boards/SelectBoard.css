@@ -1,6 +1,6 @@
 
 .select-board-menu {
-    flex-direction: column;
+  
     justify-content: center;
 } 
 
@@ -13,6 +13,13 @@
 }
 
 #dropdown{
-    background-color:#e86ce0 ;
-color: black
+    min-height: 3rem;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color:white;
+    background-color: #2cd2ee;
+    border-radius: 20px;
+    justify-content: center;
+    
 }
