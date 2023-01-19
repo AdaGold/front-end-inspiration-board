@@ -1,0 +1,223 @@
+@font-face {
+  font-family: scrawl;
+  src: url(./assets/emobot.ttf);
+}
+
+@font-face{
+  font-family: love;
+  src: url(./assets/Love.ttf)
+}
+
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 25vw 75vw;
+  margin: 0px;
+  padding: 0px;
+  font-family: scrawl;
+  background-image: url(./assets/desk-background.jpeg);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+}
+
+#sidebar {
+  display: flexbox;
+  grid-column: 1;
+  flex-direction: column;
+  background-color: #F576A1;
+  height: 92vh;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #12110F;
+  margin: 20px;
+  box-shadow: 5px 10px 60px 10px rgb(91, 66, 74);
+}
+
+#main-display {
+  grid-column: 2;
+}
+
+#main-display {
+  grid-column: 2;
+}
+
+#logo {
+  object-fit: fill;
+
+}
+
+#board-menu {
+  background-color: #effbfd;
+  margin: 10%;
+  display: flexbox;
+  border-style: dashed;
+  border-width: 5px;
+  border-color: #12110F;
+  text-align: center;
+  padding: 10px;
+
+}
+
+
+
+#butt-group button{
+  display: block; 
+  width: 100%;
+  margin: auto;
+  background-color: #92DCE5;
+  padding: 5px;
+  border-color: #a5dcf4;
+  border-style: groove;
+  
+}
+
+#butt-group button:not(:last-child){
+  border-bottom: none;
+}
+
+#butt-group button:hover{
+  color: white;
+  background-image: url(./assets/nurple-static-bright.gif);
+  border: none;
+
+}
+
+#board-list{
+  display:block;
+  text-align: center;
+  margin: 20px;
+}
+
+#board-form{
+  margin-bottom: 30px;
+}
+
+.hidden{
+  display: none;
+}
+
+.form-field{
+  padding: 20px;
+}
+
+#form-fields{
+  padding: 0px;
+}
+
+
+
+#title-container {
+  font-family: love;
+  font-size: 25px;
+  color: white;
+  background-color: #F576A1;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #12110F;
+  height: 75px;
+  width: fit-content;
+  margin: 20px auto 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#title{
+  position: relative;
+  bottom: 15px;
+}
+
+#error-msg {
+  color:red;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bolder;
+  text-shadow: white 2px 2px 2px;
+  margin: 10px;
+}
+
+#card-menu{
+  grid-column:2;
+
+}
+#card-wall{
+  background-image: url(./assets/card-wall-background.jpeg);
+  box-shadow: 5px 10px 90px 1px rgb(91, 66, 74) ;
+  background-size: cover;
+  display: flexbox;
+  margin-right: 5%;
+  height: 57vh;
+  overflow: scroll;
+}
+ 
+
+
+#card-form{
+  position:absolute;
+  bottom: 0;
+  left: 50%;
+}
+
+
+.card{
+  background-color: #E9D758;
+  display: inline-block;
+  text-align: left;
+  height: 150px;
+  width: 200px;
+  margin: 5%;
+  box-shadow:5px 10px 30px 10px  rgb(63, 62, 62);
+  position:relative;
+  font-size: 20px;
+  overflow-wrap: break-word;
+
+}
+
+#card-form{
+  margin-bottom: 20px;
+}
+
+#buttons {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 60px;
+  height: 35px;
+}
+
+#card-input{
+  background-color: #E9D758;
+  border: none;
+  text-align: center;
+  height: 150px;
+  width: 200px;
+  box-shadow: 0px 0px 50px 10px;
+
+}
+
+#create-card{
+  position: absolute;
+  bottom:0;
+  left:54px;
+  margin: auto;
+}
+
+
+#like-counter{
+  font-family: love;
+}
+
+.card-text{
+  margin:10%;
+  height: 20px;
+}
+
+
+
+
+
+button{
+  font-family: love;
+}
+
