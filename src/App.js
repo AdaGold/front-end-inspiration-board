@@ -3,9 +3,11 @@ import CreateBoard from "./components/CreateBoard";
 import { useState } from "react";
 import React from "react";
 import Select from "react-select";
+import CreateCard from "./components/CreateCard";
 
 function App() {
   const [BoardData, setBoardData] = useState([]);
+  const [CardsData, setCardsData] = useState([]);
   const [Options, setOptions] = useState([]);
 
   const addBoardData = (newBoard) => {
@@ -25,6 +27,7 @@ function App() {
     setBoardData(newBoardList);
     setOptions(optionsList);
   };
+
   // Adding to the styles object to use as a prop, this allows us to "style" our dropdown ( <select>) this is built in
   const styles = {
     option: (provided, state) => ({
@@ -35,17 +38,23 @@ function App() {
       fontSize: state.selectProps.myFontSize,
     }),
   };
-  // is this 'push' pushing our data from CreateBoard.js
-  //            into the empty state list?
-  console.log([BoardData, setBoardData]);
-  console.log(addBoardData);
 
-/* ADD API CALL ON EVENT HANDLER:
+  const addCardsData = (newCard) => {
+    const newCardsList = [...CardsData];
+
+    newCardsList.push({
+      boardId: newCard.boardId,
+      text: newCard.title,
+      likesCount: newCard.likesCount,
+    });
+    setCardsData(newCardsList);
+  };
+
+  /* ADD API CALL ON EVENT HANDLER:
     - When board is selected,  pull all cards associated to that board.
 
 Q: Should this drop-down menu be its own component?
     */
-
 
   return (
     <div className="App">
@@ -53,8 +62,8 @@ Q: Should this drop-down menu be its own component?
         <div>
           <CreateBoard addBoard={addBoardData}></CreateBoard>
           <Select options={Options} styles={styles} />
-          {/* display board based on Select Options state
-              --> requires GET request from Cards? */}
+          <CreateCard addCard={addCardsData}></CreateCard>
+          {/* <Board displayCards={}/> */}
         </div>
       </header>
     </div>

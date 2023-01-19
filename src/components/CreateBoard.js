@@ -7,8 +7,6 @@ const CreateBoard = (props) => {
     owner: "",
   });
 
-  console.log("~~rendering CreateBoard.js main function component~~");
-
   const onTitleChange = (event) => {
     console.log("current value: ", event.target.value);
     setFormFields({ ...formFields, title: event.target.value });
@@ -19,24 +17,24 @@ const CreateBoard = (props) => {
     setFormFields({ ...formFields, owner: event.target.value });
   };
 
+  function emptyFields() {
+    if (formFields.owner && formFields.title) {
+      props.addBoard({
+        title: formFields.title,
+        owner: formFields.owner,
+      });
+    } else {
+      alert("Fields can't be blank");
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    newFunction();
+    emptyFields();
     setFormFields({
       title: "",
       owner: "",
     });
-
-    function newFunction() {
-      if (formFields.owner && formFields.title) {
-        props.addBoard({
-          title: formFields.title,
-          owner: formFields.owner,
-        });
-      } else {
-        alert("Fields can't be blank");
-      }
-    }
   };
 
   return (
@@ -61,11 +59,10 @@ const CreateBoard = (props) => {
 
       <input type="submit" value="Add Board" />
 
-{/* 
+      {/* 
       need to display cards based on Select menu board options
       --> requires GET request from back-end API
 */}
-
     </form>
   );
 };
@@ -76,10 +73,3 @@ CreateBoard.propTypes = {
 
 export default CreateBoard;
 
-/*
-OnTitleChange() and onOwnerChange() are not updating 
-    live as you type on the form. (nothing logs to the console);
---> Everything re-renders with each new letter though.
-
-Q: is '...FormFields' the problem?
-*/
