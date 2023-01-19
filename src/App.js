@@ -13,10 +13,13 @@ const App = () => {
   // const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
-  const [selectedBoard, setSelectedBoard] = useState({title: "", id: null, cards: [] });
+  const [selectedBoard, setSelectedBoard] = useState({
+    title: "",
+    id: null,
+    cards: [],
+  });
 
-
-  const getNewCards = (clickedBoard) => {
+  const getNewCards = (clickedBoard, title) => {
     let cards;
     console.log(clickedBoard);
     axios
@@ -32,9 +35,14 @@ const App = () => {
             likes: card.likes,
           };
         });
-        cards = cards.sort((a,b)=> a.id - b.id)
+        cards = cards.sort((a, b) => a.id - b.id);
 
-        setSelectedBoard({...selectedBoard, id: clickedBoard, cards: cards });
+        setSelectedBoard({
+          ...selectedBoard,
+          id: clickedBoard,
+          cards: cards,
+          title: title,
+        });
       })
       .catch(() => {
         console.log("This request could not go through");
@@ -75,7 +83,7 @@ const App = () => {
     const newlyCreatedCard = {
       message: message,
     };
-    console.log(selectedBoard.id)
+    console.log(selectedBoard.id);
     axios
       .post(
         `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard.id}/cards`,
@@ -83,8 +91,7 @@ const App = () => {
       )
       .then(() => {
         console.log("That worked!");
-        getNewCards(selectedBoard.id);
-        // setSelectedBoard(newCardList);
+        getNewCards(selectedBoard.id, selectedBoard.title);
       })
       .catch((error) => {
         console.log("Error Status Code:", error.response.status);
@@ -93,17 +100,19 @@ const App = () => {
     // newCardList.push(newlyCreatedCard);
   };
   const selectBoard = (clickedBoard) => {
-    // console.log(clickedBoard);
-    // setBoardId(clickedBoard);
     console.log(clickedBoard.id);
-    setSelectedBoard({title: clickedBoard.title, cards: [], id: clickedBoard.id });
-    getNewCards(clickedBoard.id)
+    setSelectedBoard({
+      title: clickedBoard.title,
+      cards: [],
+      id: clickedBoard.id,
+    });
+    getNewCards(clickedBoard.id, clickedBoard.title);
   };
 
   const deleteCard = (card) => {
     // const cards = board.card.filter((card) => card.id !== CardData.id);
     // setBoardsData(cards);
-    console.log(card)
+    console.log(card);
     axios
       .delete(
         `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard.id}/cards/${card.id}`
@@ -145,15 +154,14 @@ const App = () => {
 
   const updateLikes = (card) => {
     // console.log(selectedBoard)
-    const cards = selectedBoard.cards.map(other_card => 
-      {
-        if (other_card.id === card.id){
-          return {...card, likes: card.likes+1}
-        }else{
-          return other_card
-        }
-      })
-    setSelectedBoard({...selectedBoard, cards})
+    const cards = selectedBoard.cards.map((other_card) => {
+      if (other_card.id === card.id) {
+        return { ...card, likes: card.likes + 1 };
+      } else {
+        return other_card;
+      }
+    });
+    setSelectedBoard({ ...selectedBoard, cards });
     axios
       .patch(
         `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard.id}/cards/${card.id}`,
