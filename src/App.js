@@ -11,7 +11,7 @@ import CreateNewCard from "./components/Cards/CreateNewCard";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
-  const [board, setBoard] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [showBoard, setShowBoard] = useState(true);
 
@@ -31,7 +31,6 @@ function App() {
   }, []);
 
   //create a new board with post request to axios --This is working
-  //Function needs to be updated because it currently allows the user to enter spaces (empty strings) and submit, which are then added to the select board list.
   const makeNewBoard = (enteredData) => {
     // console.log(enteredData);
     if (
@@ -58,15 +57,15 @@ function App() {
     }
   };
 
-  //post new card to board--This is not working
-  //This function will also allow the user to enter empty strings and it will render cards with no words
+  //post new card to board--This works but currently only accepts hard-coded data
+  //Currently this allows a user to submit a card with empty strings. I'm planning to add the logic above in the post boards function to prevent that when it is complete.
   //Add logic to disable submission and return error if there are no boards
   const makeNewCard = (cardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
         //card message data and the id
-        message: "",
-        board_id: 6,
+        message: "inspiration",
+        board_id: 7,
       })
       .then((response) => {
         console.log("response:", response);
@@ -79,23 +78,28 @@ function App() {
   };
   //pass in id for a specific board and use it to make a new card
 
-  //get all cards
-  // const getAllCards = () => {
-  //   axios
-  //     .get(url)
-  //     .then((response) => {
-  //       console.log("response:", response);
-  //       console.log("response data:", response.data);
-  //       setCardData([...cardData, response.data]);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error:", error);
-  //     });
-  // };0
+  // get card by board id
+  const getCardbyBoardID = () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/6/cards`)
+      .then((response) => {
+        console.log("response:", response);
+        console.log("response data:", response.data);
+        // setCardData([...cardData, response.data]);
+        console.log("Board ID Working");
+      })
+      .catch((error) => {
+        console.log("error:", error);
+      });
+  };
 
   //hide the board when user clicks hide button, needs to be updated (add conditional logic from createnewboard)
+  const hideBoardForm = () => setShowBoard(!showBoard);
 
-  const hideBoard = () => setShowBoard(!showBoard);
+  //hanldle board selection change from board drop down menu
+  const handleBoardChange = (event) => {
+    setSelectedBoard(event.target.value);
+  };
 
   return (
     <>
@@ -105,13 +109,14 @@ function App() {
           <div className="board-section">
             {/* <CreateNewBoard onSubmitBoard={makeNewBoard} /> */}
             {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard} /> : null}
-            <button className="hide-board-button" onClick={hideBoard}>
+            <button className="hide-board-button" onClick={hideBoardForm}>
               {showBoard ? "Hide Board" : "Show Board"}
             </button>
           </div>
           <SelectBoard boardData={boardData} />
-          {/* <CardSection createNewCard={makeNewCard} /> */}
           <CreateNewCard onSubmitCard={makeNewCard} />
+          {/* cardMessagesDisplay={makeNewCard} */}
+          {/* <CardSection  /> */}
         </div>
         <Footer />
       </div>

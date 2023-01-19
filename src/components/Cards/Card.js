@@ -6,42 +6,39 @@ import axios from "axios";
 //We can move both likeCard and deleteCard into App.js if we want to reduce code here.
 
 const Card = (props) => {
-
   const addLike = () => {
-    axios.patch('${process.env.REACT_APP_BACKEND_URL}/cards/<card_id>')
-    .then((response) => { 
-      console.log("Card Liked");
-    })
-    .catch((error) => {
-      console.log(error);
-      console.log(error.response);
-    })
-    };
-  
+    axios
+      .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/5`)
+      .then((response) => {
+        console.log("Card Liked");
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(error.response);
+      });
+  };
+
   // //   const [likesCount, setLikesCount] = useState(0);
   // //   const increaseLikes = () => {
   // //     console.log('Like Count Increased!');
   // //     setLikesCount(likesCount + 1);
   // // };
-  
-//function to delete a card, works with delete card button, onClick event in return statement
-    const deleteCard = () => {
-      axios.delete('${process.env.REACT_APP_BACKEND_URL}/cards/1')
+
+  //function to delete a card, works with delete card button, onClick event in return statement
+  const deleteCard = () => {
+    axios
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/5`)
       .then((response) => {
-        console.log("Card deleted")
+        console.log("Card deleted");
       })
       .catch((error) => {
         console.log(error);
         console.log(error.response);
-      })
-    };
+      });
+  };
 
-    // deleteCard()
+  deleteCard()
 
-  // function to disable the ability to submit a card if there are no boards created and prompt the user to first create a board
-  // const enabled = 
-  
-  
   return (
     <div className="cards-container">
       {props.savedCardMessages.map((message) => {
@@ -54,7 +51,6 @@ const Card = (props) => {
               <p>Number of likes:add the likes count here </p>
               <button onClick={addLike}>🖤 </button>
               <button onClick={deleteCard}>Delete Card</button>
-                
             </div>
           </div>
         );
@@ -64,5 +60,3 @@ const Card = (props) => {
 };
 
 export default Card;
-
-
