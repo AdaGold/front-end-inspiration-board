@@ -3,6 +3,11 @@
   src: url(./assets/emobot.ttf);
 }
 
+@font-face{
+  font-family: love;
+  src: url(./assets/Love.ttf)
+}
+
 .App {
   text-align: center;
   display: grid;
@@ -51,6 +56,33 @@
   border-style: dashed;
   border-width: 5px;
   border-color: #12110F;
+  text-align: center;
+  padding: 10px;
+
+}
+
+
+
+#butt-group button{
+  display: block; 
+  width: 100%;
+  margin: auto;
+  background-color: #92DCE5;
+  padding: 5px;
+  border-color: #a5dcf4;
+  border-style: groove;
+  
+}
+
+#butt-group button:not(:last-child){
+  border-bottom: none;
+}
+
+#butt-group button:hover{
+  color: white;
+  background-image: url(./assets/nurple-static-bright.gif);
+  border: none;
+
 }
 
 #board-list{
@@ -78,7 +110,7 @@
 
 
 #title-container {
-
+  font-family: love;
   font-size: 25px;
   color: white;
   background-color: #F576A1;
@@ -138,6 +170,8 @@
   margin: 5%;
   box-shadow:5px 10px 30px 10px  rgb(63, 62, 62);
   position:relative;
+  font-size: 20px;
+  overflow-wrap: break-word;
 
 }
 
@@ -148,7 +182,8 @@
 #buttons {
   display:flex;
   justify-content: space-around;
-  margin-top: 65px;
+  margin-top: 60px;
+  height: 35px;
 }
 
 #card-input{
@@ -157,6 +192,7 @@
   text-align: center;
   height: 150px;
   width: 200px;
+  box-shadow: 0px 0px 50px 10px;
 
 }
 
@@ -168,16 +204,20 @@
 }
 
 
-
+#like-counter{
+  font-family: love;
+}
 
 .card-text{
   margin:10%;
+  height: 20px;
 }
 
 
 
 
 
-
-
+button{
+  font-family: love;
+}
 

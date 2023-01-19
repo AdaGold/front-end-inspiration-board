@@ -10,7 +10,7 @@ const CardWall = (props) => {
           <button type="button" onClick={() => props.onDelete(card)}>
             Delete
           </button>
-          <p>{card.likes_count}</p>
+          <p id="like-counter">{card.likes_count}</p>
           <button type="button" onClick={() => props.onLike(card)}>
           +1
           </button>

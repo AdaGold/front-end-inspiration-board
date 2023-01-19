@@ -145,7 +145,7 @@ function App() {
 
           <div>
             <button type="button" onClick={toggleBoardForm}>
-              Arrow
+              board form
             </button>
           </div>
 

@@ -18,7 +18,7 @@ const BoardList = (props) => {
     });
     return buttonList;
   };
-  return <div>{getBoardList()}</div>;
+  return <div id="butt-group">{getBoardList()}</div>;
 };
 
 BoardList.propTypes = {
