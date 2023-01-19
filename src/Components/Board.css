@@ -1,0 +1,11 @@
+ul {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 30% 30% 30%;
+    min-width: 900px;
+}
+
+.cardsContainer {
+    min-width: 70%;
+}
+

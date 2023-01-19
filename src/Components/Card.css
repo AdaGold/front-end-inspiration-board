@@ -1,0 +1,12 @@
+li {
+    grid-template-rows: 80% auto;
+    outline: solid;
+    padding: 8px 5px;
+    min-height: 20% vh;
+    justify-content: center;
+}
+
+.tasks__item__remove {
+    grid-row-start: 2;
+    margin-left: 10px;
+}

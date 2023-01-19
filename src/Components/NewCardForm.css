@@ -1,0 +1,15 @@
+.newCardForm{
+    background: white;
+  width: 25%;
+  max-height: 250px;
+    margin-top: 115px;
+  border:1px solid black;  
+}
+
+.toggleFormButton {
+    margin-top: 10px;
+}
+
+.bottomSpacing {
+    margin-bottom: 10px;
+}
