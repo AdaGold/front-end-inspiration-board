@@ -13,9 +13,8 @@ const App = () => {
   // const axios = require("axios");
   const BOARDS = [];
   const [boardsData, setBoardsData] = useState(BOARDS);
-  const [selectedBoard, setSelectedBoard] = useState([]);
-  const [selectedBoardTitle, setSelectedBoardTitle] = useState([]);
-  // console.log(boardsData);
+  const [selectedBoard, setSelectedBoard] = useState({title: "", id: null, cards: [] });
+
 
   const getNewCards = (clickedBoard) => {
     let cards;
@@ -31,10 +30,11 @@ const App = () => {
             id: card.id,
             message: card.message,
             likes: card.likes,
-            boardId: clickedBoard,
           };
         });
-        setSelectedBoard(cards);
+        cards = cards.sort((a,b)=> a.id - b.id)
+
+        setSelectedBoard({...selectedBoard, id: clickedBoard, cards: cards });
       })
       .catch(() => {
         console.log("This request could not go through");
@@ -75,15 +75,15 @@ const App = () => {
     const newlyCreatedCard = {
       message: message,
     };
-
+    console.log(selectedBoard.id)
     axios
       .post(
-        `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard[0].boardId}/cards`,
+        `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard.id}/cards`,
         newlyCreatedCard
       )
       .then(() => {
         console.log("That worked!");
-        getNewCards(selectedBoard[0].boardId);
+        getNewCards(selectedBoard.id);
         // setSelectedBoard(newCardList);
       })
       .catch((error) => {
@@ -93,48 +93,20 @@ const App = () => {
     // newCardList.push(newlyCreatedCard);
   };
   const selectBoard = (clickedBoard) => {
-    console.log(clickedBoard);
-    let cards;
-    axios
-      .get(
-        `https://ancient-inlet-63477.herokuapp.com/boards/${clickedBoard.id}/cards`
-      )
-      .then((response) => {
-        console.log(response);
-        if (response.data.length === 0) {
-          cards = [
-            {
-              id: -1,
-              message: "No Cards Added Yet",
-              likes: 0,
-              boardId: clickedBoard.id,
-            },
-          ];
-        } else {
-          cards = response.data.map((card) => {
-            return {
-              id: card.id,
-              message: card.message,
-              likes: card.likes,
-              boardId: clickedBoard.id,
-            };
-          });
-        }
-        console.log(cards);
-        setSelectedBoard(cards);
-        setSelectedBoardTitle(clickedBoard.title);
-      })
-      .catch(() => {
-        console.log("This request could not go through");
-      });
+    // console.log(clickedBoard);
+    // setBoardId(clickedBoard);
+    console.log(clickedBoard.id);
+    setSelectedBoard({title: clickedBoard.title, cards: [], id: clickedBoard.id });
+    getNewCards(clickedBoard.id)
   };
 
   const deleteCard = (card) => {
     // const cards = board.card.filter((card) => card.id !== CardData.id);
     // setBoardsData(cards);
+    console.log(card)
     axios
       .delete(
-        `https://ancient-inlet-63477.herokuapp.com/boards/${card.boardId}/cards/${card.id}`
+        `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard.id}/cards/${card.id}`
       )
       .then((response) => {
         const cards = response.data.map((card) => {
@@ -144,7 +116,7 @@ const App = () => {
             likes: card.likes,
           };
         });
-        setSelectedBoard(cards);
+        setSelectedBoard({ ...selectedBoard, cards });
         console.log("The card has been deleted.");
       })
       .catch(() => {
@@ -172,14 +144,21 @@ const App = () => {
   };
 
   const updateLikes = (card) => {
+    // console.log(selectedBoard)
+    const cards = selectedBoard.cards.map(other_card => 
+      {
+        if (other_card.id === card.id){
+          return {...card, likes: card.likes+1}
+        }else{
+          return other_card
+        }
+      })
+    setSelectedBoard({...selectedBoard, cards})
     axios
       .patch(
-        `https://ancient-inlet-63477.herokuapp.com/boards/${card.boardId}/cards/${card.id}`,
+        `https://ancient-inlet-63477.herokuapp.com/boards/${selectedBoard.id}/cards/${card.id}`,
         card
       )
-      .then((response) => {
-        getNewCards(card.boardId);
-      })
       .catch((error) => {
         console.log("Error Status Code:", error);
         console.log("Error Message:", error.response);
@@ -219,11 +198,11 @@ const App = () => {
           <NewBoardForm createBoard={createBoard} className="cardInfo" />
         </div>
         <Board
-          board={selectedBoard}
+          board={selectedBoard.cards}
           deleteCard={deleteCard}
           createCard={createCard}
           updateLikes={updateLikes}
-          title={selectedBoardTitle}
+          title={selectedBoard.title}
         />
       </main>
     </div>
