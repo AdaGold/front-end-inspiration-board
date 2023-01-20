@@ -5,6 +5,7 @@ import React from "react";
 import CreateCard from "./components/CreateCard";
 import BoardsList from "./components/BoardsList";
 import axios from "axios";
+import background from "./inspo.jpg";
 
 // const getBoardList = () => {
 // axios.get('https://blin-inspiration-board-backend.herokuapp.com/boards',{})
@@ -85,13 +86,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        Inspiration Board
+        </header>
         <div>
+          
           <CreateBoard addBoard={addBoardData}></CreateBoard>
           <BoardsList options={Options} />
           <CreateCard addCard={addCardsData}></CreateCard>
           {/* <Board displayCards={displayCardByBoardId}/> */}
         </div>
-      </header>
+        {/* <footer className = "App-footer"> By Lee, Nashwa, Brooke, and Ihovanna</footer> */}
     </div>
   );
 }
