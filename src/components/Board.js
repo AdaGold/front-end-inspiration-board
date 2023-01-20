@@ -5,10 +5,9 @@
 // RENDERS STATE OF CARDS BASED ON BOARD ID
 
 // const Board = (props) => {
-//   // - does it need to create state for each new board?
-//   // - do we put each card in the same state and pull based on board id?
 
 //   // state == all cards created under this board
+//      --> cards are displayed based on boardId associated to card
 //   // --> GET request from back-end API
 
 //   return <div>~*~Rendering Board.js~*~</div>;

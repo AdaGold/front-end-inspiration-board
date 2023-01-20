@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import Select from "react-select";
 
 const BoardsList = (props) => {
-
   const styles = {
     option: (provided, state) => ({
       ...provided,
@@ -15,9 +14,9 @@ const BoardsList = (props) => {
 
   return (
     <div>
-      <Select options={props.Options} styles={styles} />
+      <Select options={props.options} styles={styles} />
     </div>
-  )
+  );
 };
 
 BoardsList.propTypes = {

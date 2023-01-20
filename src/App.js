@@ -17,10 +17,11 @@ function App() {
     newBoardList.push({
       title: newBoard.title,
       owner: newBoard.owner,
+      id: newBoard.id
     });
     optionsList.push({
       value: "Title",
-      label: `${newBoard.title} by ${newBoard.owner}`,
+      label: `${newBoard.title} by ${newBoard.owner} (id: ${newBoard.id})`,
       // bgColor: "#da3b01", // background color of each title in select
       color: "#696969", // text color of each title in select
     });
@@ -45,9 +46,7 @@ function App() {
 
   /* ADD API CALL ON EVENT HANDLER:
     - When board is selected,  pull all cards associated to that board.
-
-Q: Should this drop-down menu be its own component?
-    */
+  */
 
   return (
     <div className="App">
