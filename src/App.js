@@ -15,7 +15,6 @@ function App() {
   const [cardData, setCardData] = useState([]);
   const [showBoard, setShowBoard] = useState(true);
 
-
   //get all boards with get request to axios
   useEffect(() => {
     axios
@@ -23,8 +22,7 @@ function App() {
       .then((response) => {
         setBoardData(response.data);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   }, []);
 
   //create a new board with post request to axios
@@ -44,9 +42,9 @@ function App() {
         })
         .then((response) => {
           setBoardData([...boardData, response.data]);
+          console.log(response.data);
         })
-        .catch((error) => {
-        });
+        .catch((error) => {});
     }
   };
 
@@ -57,48 +55,46 @@ function App() {
         message: "inspiration",
         board_id: 7,
       })
-      .then((response) => {
-      })
-      .catch((error) => {
-      });
+      .then((response) => {})
+      .catch((error) => {});
   };
-
 
   const hideBoardForm = () => setShowBoard(!showBoard);
 
-
+  //function that runs when the board is selected by the user and updates the app state
+  const onSelectBoardClick = (id) => {
+    console.log("Hi, Im in the App and the board id is " + id);
+    setSelectedBoard(id);
+  };
+  //pass the function to the board component as a prop
   const boardsElements = boardData.map((board) => {
-    console.log(board.board_id)
+    console.log(board.board_id);
     return (
-    <li key={board.board_id}><Board title={board.title}></Board></li>
-    )
-  })
-  
-  const onSelectBoardClick = (event) => {
-    setSelectedBoard(event.target.value);
-  }
+      <li key={board.board_id}>
+        <Board
+          title={board.title}
+          id={board.board_id}
+          onSelectBoard={onSelectBoardClick}
+        ></Board>
+      </li>
+    );
+  });
 
-  
   return (
     <>
       <Header />
       <div>
         <div className="top-section">
           <div className="board-section">
-            {/* <CreateNewBoard onSubmitBoard={makeNewBoard} /> */}
             {showBoard ? <CreateNewBoard onSubmitBoard={makeNewBoard} /> : null}
             <button className="hide-board-button" onClick={hideBoardForm}>
               {showBoard ? "Hide Board" : "Show Board"}
             </button>
           </div>
-          
-          {/* <SelectBoard boardData={boardData} /> */}
           <p>{boardsElements}</p>
-          <CardSection board_id="26" ></CardSection>
-          {/* <CardSection createNewCard={makeNewCard} /> */}
+          <CardSection board_id="26"></CardSection>
+
           <CreateNewCard onSubmitCard={makeNewCard} />
-          {/* cardMessagesDisplay={makeNewCard} */}
-          {/* <CardSection  /> */}
         </div>
         <Footer />
       </div>

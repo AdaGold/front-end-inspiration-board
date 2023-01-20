@@ -2,8 +2,6 @@ import { getAllByPlaceholderText } from "@testing-library/react";
 import React, { useState } from "react";
 import "./CreateNewBoard.css";
 
-//Refactored CreateNewBoard based on Ghameerah's feedback. They suggested we add the conditional logic that was in the original CreateBoard to each function in App.js.
-//We can move newBoard function to App.js if we want to refactor further.
 
 const CreateNewBoard = (props) => {
   const [boardTitle, setBoardTitle] = useState("");
