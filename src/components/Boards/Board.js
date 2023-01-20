@@ -7,7 +7,6 @@ const Board = (props) => {
     props.onSelectBoard(event.target.value);
   };
 
-
 //button that has on click event and calls the handleBoardSelect function
   return (
     <button
