@@ -12,20 +12,15 @@ const CreateCard = (props) => {
     console.log(formFields.text);
     console.log(formFields.text.length);
     setFormFields({ ...formFields, text: event.target.value });
-    // if (formFields.text.length > 40) {
-    //   alert("Message has exceeded 40 characters in length!");
-  };
-
-  const emptyAnd40 = () => {
-    if (formFields.text.length > 40) {
-      alert("Message cannot be over 40 characters");
-    }
   };
 
   const handleSubmit = (event) => {
     if (formFields.text.length > 40) {
       event.preventDefault();
       alert("Message cannot be over 40 characters");
+    } else if (formFields.text.length === 0) {
+      event.preventDefault();
+      alert("Message cannot be empty");
     } else {
       event.preventDefault();
       setFormFields({
