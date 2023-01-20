@@ -121,7 +121,10 @@ function App() {
               {showBoard ? "Hide Board" : "Show Board"}
             </button>
           </div>
-          <p>{boardsElements}</p>
+          <div className="select-board-container">
+            <h1 className="select-board-header">Select a Board</h1>
+            <p>{boardsElements}</p>
+          </div>
           <CardSection cards={cardsInBoard}></CardSection>
 
           <CreateNewCard onSubmitCard={makeNewCard} />

@@ -20,6 +20,19 @@ body {
   align-items: flex-start;
   justify-content: space-around;
 }
+
+.select-board-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-board-header {
+  font-family: 'Warnes';
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 8px rgb(157, 0, 255), 0 0 15px rgb(255,105,180), 0 0 15px rgb(157, 0, 255), 0 0 15px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 10px #0073e6;
+}
 /* .create-new-board {
   display: flex;
   flex-direction: column;
