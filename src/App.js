@@ -4,13 +4,27 @@ import { useState } from "react";
 import React from "react";
 import CreateCard from "./components/CreateCard";
 import BoardsList from "./components/BoardsList";
+import axios from "axios";
 
+
+const getBoardList = () => {
+axios.get('https://blin-inspiration-board-backend.herokuapp.com/boards',{})
+.then((response)=> {
+  console.log("Success!");
+  return response.data;
+})
+.catch(() => {
+  console.log('error!');
+});
+}
 function App() {
   const [BoardData, setBoardData] = useState([]);
   const [CardsData, setCardsData] = useState([]);
   const [Options, setOptions] = useState([]);
 
   const addBoardData = (newBoard) => {
+    axios.post('https://blin-inspiration-board-backend.herokuapp.com/boards',newBoard)
+    .then((response) => {
     const newBoardList = [...BoardData];
     const optionsList = [...Options];
 
@@ -19,6 +33,7 @@ function App() {
       owner: newBoard.owner,
       id: newBoard.id
     });
+  
     optionsList.push({
       value: "Title",
       label: `${newBoard.title} by ${newBoard.owner} (id: ${newBoard.id})`,
@@ -27,6 +42,10 @@ function App() {
     });
     setBoardData(newBoardList);
     setOptions(optionsList);
+  })
+  .catch((error) => {
+    console.log("Error", error);
+  });
   };
 
   const addCardsData = (newCard) => {
