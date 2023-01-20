@@ -65,6 +65,9 @@ function App() {
   const onSelectBoardClick = (id) => {
     console.log("Hi, Im in the App and the board id is " + id);
     setSelectedBoard(id);
+    // call axios to update state with card data
+    // only call this when a button is clicked
+    getCardsByBoardId(selectedBoard)
   };
   //pass the function to the board component as a prop
   const boardsElements = boardData.map((board) => {
@@ -80,6 +83,37 @@ function App() {
     );
   });
 
+    // set state to be able to access cards from database in component without...
+  // needing to work with complicated async issues
+  const [cardsInBoard, setCardsInBoard] = useState([]);
+
+
+  // once we have the board set up, 
+  // move this to app so we can call this function on events
+  // (right now, we're calling it constantly)
+  // then we can change the props to be the card list
+  const getCardsByBoardId = (id) => {
+    console.log(`calling axios, id is ${id} and url is ${process.env.REACT_APP_BACKEND_URL}/boards/${id}/cards`)
+    axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${id}/cards`)
+    .then((response) => {
+      let cards = []
+      for (let card of response.data.cards) {
+        cards.push({
+          "message": card.message,
+          "likes_count": card.likes_count
+        })
+      }
+      setCardsInBoard(cards)
+    })
+  }
+
+  
+
+  // send props.cardsInBoard into card section component
+
+
+
   return (
     <>
       <Header />
@@ -92,7 +126,7 @@ function App() {
             </button>
           </div>
           <p>{boardsElements}</p>
-          <CardSection board_id="26"></CardSection>
+          <CardSection cards={cardsInBoard}></CardSection>
 
           <CreateNewCard onSubmitCard={makeNewCard} />
         </div>
