@@ -67,7 +67,7 @@ function App() {
     setSelectedBoard(id);
     // call axios to update state with card data
     // only call this when a button is clicked
-    getCardsByBoardId(selectedBoard)
+    getCardsByBoardId(id)
   };
   //pass the function to the board component as a prop
   const boardsElements = boardData.map((board) => {
