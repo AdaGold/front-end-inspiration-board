@@ -15,7 +15,7 @@ const Board = (props) => {
       onClick={handleBoardSelect}
     >
       {props.title}
-      {props.id}
+      {/* {props.id} */}
     </button>
   );
 };
