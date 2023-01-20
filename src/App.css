@@ -1,0 +1,76 @@
+* { 
+  box-sizing: border-box;
+} 
+
+body {
+  background-image: url("background.png");
+}
+/* Moved to Header.css */
+/* .header {
+  text-align: center; */
+  /* align-items: center; */
+  /* font-size: 22px;
+  color: #e86ce0;
+  
+} */
+
+.top-section{
+  display:flex;
+  position:relative;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.select-board-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-board-header {
+  font-family: 'Warnes';
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 8px rgb(157, 0, 255), 0 0 15px rgb(255,105,180), 0 0 15px rgb(157, 0, 255), 0 0 15px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 10px #0073e6;
+}
+/* .create-new-board {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  padding: 30px;
+  margin: 30px; */
+
+/* } */
+/* .create-board-header {
+  font-size: 16 px;
+  color: #e86ce0;
+} */
+
+/* NOTE FROM TIFFANY - Moved this css to the "SelectBoard.css" file */
+/* .select-board-menu {
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.select-board-header {
+  font-size: 20px;
+  color: #e86ce0;
+  margin: 30px;
+} */
+/* #c1cbf9 #2cd2ee #e4b4ef #e86ce0 #2b0719 */
+button{
+  border-radius: 2rem;
+  padding:0.5rem 0.5rem;
+  font-weight: bolder;
+  color:white;
+  background-color: #2cd2ee;
+  font-size: 1rem;
+  border: 1px solid transparent;
+}
+
+button:hover{
+  background-color: white;
+  color:#2cd2ee;
+  cursor:pointer;
+}

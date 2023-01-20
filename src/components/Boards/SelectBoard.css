@@ -1,0 +1,25 @@
+
+.select-board-menu {
+  
+    justify-content: center;
+} 
+
+.select-board-header {
+  font-family: 'Warnes';
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 8px rgb(157, 0, 255), 0 0 15px rgb(255,105,180), 0 0 15px rgb(157, 0, 255), 0 0 15px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 8px rgb(157, 0, 255), 0 0 10px #0073e6;
+}
+
+#dropdown{
+    min-height: 3rem;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color:white;
+    background-color: #2cd2ee;
+    border-radius: 20px;
+    justify-content: center;
+    
+}
