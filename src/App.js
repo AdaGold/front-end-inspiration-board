@@ -1,11 +1,10 @@
 import "./App.css";
 import CreateBoard from "./components/CreateBoard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import CreateCard from "./components/CreateCard";
 import BoardsList from "./components/BoardsList";
 import axios from "axios";
-
 
 // const getBoardList = () => {
 // axios.get('https://blin-inspiration-board-backend.herokuapp.com/boards',{})
@@ -22,35 +21,51 @@ function App() {
   const [CardsData, setCardsData] = useState([]);
   const [Options, setOptions] = useState([]);
 
-  const addBoardData = (newBoard) => {
-    axios.post('https://blin-inspiration-board-backend.herokuapp.com/boards',newBoard)
-    .then((response) => {
-    const newBoardList = [...BoardData];
-    const optionsList = [...Options];
+  useEffect(() => {
+    axios
+      .get("https://blin-inspiration-board-backend.herokuapp.com/boards")
+      .then((response) => {
+        console.log(response.data);
 
-    newBoardList.push({
-      title: newBoard.title,
-      owner: newBoard.owner,
-      id: newBoard.id
-    });
-  
-    optionsList.push({
-      value: "Title",
-      label: `${newBoard.title} by ${newBoard.owner} (id: ${newBoard.id})`,
-      // bgColor: "#da3b01", // background color of each title in select
-      color: "#696969", // text color of each title in select
-    });
-    setBoardData(newBoardList);
-    setOptions(optionsList);
-  })
-  .catch((error) => {
-    console.log("Error", error);
-  });
+        const optionsList = [...Options];
+
+        optionsList.push({
+          value: "Title",
+          label: `${response.data.title} by ${response.data.owner} (id: ${response.data.board_id})`,
+          bgColor: "#e4eaea", // background color of each title in select
+          color: "#696969", // text color of each title in select
+        });
+        setOptions(optionsList);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  }, []);
+
+  const addBoardData = (newBoard) => {
+    axios
+      .post(
+        "https://blin-inspiration-board-backend.herokuapp.com/boards",
+        newBoard
+      )
+      .then((response) => {
+        const newBoardList = [...BoardData];
+
+        newBoardList.push({
+          title: newBoard.title,
+          owner: newBoard.owner,
+          id: newBoard.id,
+        });
+
+        setBoardData(newBoardList);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
   };
 
   const addCardsData = (newCard) => {
     const newCardsList = [...CardsData];
-
     newCardsList.push({
       boardId: newCard.boardId,
       text: newCard.title,
