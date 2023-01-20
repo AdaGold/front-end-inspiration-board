@@ -7,16 +7,16 @@ import BoardsList from "./components/BoardsList";
 import axios from "axios";
 
 
-const getBoardList = () => {
-axios.get('https://blin-inspiration-board-backend.herokuapp.com/boards',{})
-.then((response)=> {
-  console.log("Success!");
-  return response.data;
-})
-.catch(() => {
-  console.log('error!');
-});
-}
+// const getBoardList = () => {
+// axios.get('https://blin-inspiration-board-backend.herokuapp.com/boards',{})
+// .then((response)=> {
+//   console.log("Success!");
+//   return response.data;
+// })
+// .catch(() => {
+//   console.log('error!');
+// });
+// }
 function App() {
   const [BoardData, setBoardData] = useState([]);
   const [CardsData, setCardsData] = useState([]);
