@@ -3,6 +3,12 @@
 // import Cards from "./components";
 
 // RENDERS STATE OF CARDS BASED ON BOARD ID
+// Need event handler? 
+//   --> when drop down selects board:
+//        - display title of board
+//        - display cards associated to boardId
+
+
 
 // const Board = (props) => {
 

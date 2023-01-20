@@ -9,17 +9,26 @@ const CreateCard = (props) => {
   });
 
   const onTextChange = (event) => {
+    console.log(formFields.text);
+    console.log(formFields.text.length);
     setFormFields({ ...formFields, text: event.target.value });
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    // alert();
-    setFormFields({
-      boardId: "",
-      text: "",
-      likesCount: 0,
-    });
+    if (formFields.text.length > 40) {
+      event.preventDefault();
+      alert("Message cannot be over 40 characters");
+    } else if (formFields.text.length === 0) {
+      event.preventDefault();
+      alert("Message cannot be empty");
+    } else {
+      event.preventDefault();
+      setFormFields({
+        boardId: "",
+        text: "",
+        likesCount: 0,
+      });
+    }
   };
 
   return (

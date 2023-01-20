@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-let num = 0
+let num = 1
 const CreateBoard = (props) => {
   const [formFields, setFormFields] = useState({
     title: "",
