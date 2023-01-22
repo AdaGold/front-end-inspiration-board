@@ -1,3 +1,4 @@
+import { useState } from "react";
 // import PropTypes from "prop-types";
 
 const Card = (props) => {
@@ -6,22 +7,24 @@ const Card = (props) => {
 
   const cardText = 'Text'
 
-  const likesButton = 'likes';
-
-  const likesCount = 'likes number';
+  let [likesCount, setLikesCount] = useState(0);
+  
+  const likesButton = () => {
+    likesCount = likesCount + 1;
+    setLikesCount(likesCount);
+  };
 
   return(
     <div className='card'>
       <p>{deleteButton}</p>
       <h2>{cardText}</h2>
-      <p>{likesButton}</p>
+      <button onClick={likesButton}>Like</button>
       <p>{likesCount}</p>
     </div>
   )
 };
 
+export default Card;
 // Card.propTypes = {
 //   allCards: PropTypes.array.isRequired
 // };
-
-export default Card;
