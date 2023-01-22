@@ -1,47 +1,15 @@
 import "./App.css";
 import CreateBoard from "./components/CreateBoard";
-import { useEffect, useState } from "react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CreateCard from "./components/CreateCard";
 import BoardsList from "./components/BoardsList";
+import Board from "./components/Board";
 import axios from "axios";
-import background from "./inspo.jpg";
 
-// const getBoardList = () => {
-// axios.get('https://blin-inspiration-board-backend.herokuapp.com/boards',{})
-// .then((response)=> {
-//   console.log("Success!");
-//   return response.data;
-// })
-// .catch(() => {
-//   console.log('error!');
-// });
-// }
 function App() {
   const [BoardData, setBoardData] = useState([]);
   const [CardsData, setCardsData] = useState([]);
   const [Options, setOptions] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://blin-inspiration-board-backend.herokuapp.com/boards")
-      .then((response) => {
-        console.log(response.data);
-
-        const optionsList = [...Options];
-
-        optionsList.push({
-          value: "Title",
-          label: `${response.data.title} by ${response.data.owner} (id: ${response.data.board_id})`,
-          bgColor: "#e4eaea", // background color of each title in select
-          color: "#696969", // text color of each title in select
-        });
-        setOptions(optionsList);
-      })
-      .catch((error) => {
-        console.log("Error", error);
-      });
-  }, []);
 
   const addBoardData = (newBoard) => {
     axios
@@ -50,34 +18,97 @@ function App() {
         newBoard
       )
       .then((response) => {
-        const newBoardList = [...BoardData];
+        addSelectData();
+        //   const newBoardList = [...BoardData];
 
-        newBoardList.push({
-          title: newBoard.title,
-          owner: newBoard.owner,
-          id: newBoard.id,
-        });
+        //   newBoardList.push({
+        //     title: newBoard.title,
+        //     owner: newBoard.owner,
+        //     id: newBoard.id,
+        //   });
 
-        setBoardData(newBoardList);
+        //   setBoardData(newBoardList);
       })
       .catch((error) => {
-        console.log("Error", error);
+        console.log("New board not stored in back-end.", error);
       });
   };
 
-  const addCardsData = (newCard) => {
-    const newCardsList = [...CardsData];
-    newCardsList.push({
-      boardId: newCard.boardId,
-      text: newCard.title,
-      likesCount: newCard.likesCount,
-    });
-    setCardsData(newCardsList);
+  const addSelectData = (newOption) => {
+    axios
+      .get("https://blin-inspiration-board-backend.herokuapp.com/boards")
+      .then((response) => {
+        // console.log("axios get request @App.js:");
+        // console.log(response.data);
+
+        setOptions(response.data);
+
+        //   const optionsList = [...Options];
+
+        //   optionsList.push({
+        //     value: newOption.value,
+        //     label: newOption.label,
+        //     bgColor: "#e4eaea", // background color of each title in select
+        //     color: "#696969", // text color of each title in select
+        //   });
+
+        // setOptions(optionsList);
+      })
+      .catch((error) => {
+        console.log("Could not store board in back-end.", error);
+      });
   };
 
-  /*
-  const diplayCardsByBoardId = () => {};
-  */
+  useEffect(() => addSelectData, [Options.length]);
+
+  const addCardsData = (newCard) => {
+    // const newCardsList = [...CardsData];
+    // newCardsList.push({
+    //   boardId: newCard.boardId,
+    //   text: newCard.title,
+    //   likesCount: newCard.likesCount,
+    // });
+    // setCardsData(newCardsList);
+
+      axios
+        .post(
+          "https://blin-inspiration-board-backend.herokuapp.com/1/cards",
+          newCard
+        )
+        .then((response) => {
+          addSelectData();
+        })
+        .catch((error) => {
+          console.log("Could not store card in back-end.", error);
+        });
+  };
+
+  const getBoardCards = (boardCards) => {
+    axios
+      .get("https://blin-inspiration-board-backend.herokuapp.com/cards")
+      .then((response) => {
+        console.log("axios get request @App.js:");
+        console.log(response.data);
+
+        setCardsData(response.data);
+
+        //   const optionsList = [...Options];
+
+        //   optionsList.push({
+        //     value: newOption.value,
+        //     label: newOption.label,
+        //     bgColor: "#e4eaea", // background color of each title in select
+        //     color: "#696969", // text color of each title in select
+        //   });
+
+        // setOptions(optionsList);
+      })
+      .catch((error) => {
+        console.log("Could get cards data from back-end.", error);
+      });
+  };
+
+  useEffect(() => addSelectData, [CardsData.length]);
 
   /* ADD API CALL ON EVENT HANDLER:
     - When board is selected,  pull all cards associated to that board.
@@ -85,17 +116,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        Inspiration Board
-        </header>
-        <div>
-          
-          <CreateBoard addBoard={addBoardData}></CreateBoard>
-          <BoardsList options={Options} />
-          <CreateCard addCard={addCardsData}></CreateCard>
-          {/* <Board displayCards={displayCardByBoardId}/> */}
-        </div>
-        {/* <footer className = "App-footer"> By Lee, Nashwa, Brooke, and Ihovanna</footer> */}
+      <header className="App-header">Inspiration Board</header>
+      <div>
+        <CreateBoard addBoard={addBoardData}></CreateBoard>
+        <BoardsList selectData={addSelectData} availableData={Options} />
+        <CreateCard addCard={addCardsData}></CreateCard>
+        <Board />
+      </div>
+      {/* <footer className = "App-footer"> By Lee, Nashwa, Brooke, and Ihovanna</footer> */}
     </div>
   );
 }

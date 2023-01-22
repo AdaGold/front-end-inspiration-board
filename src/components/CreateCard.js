@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import Card from "./Card";
 
 const CreateCard = (props) => {
   const [formFields, setFormFields] = useState({
@@ -48,6 +49,7 @@ const CreateCard = (props) => {
       </div>
       <input type="submit" value="Add Card" />
     </form>
+
   );
 };
 

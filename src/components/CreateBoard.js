@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-let num = 1
+let num = 1;
 const CreateBoard = (props) => {
   const [formFields, setFormFields] = useState({
     title: "",
     owner: "",
-    id: num
+    id: num,
+    label: "",
   });
 
   const onTitleChange = (event) => {
@@ -21,11 +22,12 @@ const CreateBoard = (props) => {
 
   function emptyFields() {
     if (formFields.owner && formFields.title) {
-      ++num
+      ++num;
       props.addBoard({
         title: formFields.title,
         owner: formFields.owner,
-        id: formFields.id
+        id: formFields.id,
+        label: formFields.label,
       });
     } else {
       alert("Fields can't be blank");
@@ -39,7 +41,7 @@ const CreateBoard = (props) => {
     setFormFields({
       title: "",
       owner: "",
-      id: num
+      id: num,
     });
   };
 
@@ -73,4 +75,3 @@ CreateBoard.propTypes = {
 };
 
 export default CreateBoard;
-
