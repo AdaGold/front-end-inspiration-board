@@ -72,7 +72,7 @@ function App() {
 
       axios
         .post(
-          "https://blin-inspiration-board-backend.herokuapp.com/1/cards",
+          "https://blin-inspiration-board-backend.herokuapp.com/boards/1/cards",
           newCard
         )
         .then((response) => {
@@ -85,7 +85,7 @@ function App() {
 
   const getBoardCards = (boardCards) => {
     axios
-      .get("https://blin-inspiration-board-backend.herokuapp.com/cards")
+      .get("https://blin-inspiration-board-backend.herokuapp.com/boards/1/cards")
       .then((response) => {
         console.log("axios get request @App.js:");
         console.log(response.data);
@@ -116,13 +116,17 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Inspiration Board</header>
+      <header className="App-header">
       <div>
-        <CreateBoard addBoard={addBoardData}></CreateBoard>
-        <BoardsList selectData={addSelectData} availableData={Options} />
-        <CreateCard addCard={addCardsData}></CreateCard>
-        <Board />
+        <CreateBoard className='form' id='create-board' addBoard={addBoardData}></CreateBoard>
+        <BoardsList className='select-menu' id ='boards-list' selectData={addSelectData} availableData={Options} />
+        <CreateCard className='form' id='create-card' addCard={addCardsData}></CreateCard>
       </div>
+      </header>
+      <body>
+        <Board />
+      </body>
+
       {/* <footer className = "App-footer"> By Lee, Nashwa, Brooke, and Ihovanna</footer> */}
     </div>
   );

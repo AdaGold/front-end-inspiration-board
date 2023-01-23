@@ -46,7 +46,7 @@ const CreateBoard = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form' onSubmit={handleSubmit}>
       <div>
         <label htmlFor="Title">Board title: </label>
         <input
@@ -57,8 +57,8 @@ const CreateBoard = (props) => {
       </div>
 
       <div>
-        <label htmlFor="Owner">Owner of board: </label>
-        <input
+        <label id='owner-label' htmlFor="Owner">Owner of board: </label>
+        <input id='owner-input-box'
           name="Owner"
           value={formFields.owner}
           onChange={onOwnerChange}
